@@ -15,11 +15,15 @@
                             </div>
                             <div class="navbar-wrap main-menu d-none d-lg-flex">
                                 <ul class="navigation">
-                                    <li class="active menu-item-has-children">
-                                        <a href="#">{{ __('Home') }}</a>
+                                    <li
+                                        @class(["menu-item-has-children", "active" => getNameRouteMain() == "index" ])
+                                    >
+                                        <a href="{{ route('index') }}">{{ __('Home') }}</a>
                                     </li>
                                     <li><a href="tv-show.html">{{ __('Course') }}</a></li>
-                                    <li><a href="pricing.html">{{ __('Pricing') }}</a></li>
+                                    <li
+                                        @class(["active" => getNameRouteMain() == "pricing"])
+                                    ><a href="{{ route('pricing') }}">{{ __('Pricing') }}</a></li>
                                     <li class="menu-item-has-children"><a href="#">{{ __('blog') }}</a>
                                         <ul class="submenu">
                                             <li><a href="blog.html">{{ __('Our Blog') }}</a></li>

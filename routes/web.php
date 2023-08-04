@@ -1,5 +1,6 @@
 <?php
 
+use App\Http\Controllers\PricingController;
 use App\Http\Controllers\User\AuthController;
 use App\Http\Controllers\User\HomepageController;
 use App\Http\Middleware\CheckLoginMiddleware;
@@ -31,3 +32,4 @@ Route::group([
     Route::get('/logout', [AuthController::class, 'logout'])->name('logout');
 });
 Route::get('/', [HomepageController::class, '__invoke'])->name('index');
+Route::get('/pricing', [PricingController::class, '__invoke'])->name('pricing');

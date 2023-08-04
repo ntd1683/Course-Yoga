@@ -9990,7 +9990,7 @@ label {
 }
 .header-action .header-btn .btn:hover,
 .btn:hover {
-    color: #1e1b29;
+    color: #1e1b29 !important;
 }
 .breadcrumb > .active {
     color: #888;
