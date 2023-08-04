@@ -1,10 +1,31 @@
 <?php
 
+use App\Http\Controllers\AuthController;
+use App\Http\Controllers\Admin\HomepageController;
 use App\Http\Middleware\CheckAdminMiddleware;
+use App\Http\Middleware\CheckLecturerMiddleware;
+use App\Http\Middleware\CheckLoginMiddleware;
+use App\Http\Middleware\CheckLogoutMiddleware;
+
 
 Route::group([
-    'middleware' => CheckAdminMiddleware::class,
+    'middleware' => CheckLogoutMiddleware::class,
 ], function () {
     Route::get('/login', [AuthController::class, 'login'])->name('login');
+    Route::post('/login', [AuthController::class, 'processLogin'])->name('processLogin');
+    Route::get('/register', [AuthController::class, 'register'])->name('register');
+    Route::post('/register', [AuthController::class, 'processRegister'])->name('processRegister');
+});
+
+Route::group([
+    'middleware' => CheckLoginMiddleware::class,
+], function () {
+    Route::get('/logout', [AuthController::class, 'logout'])->name('logout');
+});
+
+Route::group([
+    'middleware' => CheckLecturerMiddleware::class,
+], function () {
+    Route::get('/', [HomepageController::class, '__invoke'])->name('index');
 });
 

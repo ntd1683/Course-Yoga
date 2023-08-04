@@ -8,7 +8,7 @@
     <link href="https://fonts.googleapis.com/css?family=Lato:300,400,700&display=swap" rel="stylesheet">
     <link rel="shortcut icon" type="image/x-icon" href="{{ asset('images/favicon.png') }}">
 
-    <link rel="stylesheet" href="{{ asset('css/auth.css') }}">
+    <link rel="stylesheet" href="{{ asset('css/user/auth.css') }}">
     <link rel="stylesheet" href="{{ asset('css/lib/toasting.css') }}">
     <script src="{{ asset('js/lib/toasting.js') }}"></script>
 
@@ -21,7 +21,7 @@
         {{ $slot }}
     </div>
 </section>
-<script src="{{ asset('js/auth.js') }}"></script>
+<script src="{{ asset('js/user/auth.js') }}"></script>
 <script>
     window.addEventListener('load', function () {
         @if (isset($errors))

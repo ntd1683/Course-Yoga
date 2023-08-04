@@ -2,8 +2,12 @@
     "/js/user/app.js": "/js/user/app.js",
     "/js/user/auth.js": "/js/user/auth.js",
     "/js/lib/toasting.js": "/js/lib/toasting.js",
+    "/js/admin/app.js": "/js/admin/app.js",
     "/css/user/app.css": "/css/user/app.css",
     "/css/user/auth.css": "/css/user/auth.css",
+    "/css/admin/app.css": "/css/admin/app.css",
+    "/css/admin/style.css": "/css/admin/style.css",
     "/css/lib/toasting.css": "/css/lib/toasting.css",
-    "/js/magnific-popup.js": "/js/magnific-popup.js"
+    "/js/magnific-popup.js": "/js/magnific-popup.js",
+    "/js/jquery-slimscroll.js": "/js/jquery-slimscroll.js"
 }

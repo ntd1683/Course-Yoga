@@ -11,7 +11,7 @@
     <!-- Place favicon.ico in the root directory -->
 
     <!-- CSS here -->
-    <link rel="stylesheet" href="{{ asset('css/app.css') }}">
+    <link rel="stylesheet" href="{{ asset('css/user/app.css') }}">
     <link rel="stylesheet" href="{{ asset('css/lib/toasting.css') }}">
     <script src="{{ asset('js/lib/toasting.js') }}"></script>
 </head>
@@ -28,7 +28,7 @@
 <x-user.layouts.partials.footer />
 
 <!-- JS here -->
-<script src="{{ asset('js/app.js') }}"></script>
+<script src="{{ asset('js/user/app.js') }}"></script>
 <script src="{{ asset('js/magnific-popup.js') }}"></script>
 <script>
     /*=============================================

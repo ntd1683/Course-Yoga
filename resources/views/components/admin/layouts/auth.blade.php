@@ -13,10 +13,6 @@
 </head>
 <body>
 <div class="main-wrapper">
-
-    <x-admin.layouts.partials.header />
-    <x-admin.layouts.partials.sidebar />
-
     {{ $slot }}
 </div>
 

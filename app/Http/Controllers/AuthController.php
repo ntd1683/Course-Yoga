@@ -1,33 +1,40 @@
 <?php
 
-namespace App\Http\Controllers\User;
+namespace App\Http\Controllers;
 
 use App\Events\UserRegisterEvent;
-use App\Http\Controllers\Controller;
-use App\Http\Requests\ForgotPasswordRequest;
 use App\Http\Requests\LoginRequest;
 use App\Http\Requests\ProcessResetPasswordRequest;
 use App\Http\Requests\RegisterRequest;
-use App\Http\Requests\ResetPasswordRequest;
 use App\Http\Requests\VerifyEmailRequest;
 use App\Models\User;
 use Illuminate\Http\RedirectResponse;
 use Illuminate\Support\Facades\Auth;
 use Illuminate\Support\Facades\Hash;
-use Illuminate\Support\Facades\Mail;
-use Illuminate\Support\Str;
 use Illuminate\View\View;
 
 class AuthController extends Controller
 {
+    public $route;
+    public function __construct() {
+        $this->route =  explode('.', request()->route()->getName())[0];
+    }
+
     public function login(): View
     {
+        if($this->route == 'admin') {
+            return view('auth.admin.login');
+        }
         return view('auth.user.login');
     }
 
     public function logout(): RedirectResponse
     {
         Auth::logout();
+        if($this->route == 'admin') {
+            return redirect()->route('admin.login')->with('success', 'Log out successfully!');
+        }
+
         return redirect()->route('login')->with('success', 'Log out successfully!');
     }
 
@@ -43,6 +50,12 @@ class AuthController extends Controller
                 ->firstOrFail();
             Auth::login($user, $remember);
 
+
+            if($this->route == 'admin') {
+                return redirect()
+                    ->route('admin.index')
+                    ->with('success', 'Login successful');
+            }
             return redirect()
                 ->route('index')
                 ->with('success', 'Login successful');

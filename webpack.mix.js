@@ -20,7 +20,16 @@ mix
     .postCss('resources/css/lib/toasting.css', 'public/css/lib')
     .scripts(['node_modules/magnific-popup/dist/jquery.magnific-popup.min.js'],
         'public/js/magnific-popup.js')
+    .postCss('resources/css/admin/app.css', 'public/css/admin')
+    .js('resources/js/admin/app.js', 'public/js/admin')
+    .scripts(['node_modules/jquery-slimscroll/jquery.slimscroll.js'],
+        'public/js/jquery-slimscroll.js')
     .disableNotifications();
+
+mix.postCss('resources/css/admin/style.css', 'public/css/admin')
+    .options({
+    processCssUrls: false,
+})
 
 if (mix.inProduction()) {
     mix.version();
