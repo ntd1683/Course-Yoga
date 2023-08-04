@@ -1,6 +1,6 @@
 @import "bootstrap/dist/css/bootstrap.css";
 @import "style.css";
-@import "./lib/fontawesome-all.min.css";
+@import "../lib/fontawesome-all.min.css";
 
 .bg-primary {
     background: #fbceb5 !important;

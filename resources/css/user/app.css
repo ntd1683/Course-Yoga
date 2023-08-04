@@ -1,12 +1,12 @@
 @import "bootstrap/dist/css/bootstrap.css";
-@import "animate.css/animate.css";
+@import "animate.css";
 @import "magnific-popup/dist/magnific-popup.css";
-@import "./lib/fontawesome-all.min.css";
+@import "../lib/fontawesome-all.min.css";
 @import "owl.carousel/dist/assets/owl.carousel.css";
-@import "./lib/flaticon.css";
-@import "./lib/odometer.css";
+@import "../lib/flaticon.css";
+@import "../lib/odometer.css";
 @import "aos/dist/aos.css";
-@import "./lib/slick.css";
+@import "../lib/slick.css";
 @import "default.css";
 @import "style.css";
 @import "reponsive.css";

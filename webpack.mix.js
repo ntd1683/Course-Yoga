@@ -12,10 +12,10 @@ const mix = require('laravel-mix');
  */
 
 mix
-    .js('resources/js/app.js', 'public/js')
-    .postCss('resources/css/app.css', 'public/css')
-    .js('resources/js/auth.js', 'public/js')
-    .postCss('resources/css/auth.css', 'public/css')
+    .js('resources/js/user/app.js', 'public/js/user')
+    .postCss('resources/css/user/app.css', 'public/css/user')
+    .js('resources/js/user/auth.js', 'public/js/user')
+    .postCss('resources/css/user/auth.css', 'public/css/user')
     .js('resources/js/lib/toasting.js', 'public/js/lib')
     .postCss('resources/css/lib/toasting.css', 'public/css/lib')
     .scripts(['node_modules/magnific-popup/dist/jquery.magnific-popup.min.js'],

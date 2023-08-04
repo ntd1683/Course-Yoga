@@ -2,7 +2,6 @@ import $ from 'jquery';
 
 import '@popperjs/core';
 import 'bootstrap/dist/js/bootstrap.js';
-
 function preloader() {
     $('#preloader').delay(0).fadeOut();
 }

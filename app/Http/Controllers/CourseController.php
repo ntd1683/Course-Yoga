@@ -8,6 +8,6 @@ class CourseController extends Controller
 {
     public function __invoke()
     {
-        return view('course.index');
+        return view('course.user.index');
     }
 }

@@ -601,7 +601,7 @@ label {
 .header-style-two::after {
     content: "";
     position: absolute;
-    background-image: url(./img/header_bottom_shape.png);
+    background-image: url(../img/header_bottom_shape.png);
     left: 0;
     right: 0;
     bottom: -20px;
@@ -1169,7 +1169,7 @@ label {
     outline: none;
     min-height: 44px;
     box-shadow: none;
-    background: #20212b url(./img/nw_selarw.png) no-repeat scroll 97.5% center;
+    background: #20212b url(../img/nw_selarw.png) no-repeat scroll 97.5% center;
 }
 .custom-select:focus {
     border-color: #2d303d;
@@ -1278,7 +1278,7 @@ label {
     position: absolute;
     left: 0;
     bottom: 0;
-    background-image: url(./img/title_shape.png);
+    background-image: url(../img/title_shape.png);
     width: 98px;
     height: 7px;
 }
@@ -1669,7 +1669,7 @@ label {
     margin-bottom: -150px;
 }
 .gallery-bg {
-    background-image: url(./img/gallery_bg.jpg);
+    background-image: url(../img/gallery_bg.jpg);
     background-position: top center;
     background-size: cover;
     position: absolute;
@@ -2789,7 +2789,7 @@ label {
 
 /* 19. Footer */
 .footer-top-wrap {
-    background-image: url(./img/footer_bg.jpg);
+    background-image: url(../img/footer_bg.jpg);
     background-position: center;
     background-size: cover;
     padding: 80px 0 55px;

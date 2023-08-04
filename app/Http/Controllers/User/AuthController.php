@@ -22,7 +22,7 @@ class AuthController extends Controller
 {
     public function login(): View
     {
-        return view('auth.login');
+        return view('auth.user.login');
     }
 
     public function logout(): RedirectResponse
@@ -55,7 +55,7 @@ class AuthController extends Controller
 
     public function register(): View
     {
-        return view('auth.register');
+        return view('auth.user.register');
     }
 
     public function processRegister(RegisterRequest $request): RedirectResponse
