@@ -7,18 +7,18 @@
                 <div class="row align-items-center">
                     <div class="col-lg-3">
                         <div class="footer-logo">
-                            <a href="index.html"><img src="{{ asset('images/logo.png') }}" alt=""></a>
+                            <a href="{{ route('index') }}"><img src="{{ asset('images/logo.png') }}" alt=""></a>
                         </div>
                     </div>
                     <div class="col-lg-9">
                         <div class="footer-menu">
                             <nav>
                                 <ul class="navigation">
-                                    <li><a href="index.html">Home</a></li>
-                                    <li><a href="index.html">Movie</a></li>
-                                    <li><a href="index.html">tv show</a></li>
-                                    <li><a href="index.html">pages</a></li>
-                                    <li><a href="pricing.html">Pricing</a></li>
+                                    <li><a href="{{ route('index') }}">{{ __('Home') }}</a></li>
+                                    <li><a href="{{ route('course') }}">{{ __('course') }}</a></li>
+                                    <li><a href="{{ __('pricing') }}">{{ __('pricing') }}</a></li>
+                                    <li><a href="{{ __('blog') }}">{{ __('blog') }}</a></li>
+                                    <li><a href="{{ __('contact') }}">{{ __('contact') }}</a></li>
                                 </ul>
                                 <div class="footer-search">
                                     <form action="#">
@@ -36,10 +36,10 @@
                     <div class="col-md-7">
                         <div class="quick-link-list">
                             <ul>
-                                <li><a href="#">FAQ</a></li>
-                                <li><a href="#">Help Center</a></li>
-                                <li><a href="#">Terms of Use</a></li>
-                                <li><a href="#">Privacy</a></li>
+                                <li><a href="#">{{ __('FAQ') }}</a></li>
+                                <li><a href="#">{{ __('Help Center') }}</a></li>
+                                <li><a href="#">{{ __('Terms of Use') }}</a></li>
+                                <li><a href="#">{{ __('Privacy') }}</a></li>
                             </ul>
                         </div>
                     </div>
@@ -62,7 +62,7 @@
             <div class="row">
                 <div class="col-lg-6 col-md-6">
                     <div class="copyright-text">
-                        <p>Copyright &copy; 2021. All Rights Reserved By <a href="index.html">Movflx</a></p>
+                        <p>{{ __('Copyright &copy; 2023. All Rights Reserved By') }} <a href="{{ route('index') }}">{{ option('site_name') }}</a></p>
                     </div>
                 </div>
                 <div class="col-lg-6 col-md-6">

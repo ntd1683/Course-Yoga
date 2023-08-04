@@ -12,3 +12,15 @@ Breadcrumbs::for('pricing', function ($trail) {
     $trail->parent('home');
     $trail->push(trans('Pricing'), route('pricing'));
 });
+
+// Course
+Breadcrumbs::for('course', function ($trail) {
+    $trail->parent('home');
+    $trail->push(trans('Course'), route('course'));
+});
+
+// Contact
+Breadcrumbs::for('contact', function ($trail) {
+    $trail->parent('home');
+    $trail->push(trans('Contact'), route('contact'));
+});

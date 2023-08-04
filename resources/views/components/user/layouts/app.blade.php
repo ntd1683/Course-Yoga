@@ -29,6 +29,24 @@
 
 <!-- JS here -->
 <script src="{{ asset('js/app.js') }}"></script>
+<script src="{{ asset('js/magnific-popup.js') }}"></script>
+<script>
+    /*=============================================
+        =    		Magnific Popup		      =
+    =============================================*/
+
+    $('.popup-image').magnificPopup({
+        type: 'image',
+        gallery: {
+            enabled: true
+        }
+    });
+
+    /* magnificPopup video view */
+    $('.popup-video').magnificPopup({
+        type: 'iframe'
+    });
+</script>
 <script>
     window.addEventListener('load', function () {
         @if (isset($errors))

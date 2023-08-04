@@ -1,5 +1,7 @@
 <?php
 
+use App\Http\Controllers\ContactController;
+use App\Http\Controllers\CourseController;
 use App\Http\Controllers\PricingController;
 use App\Http\Controllers\User\AuthController;
 use App\Http\Controllers\User\HomepageController;
@@ -33,3 +35,5 @@ Route::group([
 });
 Route::get('/', [HomepageController::class, '__invoke'])->name('index');
 Route::get('/pricing', [PricingController::class, '__invoke'])->name('pricing');
+Route::get('/course', [CourseController::class, '__invoke'])->name('course');
+Route::get('/contact', [ContactController::class, '__invoke'])->name('contact');

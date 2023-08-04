@@ -3,9 +3,9 @@ window.jQuery = window.$ = $
 
 import '@popperjs/core';
 import 'bootstrap/dist/js/bootstrap.js';
-import 'isotope-layout';
-import 'imagesloaded';
-import 'magnific-popup';
+import isotope from 'isotope-layout';
+import imagesLoaded from 'imagesloaded';
+import jQueryBridget from 'jquery-bridget';
 import './lib/jquery.odometer.min.js';
 import 'jquery.appear';
 import './lib/slick.js';
@@ -16,7 +16,7 @@ import './plugin.js';
 let owl_carousel = require('owl.carousel');
 window.fn = owl_carousel;
 
-import WOW from 'wowjs'
+const WOW = require('wowjs').WOW;
 window.WOW = WOW
     /*=============================================
         =    		 Preloader			      =
@@ -355,24 +355,11 @@ window.WOW = WOW
 
 
     /*=============================================
-        =    		Magnific Popup		      =
-    =============================================*/
-    $('.popup-image').magnificPopup({
-        type: 'image',
-        gallery: {
-            enabled: true
-        }
-    });
-
-    /* magnificPopup video view */
-    $('.popup-video').magnificPopup({
-        type: 'iframe'
-    });
-
-
-    /*=============================================
         =    		Isotope	Active  	      =
     =============================================*/
+
+jQueryBridget( 'imagesLoaded', imagesLoaded, $ );
+jQueryBridget( 'isotope', isotope, $ );
     $('.tr-movie-active').imagesLoaded(function () {
         // init Isotope
         var $grid = $('.tr-movie-active').isotope({

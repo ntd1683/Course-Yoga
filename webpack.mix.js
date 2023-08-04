@@ -18,6 +18,8 @@ mix
     .postCss('resources/css/auth.css', 'public/css')
     .js('resources/js/lib/toasting.js', 'public/js/lib')
     .postCss('resources/css/lib/toasting.css', 'public/css/lib')
+    .scripts(['node_modules/magnific-popup/dist/jquery.magnific-popup.min.js'],
+        'public/js/magnific-popup.js')
     .disableNotifications();
 
 if (mix.inProduction()) {

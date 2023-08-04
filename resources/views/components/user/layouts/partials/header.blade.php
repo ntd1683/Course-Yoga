@@ -20,7 +20,9 @@
                                     >
                                         <a href="{{ route('index') }}">{{ __('Home') }}</a>
                                     </li>
-                                    <li><a href="tv-show.html">{{ __('Course') }}</a></li>
+                                    <li
+                                        @class(["active" => getNameRouteMain() == "course"])
+                                    ><a href="{{ route('course') }}">{{ __('Course') }}</a></li>
                                     <li
                                         @class(["active" => getNameRouteMain() == "pricing"])
                                     ><a href="{{ route('pricing') }}">{{ __('Pricing') }}</a></li>
@@ -30,7 +32,9 @@
                                             <li><a href="blog-details.html">{{ __('Blog Details') }}</a></li>
                                         </ul>
                                     </li>
-                                    <li><a href="contact.html">{{ __('contacts') }}</a></li>
+                                    <li
+                                        @class(["active" => getNameRouteMain() == "contact"])
+                                    ><a href="{{ route('contact') }}">{{ __('contacts') }}</a></li>
                                 </ul>
                             </div>
                             <div class="header-action d-none d-md-block">
