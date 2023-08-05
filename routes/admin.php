@@ -1,7 +1,9 @@
 <?php
 
+use App\Http\Controllers\Ajax\AjaxProfileController;
 use App\Http\Controllers\AuthController;
 use App\Http\Controllers\Admin\HomepageController;
+use App\Http\Controllers\SettingController;
 use App\Http\Middleware\CheckAdminMiddleware;
 use App\Http\Middleware\CheckLecturerMiddleware;
 use App\Http\Middleware\CheckLoginMiddleware;
@@ -27,5 +29,14 @@ Route::group([
     'middleware' => CheckLecturerMiddleware::class,
 ], function () {
     Route::get('/', [HomepageController::class, '__invoke'])->name('index');
+    Route::get('/profile', [SettingController::class, 'profile'])->name('profile');
+    Route::post('/profile', [SettingController::class, 'storeProfile'])->name('profile.store');
+});
+
+Route::group([
+    'middleware' => CheckAdminMiddleware::class,
+], function () {
+    Route::get('/settings', [SettingController::class, 'index'])->name('settings');
+    Route::post('/settings', [SettingController::class, 'store'])->name('settings.store');
 });
 

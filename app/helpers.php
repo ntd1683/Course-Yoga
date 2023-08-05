@@ -19,17 +19,19 @@ if (!function_exists('option')) {
 if (!function_exists('optionSave')) {
     function optionSave($name, $value): void
     {
-        $option = Option::query()->firstOrNew([
-            'name' => $name,
-        ], $attributes = [
-            'value' => $value,
-        ]);
+        if($value) {
+            $option = Option::query()->firstOrNew([
+                'name' => $name,
+            ], $attributes = [
+                'value' => $value,
+            ]);
 
-        if ($option->exists) {
-            $option->fill($attributes);
+            if ($option->exists) {
+                $option->fill($attributes);
+            }
+
+            $option->save();
         }
-
-        $option->save();
     }
 }
 

@@ -7,7 +7,7 @@
                 <div class="row align-items-center">
                     <div class="col-lg-3">
                         <div class="footer-logo">
-                            <a href="{{ route('index') }}"><img src="{{ asset('images/logo.png') }}" alt=""></a>
+                            <a href="{{ route('index') }}"><img src="{{ Storage::url(option('site_logo')) }}" alt=""></a>
                         </div>
                     </div>
                     <div class="col-lg-9">

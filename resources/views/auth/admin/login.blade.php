@@ -5,8 +5,8 @@
                 <div class="login-right-wrap">
                     <div class="account-header">
                         <div class="account-logo text-center mb-4">
-                            <a href="index.html">
-                                <img src="assets/img/logo-icon.png" alt="" class="img-fluid">
+                            <a href="{{ route('index') }}">
+                                <img src="{{ Storage::url(option('site_logo')) }}" alt="logo" class="img-fluid">
                             </a>
                         </div>
                     </div>
@@ -24,11 +24,13 @@
                             <label class="control-label">{{ __('Password') }}</label>
                             <input class="form-control" type="password" placeholder="{{ __('Enter your password') }}" name="password">
                         </div>
+                        <div class="form-group mb-4">
+                            <input type="checkbox" checked id="remember" name="remember"> <label for="remember">{{ __('Remember To Login') }}</label>
+                        </div>
                         <div class="text-center">
                             <button class="btn btn-primary btn-block account-btn" type="submit">{{ __('Login') }}</button>
                         </div>
                     </form>
-                    <div class="text-center forgotpass mt-4"><a href="forgot-password.html">{{ __('Forgot Password?') }}</a></div>
                     <div class="login-or">
                         <span class="or-line"></span>
                         <span class="span-or">{{ __('or') }}</span>

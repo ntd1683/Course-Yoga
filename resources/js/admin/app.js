@@ -4,7 +4,11 @@ window.jQuery = window.$ = $;
 
 import '@popperjs/core';
 import '../lib/bootstrap.bundle.min';
+
 // Variables declarations
+$(function(){
+    $('.datepicker').datepicker();
+});
 
 var $wrapper = $('.main-wrapper');
 var $pageWrapper = $('.page-wrapper');

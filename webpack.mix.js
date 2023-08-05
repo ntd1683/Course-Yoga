@@ -24,12 +24,21 @@ mix
     .js('resources/js/admin/app.js', 'public/js/admin')
     .scripts(['node_modules/jquery-slimscroll/jquery.slimscroll.js'],
         'public/js/jquery-slimscroll.js')
+    .scripts(['node_modules/bootstrap-datepicker/dist/js/bootstrap-datepicker.js'],
+        'public/js/bootstrap-datepicker.js')
+    .copy('resources/css/img/footer_bg.jpg', 'public/css/img')
     .disableNotifications();
 
 mix.postCss('resources/css/admin/style.css', 'public/css/admin')
     .options({
     processCssUrls: false,
 })
+
+mix.styles(['node_modules/bootstrap-datepicker/dist/css/bootstrap-datepicker.css'], 'public/css/bootstrap-datepicker.css')
+    .options({
+        processCssUrls: false,
+        sourceMaps: false,
+    });
 
 if (mix.inProduction()) {
     mix.version();

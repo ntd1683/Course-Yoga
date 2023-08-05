@@ -18,6 +18,7 @@
         "animate.css": "^4.1.1",
         "aos": "^2.3.4",
         "bootstrap": "^4.6.0",
+        "bootstrap-datepicker": "^1.10.0",
         "imagesloaded": "^5.0.0",
         "isotope-layout": "^3.0.6",
         "jquery": "^3.7.0",

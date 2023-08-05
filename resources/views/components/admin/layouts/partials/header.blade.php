@@ -1,7 +1,7 @@
 <div class="header">
     <div class="header-left">
         <a href="{{ route('admin.index') }}" class="logo logo-small">
-            <img src="{{ asset('images/logo.png') }}" alt="Logo" width="30" height="30">
+            <img src="{{ Storage::url(option('site_logo')) }}" alt="Logo" width="30" height="30">
         </a>
     </div>
     <a href="javascript:void(0);" id="toggle_btn">
@@ -55,8 +55,8 @@
 </span>
             </a>
             <div class="dropdown-menu dropdown-menu-right">
-                <a class="dropdown-item" href="admin-profile.html">{{ __('Profile') }}</a>
-                <a class="dropdown-item" href="admin-profile.html">{{ __('Setting') }}</a>
+                <a class="dropdown-item" href="{{ route('admin.profile') }}">{{ __('Profile') }}</a>
+                <a class="dropdown-item" href="{{ route('admin.settings') }}">{{ __('Setting') }}</a>
                 <a class="dropdown-item" href="{{ route('admin.logout') }}">{{ __('Logout') }}</a>
             </div>
         </li>

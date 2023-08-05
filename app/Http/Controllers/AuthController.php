@@ -86,4 +86,17 @@ class AuthController extends Controller
         return redirect()->route('index')
             ->with('success', 'Create new user successfully!');
     }
+
+    public function verifyEmail(VerifyEmailRequest $request)
+    {
+        User::where(['remember_token' => $request->get('token')])->update([
+            'email_verified' => 1,
+        ]);
+
+        if($this->route == 'admin') {
+            return redirect()->route('admin.index')->with('success', trans('Verify Email Successfully !!!'));
+        }
+
+        return redirect()->route('index')->with('success', trans('Verify Email Successfully !!!'));
+    }
 }

@@ -16,7 +16,7 @@ class CheckAdminMiddleware
      */
     public function handle(Request $request, Closure $next): Response
     {
-        if (Auth::user()->level != 2) {
+        if (Auth::guest() || Auth::user()->level != 2) {
             abort(403);
         }
 

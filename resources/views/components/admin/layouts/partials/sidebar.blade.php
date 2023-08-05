@@ -1,8 +1,8 @@
 
 <div class="sidebar" id="sidebar">
     <div class="sidebar-logo">
-        <a href="index.html">
-            <img src="{{ asset('images/logo.png') }}" class="img-fluid" alt="">
+        <a href="{{ route('admin.index') }}">
+            <img src="{{ Storage::url(option('site_logo')) }}" class="img-fluid" alt="">
         </a>
     </div>
     <div class="sidebar-inner slimscroll">

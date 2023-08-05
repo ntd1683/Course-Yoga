@@ -1,5 +1,6 @@
 <?php
 
+use App\Http\Controllers\Ajax\AjaxProfileController;
 use App\Http\Controllers\AuthController;
 use App\Http\Controllers\ContactController;
 use App\Http\Controllers\CourseController;
@@ -32,6 +33,12 @@ Route::group([
     'middleware' => CheckLoginMiddleware::class,
 ], function () {
     Route::get('/logout', [AuthController::class, 'logout'])->name('logout');
+
+    Route::get('/verifyEmail', [AuthController::class, 'verifyEmail'])->name('verifyEmail');
+
+    Route::prefix('ajax')->name('ajax.')->group(function () {
+        Route::post('/verifyEmail', [AjaxProfileController::class, 'verifyEmail'])->name('verifyEmail');
+    });
 });
 Route::get('/', [HomepageController::class, '__invoke'])->name('index');
 Route::get('/pricing', [PricingController::class, '__invoke'])->name('pricing');

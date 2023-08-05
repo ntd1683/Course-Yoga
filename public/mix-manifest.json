@@ -9,5 +9,8 @@
     "/css/admin/style.css": "/css/admin/style.css",
     "/css/lib/toasting.css": "/css/lib/toasting.css",
     "/js/magnific-popup.js": "/js/magnific-popup.js",
-    "/js/jquery-slimscroll.js": "/js/jquery-slimscroll.js"
+    "/js/jquery-slimscroll.js": "/js/jquery-slimscroll.js",
+    "/js/bootstrap-datepicker.js": "/js/bootstrap-datepicker.js",
+    "/css/img/footer_bg.jpg": "/css/img/footer_bg.jpg",
+    "/css/bootstrap-datepicker.css": "/css/bootstrap-datepicker.css"
 }

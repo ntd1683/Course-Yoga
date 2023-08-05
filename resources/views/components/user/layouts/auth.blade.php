@@ -6,7 +6,7 @@
     <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
 
     <link href="https://fonts.googleapis.com/css?family=Lato:300,400,700&display=swap" rel="stylesheet">
-    <link rel="shortcut icon" type="image/x-icon" href="{{ asset('images/favicon.png') }}">
+    <link rel="shortcut icon" type="image/x-icon" href="{{ Storage::url(option('site_favicon')) }}">
 
     <link rel="stylesheet" href="{{ asset('css/user/auth.css') }}">
     <link rel="stylesheet" href="{{ asset('css/lib/toasting.css') }}">
