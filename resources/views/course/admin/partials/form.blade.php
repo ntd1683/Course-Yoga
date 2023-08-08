@@ -42,7 +42,7 @@
                 </div>
                 <div class="form-group">
                     <label>{{ __('Image') }}</label>
-                    <x-admin.forms.inputs.image name="image" value="{{ Storage::url( old('image') ?: $course->image ) }}" class="text-center" style="width:fit-content;"/>
+                    <x-admin.forms.inputs.image name="image" value="{{ $course->image == null ? null : Storage::url( old('image') ?: $course->image ) }}" class="text-center" style="width:fit-content;"/>
                 </div>
                 @if($course->id != null)
                     <hr>

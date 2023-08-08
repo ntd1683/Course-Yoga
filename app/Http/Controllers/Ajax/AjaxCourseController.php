@@ -24,7 +24,7 @@ class AjaxCourseController extends Controller
         ->editColumn('title', function ($object) {
             return [
                 'title' => $object->title,
-                'value' => Str::limit($object->title, 28),
+                'value' => Str::limit($object->title, 20),
             ];
         })
         ->editColumn('type', function ($object) {
@@ -56,13 +56,13 @@ class AjaxCourseController extends Controller
     public function destroy(Course $course): JsonResponse
     {
         if (auth()->user()->level !== 3 && $course->author !== auth()->user()->id) {
-            return $this->errorResponse(trans('You do not have permission to delete this event !'));
+            return $this->errorResponse(trans('You do not have permission to delete this course !'));
         }
 
         ManageCourse::query()->where('course_id', $course->id)->first()->delete;
 
         $course->delete();
 
-        return $this->successResponse('', trans('Delete Event Successfully'));
+        return $this->successResponse('', trans('Delete Course Successfully'));
     }
 }

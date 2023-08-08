@@ -19,6 +19,7 @@ return new class extends Migration
             $table->longText('description')->nullable();
             $table->bigInteger('user_id');
             $table->string('image');
+            $table->bigInteger('view')->nullable();
             $table->boolean('published')->default(false);
             $table->boolean('accepted')->default(false);
             $table->timestamp('publish_at')->nullable();

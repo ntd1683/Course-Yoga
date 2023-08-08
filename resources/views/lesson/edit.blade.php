@@ -6,14 +6,14 @@
         <div class="content container-fluid">
             <div class="page-header">
                 <div class="d-flex justify-content-between">
-                    <h3 class="page-title pt-2">{{ __('Course Edit') }}</h3>
+                    <h3 class="page-title pt-2">{{ __('Lesson Edit') }}</h3>
                     <div>
-                        <form action="{{ route('admin.course.destroy', $course) }}" method="POST">
+                        <form action="{{ route('admin.lesson.destroy', $lesson) }}" method="POST">
                             @csrf
                             @method('DELETE')
                             <x-admin.forms.buttons.danger
                                 type="submit">{{ __('Delete') }}</x-admin.forms.buttons.danger>
-                            <a href="{{ route('admin.course.create') }}" class="btn btn-primary">
+                            <a href="{{ route('admin.lesson.create') }}" class="btn btn-primary">
                                 <i class="fas fa-plus"></i>
                             </a>
                         </form>
@@ -23,10 +23,10 @@
             <div class="row">
                 <div class="card">
                     <div class="card-body p-0">
-                        <form action="{{ route('admin.course.update', $course)}}" method="post"
+                        <form action="{{ route('admin.lesson.update', $lesson)}}" method="post"
                               enctype="multipart/form-data">
                             @method('PUT')
-                            @include('course.admin.partials.form', $course)
+                            @include('lesson.partials.form', $lesson)
                         </form>
                     </div>
                 </div>
@@ -37,9 +37,9 @@
         <script src="{{ asset('js/lib/select2.js') }}"></script>
         <script>
             $(document).ready(function () {
-                $('#users').select2({
+                $('#course').select2({
                     ajax: {
-                        url: "{{route('admin.ajax.user.search.lecturers')}}",
+                        url: "{{route('admin.ajax.course.search.title')}}",
                         dataType: 'json',
                         delay: 250,
                         data: function (params) {
@@ -53,7 +53,7 @@
                             return {
                                 results: $.map(data, function (item) {
                                     return {
-                                        text: item.email,
+                                        text: item.title,
                                         id: item.id,
                                     }
                                 })
@@ -64,10 +64,8 @@
                     allowClear: true,
                 })
 
-                let lecturers = {!! $lecturers !!};
-                lecturers.forEach(option => {
-                    $("#users").select2("trigger", "select", {data: {id: option.user_id, text: option.email}});
-                })
+                let course = {!! $course !!};
+                $("#course").select2("trigger", "select", {data: {id: course.id, text: course.title }});
             });
         </script>
     @endpush

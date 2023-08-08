@@ -33,7 +33,7 @@ class CourseController extends Controller
 
     public function store(StoreCourseRequest $request)
     {
-        if($request->hasFile('image')) {
+        if(! $request->hasFile('image')) {
             return redirect()->back()->withErrors(trans('Image Required'));
         }
         try {

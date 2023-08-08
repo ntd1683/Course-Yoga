@@ -2,7 +2,9 @@
 
 use App\Http\Controllers\Admin\CourseController;
 use App\Http\Controllers\Admin\HomepageController;
+use App\Http\Controllers\Admin\LessonController;
 use App\Http\Controllers\Ajax\AjaxCourseController;
+use App\Http\Controllers\Ajax\AjaxLessonController;
 use App\Http\Controllers\Ajax\AjaxUserController;
 use App\Http\Controllers\AuthController;
 use App\Http\Controllers\SettingController;
@@ -35,6 +37,7 @@ Route::group([
     Route::post('/profile', [SettingController::class, 'storeProfile'])->name('profile.store');
 
     Route::resource('course', CourseController::class);
+    Route::resource('lesson', LessonController::class);
 });
 
 Route::group([
@@ -48,6 +51,10 @@ Route::group([
         Route::delete('course/destroy/{course}', [AjaxCourseController::class, 'destroy'])->name('course.destroy');
         Route::get('course', [AjaxCourseController::class, 'index'])->name('course');
         Route::get('course/title', [AjaxCourseController::class, 'title'])->name('course.search.title');
+
+        Route::get('lesson', [AjaxLessonController::class, 'index'])->name('lesson');
+        Route::get('lesson/title', [AjaxLessonController::class, 'title'])->name('lesson.search.title');
+        Route::delete('lesson/destroy/{lesson}', [AjaxLessonController::class, 'destroy'])->name('lesson.destroy');
     });
 });
 

@@ -14,6 +14,9 @@
                 <li @class(["active" => getNameRouteMain() === "course"]) >
                     <a href="{{ route('admin.course.index') }}"><i class="fas fa-swatchbook"></i> <span>{{ __('Course') }}</span></a>
                 </li>
+                <li @class(["active" => getNameRouteMain() === "lesson"]) >
+                    <a href="{{ route('admin.lesson.index') }}"><i class="fab fa-youtube"></i> <span>{{ __('Lesson') }}</span></a>
+                </li>
             </ul>
         </div>
     </div>
