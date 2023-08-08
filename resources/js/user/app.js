@@ -16,8 +16,6 @@ import './plugin.js';
 let owl_carousel = require('owl.carousel');
 window.fn = owl_carousel;
 
-const WOW = require('wowjs').WOW;
-window.WOW = WOW
     /*=============================================
         =    		 Preloader			      =
     =============================================*/
@@ -29,7 +27,6 @@ window.WOW = WOW
         preloader();
         mainSlider();
         aosAnimation();
-        wowAnimation();
     });
 
 
@@ -394,20 +391,5 @@ jQueryBridget( 'isotope', isotope, $ );
             once: true,
             disable: 'mobile',
         });
-    }
-
-
-    /*=============================================
-        =    		 Wow Active  	         =
-    =============================================*/
-    function wowAnimation() {
-        var wow = new WOW({
-            boxClass: 'wow',
-            animateClass: 'animated',
-            offset: 0,
-            mobile: false,
-            live: true
-        });
-        wow.init();
     }
 

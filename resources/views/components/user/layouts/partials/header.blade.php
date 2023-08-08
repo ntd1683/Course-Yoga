@@ -5,12 +5,12 @@
         <div class="container custom-container">
             <div class="row">
                 <div class="col-12">
-                    <div class="mobile-nav-toggler"><i class="fas fa-bars"></i></div>
+                    <div class="mobile-nav-toggler mt-3"><i class="fas fa-bars"></i></div>
                     <div class="menu-wrap">
                         <nav class="menu-nav show">
                             <div class="logo">
                                 <a href="{{ route('index') }}">
-                                    <img src="{{ Storage::url(option('site_logo')) }}" alt="Logo">
+                                    <img src="{{ Storage::url(option('site_logo')) }}" alt="Logo" width="135" height="auto">
                                 </a>
                             </div>
                             <div class="navbar-wrap main-menu d-none d-lg-flex">

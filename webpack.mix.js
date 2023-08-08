@@ -36,6 +36,10 @@ mix
         'public/js/lib/select2.js')
     .styles(['node_modules/select2/dist/css/select2.css'],
         'public/css/lib/select2.css')
+    .scripts(['node_modules/wowjs/dist/wow.js'],
+        'public/js/lib/wow.js')
+    .styles(['node_modules/select2/dist/css/select2.css'],
+        'public/css/lib/select2.css')
     .copy('node_modules/summernote/dist/font/summernote.woff', 'public/css/font/summernote.woff')
     .copy('node_modules/summernote/dist/font/summernote.woff2', 'public/css/font/summernote.woff2')
     .copy('node_modules/summernote/dist/font/summernote.ttf', 'public/css/font/summernote.ttf')

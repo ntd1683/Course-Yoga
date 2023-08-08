@@ -982,7 +982,7 @@ label {
 
 /* 6. Banner */
 .banner-bg {
-    padding: 295px 0 273px;
+    padding: 140px 0 273px !important;
     background-position: center;
     background-size: cover;
 }

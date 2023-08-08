@@ -9,7 +9,7 @@ class StoreSettingRequest extends FormRequest
 {
     public function authorize(): bool
     {
-        return auth()->user()->level === 2;
+        return auth()->user()->level === 3;
     }
 
     public function rules(): array

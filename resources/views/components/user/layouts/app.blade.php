@@ -30,6 +30,7 @@
 <!-- JS here -->
 <script src="{{ asset('js/user/app.js') }}"></script>
 <script src="{{ asset('js/magnific-popup.js') }}"></script>
+<script src="{{ asset('js/lib/wow.js') }}"></script>
 <script>
     /*=============================================
         =    		Magnific Popup		      =
@@ -45,6 +46,21 @@
     /* magnificPopup video view */
     $('.popup-video').magnificPopup({
         type: 'iframe'
+    });
+
+    $(window).on('load', function () {
+        function wowAnimation() {
+            var wow = new WOW({
+                boxClass: 'wow',
+                animateClass: 'animated',
+                offset: 0,
+                mobile: false,
+                live: true
+            });
+            wow.init();
+        }
+
+        wowAnimation();
     });
 </script>
 <script>
