@@ -19,7 +19,6 @@ class SettingController extends Controller
         return view('setting.index');
     }
 
-
     public function store(StoreSettingRequest $request): RedirectResponse
     {
         optionSave('site_name', $request->get('site_name'));

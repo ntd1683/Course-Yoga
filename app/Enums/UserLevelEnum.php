@@ -7,13 +7,15 @@ use BenSampo\Enum\Enum;
 final class UserLevelEnum extends Enum
 {
     public const USER = 0;
-    public const LECTURER = 1;
-    public const ADMIN = 2;
+    public const USERVIP = 1;
+    public const LECTURER = 2;
+    public const ADMIN = 3;
 
     public static function getArrayView(): array
     {
         return [
             'User' => self::USER,
+            'UserVip' => self::USERVIP,
             'Lecturer' => self::LECTURER,
             'Admin' => self::ADMIN,
         ];

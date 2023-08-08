@@ -19,6 +19,7 @@
         "aos": "^2.3.4",
         "bootstrap": "^4.6.0",
         "bootstrap-datepicker": "^1.10.0",
+        "datatables.net-bs5": "^1.13.6",
         "imagesloaded": "^5.0.0",
         "isotope-layout": "^3.0.6",
         "jquery": "^3.7.0",
@@ -27,6 +28,8 @@
         "jquery.appear": "^1.0.1",
         "magnific-popup": "^1.1.0",
         "owl.carousel": "^2.3.4",
+        "select2": "^4.1.0-rc.0",
+        "summernote": "^0.8.20",
         "wowjs": "^1.1.3"
     }
 }

@@ -3,8 +3,8 @@
 use App\Http\Controllers\Ajax\AjaxProfileController;
 use App\Http\Controllers\AuthController;
 use App\Http\Controllers\ContactController;
-use App\Http\Controllers\CourseController;
 use App\Http\Controllers\PricingController;
+use App\Http\Controllers\User\CourseController;
 use App\Http\Controllers\User\HomepageController;
 use App\Http\Middleware\CheckLoginMiddleware;
 use App\Http\Middleware\CheckLogoutMiddleware;

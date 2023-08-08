@@ -16,7 +16,7 @@ return new class extends Migration
             $table->bigInteger('object_id');
             $table->bigInteger('image_id');
             $table->bigInteger('user_id');
-            $table->string('object_type');
+            $table->integer('object_type');
             $table->string('object_name');
         });
     }

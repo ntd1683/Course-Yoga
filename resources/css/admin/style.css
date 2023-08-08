@@ -1145,6 +1145,15 @@ button.bg-danger:hover {
 	4. Select2
 -----------------------*/
 
+.select2-container--open .select2-dropdown--below {
+    width: 298.078px !important;
+}
+
+.select2-container {
+    width: 100% !important;
+}
+
+
 .select2-container .select2-selection--single {
     border: 1px solid #ddd;
     height: 40px;

@@ -4,11 +4,10 @@ window.jQuery = window.$ = $;
 
 import '@popperjs/core';
 import '../lib/bootstrap.bundle.min';
+import select2 from 'select2';
+import DataTable from 'datatables.net-bs5';
 
 // Variables declarations
-$(function(){
-    $('.datepicker').datepicker();
-});
 
 var $wrapper = $('.main-wrapper');
 var $pageWrapper = $('.page-wrapper');
@@ -74,17 +73,17 @@ $(document).on('click', '#filter_search', function () {
 
 // Datetimepicker
 
-if ($('.datetimepicker').length > 0) {
-    $('.datetimepicker').datetimepicker({
-        format: 'DD-MM-YYYY',
-        icons: {
-            up: "fas fa-angle-up",
-            down: "fas fa-angle-down",
-            next: 'fas fa-angle-right',
-            previous: 'fas fa-angle-left'
-        }
-    });
-}
+// if ($('.datetimepicker').length > 0) {
+//     $('.datetimepicker').datetimepicker({
+//         format: 'DD-MM-YYYY',
+//         icons: {
+//             up: "fas fa-angle-up",
+//             down: "fas fa-angle-down",
+//             next: 'fas fa-angle-right',
+//             previous: 'fas fa-angle-left'
+//         }
+//     });
+// }
 
 // Tooltip
 

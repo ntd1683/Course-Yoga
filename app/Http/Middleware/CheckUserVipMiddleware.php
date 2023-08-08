@@ -7,7 +7,7 @@ use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Auth;
 use Symfony\Component\HttpFoundation\Response;
 
-class CheckLecturerMiddleware
+class CheckUserVipMiddleware
 {
     /**
      * Handle an incoming request.
@@ -16,8 +16,8 @@ class CheckLecturerMiddleware
      */
     public function handle(Request $request, Closure $next): Response
     {
-        if (Auth::guest() || Auth::user()->level < 2) {
-            return redirect()->route('admin.login')->withErrors('You do not have permission to access this site!!!');
+        if (Auth::guest() || Auth::user()->level < 1) {
+            return redirect()->route('login')->withErrors('You do not have permission to access this site!!!');
         }
 
         return $next($request);

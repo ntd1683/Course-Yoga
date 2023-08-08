@@ -15,7 +15,6 @@ return new class extends Migration
             $table->id();
             $table->string('image_url');
             $table->string('type');
-            $table->bigInteger('user_id');
         });
     }
 

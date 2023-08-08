@@ -2,6 +2,7 @@
     'value' => asset('images/default.png'),
     'name' => '',
     'class' => '',
+    'style' => '',
 ])
 @push('css')
     <style>
@@ -19,7 +20,7 @@
         }
     </style>
 @endpush
-<div class="avatar-upload {{ $class }}">
+<div class="avatar-upload {{ $class }}" style="{{ $style }}">
     <input type='file' id="imageUpload_{{ $name }}" accept=".png, .jpg, .jpeg" name="{{ $name }}"/>
     <div id="imagePreview_{{ $name }}" style="background-image: url({{ $value == '' ? asset('images/default.png') : $value }});" class="border rounded">
     </div>

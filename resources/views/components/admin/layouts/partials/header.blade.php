@@ -27,7 +27,7 @@
                             <a href="admin-notification.html">
                                 <div class="media">
 <span class="avatar avatar-sm">
-<img class="avatar-img rounded-circle" alt="" src="https://ui-avatars.com/api/?background=random&name=Yoga">
+<img class="avatar-img rounded-circle" alt="" src="">
 </span>
                                     <div class="media-body">
                                         <p class="noti-details">
@@ -51,7 +51,7 @@
         <li class="nav-item dropdown">
             <a href="javascript:void(0)" class="dropdown-toggle user-link  nav-link" data-bs-toggle="dropdown">
 <span class="user-img">
-<img class="rounded-circle" src="https://ui-avatars.com/api/?background=random&name={{ auth()->user()->name }}" width="40" alt="Avatar">
+<img class="rounded-circle" src="{{ auth()->user()->name }}" width="40" alt="Avatar">
 </span>
             </a>
             <div class="dropdown-menu dropdown-menu-right">

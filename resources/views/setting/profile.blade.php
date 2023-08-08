@@ -12,7 +12,7 @@
             <div class="row">
                 <div class="card">
                     <div class="card-body p-0">
-                        <form action="{{ route('admin.settings.store')}}" method="post" enctype="multipart/form-data">
+                        <form action="{{ route('admin.settings.store')}}" method="post">
                             @csrf
                             <div class="tab-content pt-0">
                                 <div id="general" class="tab-pane active">
@@ -56,7 +56,9 @@
                                             <div class="form-group">
                                                 <div class="d-flex justify-content-between">
                                                     <label for="email">{{ __('Email') }}</label>
-                                                    <a data-bs-toggle="modal" data-bs-target="#modal_verify_email" class="cursor-pointer" style="cursor:pointer">{{ __('Verify your email') }}</a>
+                                                    @if(auth()->user()->email_verified != 1)
+                                                        <a data-bs-toggle="modal" data-bs-target="#modal_verify_email" class="cursor-pointer" style="cursor:pointer">{{ __('Verify your email') }}</a>
+                                                    @endif
                                                 </div>
                                                 <input type="email" class="form-control" placeholder="abc@example.com"
                                                        id="email" name="email"
@@ -87,30 +89,24 @@
         </div>
     </div>
 
-    <!-- Modal -->
-    <div class="modal fade" id="modal_verify_email" data-bs-backdrop="static" data-bs-keyboard="false" tabindex="-1" aria-labelledby="staticBackdropLabel" aria-hidden="true">
-        <div class="modal-dialog modal-dialog-centered">
-            <div class="modal-content">
-                <div class="modal-header">
-                    <h5 class="modal-title" id="staticBackdropLabel">{{ __('Verify Your Email') }}</h5>
-                    <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
-                </div>
-                <div class="modal-body">
-                    {{ __('Please verify your email') }}
-                </div>
-                <div class="modal-footer">
-                    <button type="button" class="btn btn-secondary" data-bs-dismiss="modal" id="close_verify_email">{{ __('Close') }}</button>
-                    <form action="{{ route('ajax.verifyEmail') }}" method="post" onsubmit="return false" id="form_email">
-                        @csrf
-                        <button type="button" class="btn btn-primary" id="verify_email">
-                            {{ __('Verify') }}
-                            <span class="spinner-border spinner-border-sm mr-2 d-none" role="status" id="spinner"></span>
-                        </button>
-                    </form>
-                </div>
-            </div>
-        </div>
-    </div>
+    <x-admin.modal id="modal_verify_email">
+        <x-slot:heading>
+            {{ __('Verify Your Email') }}
+        </x-slot:heading>
+
+        {{ __('Please verify your email') }}
+
+        <x-slot:footer>
+            <button type="button" class="btn btn-secondary" data-bs-dismiss="modal" id="close_verify_email">{{ __('Close') }}</button>
+            <form action="{{ route('ajax.verifyEmail') }}" method="post" onsubmit="return false" id="form_email">
+                @csrf
+                <button type="button" class="btn btn-primary" id="verify_email">
+                    {{ __('Verify') }}
+                    <span class="spinner-border spinner-border-sm mr-2 d-none" role="status" id="spinner"></span>
+                </button>
+            </form>
+        </x-slot:footer>
+    </x-admin.modal>
 
     @push('js')
         <script>

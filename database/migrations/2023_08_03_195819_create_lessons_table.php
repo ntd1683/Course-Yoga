@@ -18,6 +18,7 @@ return new class extends Migration
             $table->string('link_embedded');
             $table->longText('description')->nullable();
             $table->bigInteger('user_id');
+            $table->string('image');
             $table->boolean('published')->default(false);
             $table->boolean('accepted')->default(false);
             $table->timestamp('publish_at')->nullable();
