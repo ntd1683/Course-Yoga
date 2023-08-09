@@ -6,7 +6,7 @@
                 <div class="col-xl-6 col-lg-8">
                     <div class="banner-content">
                         <h6 class="sub-title wow fadeInUp" data-wow-delay=".2s" data-wow-duration="1.8s">{{ option('site_name') }}</h6>
-                        <h2 class="title wow fadeInUp" data-wow-delay=".4s" data-wow-duration="1.8s">Yoga cho bạn biết vẻ đẹp của <span>chánh niệm</span>, và đưa bạn vào bản chất của một khoảnh khắc hiện tại vô tận</h2>
+                        <h2 class="title wow fadeInUp" data-wow-delay=".4s" data-wow-duration="1.8s">Một cuộc sống khoẻ mạnh với <span>Yoga!</span> Học từ chuyên gia <span>Yogi Xuân</span></h2>
                         <div class="banner-meta wow fadeInUp" data-wow-delay=".6s" data-wow-duration="1.8s">
                         </div>
                         <a href="https://www.youtube.com/watch?v=R2gbPxeNk2E" class="banner-btn btn popup-video wow fadeInUp" data-wow-delay=".8s" data-wow-duration="1.8s"><i class="fas fa-play"></i>{{ __('Learn Now') }}</a>

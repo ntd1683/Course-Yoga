@@ -11,16 +11,11 @@
     "/js/magnific-popup.js": "/js/magnific-popup.js",
     "/js/jquery-slimscroll.js": "/js/jquery-slimscroll.js",
     "/js/bootstrap-datepicker.js": "/js/bootstrap-datepicker.js",
-    "/js/summernote-bs5.js": "/js/summernote-bs5.js",
     "/js/lib/datatable.js": "/js/lib/datatable.js",
     "/css/lib/datatable.css": "/css/lib/datatable.css",
     "/js/lib/select2.js": "/js/lib/select2.js",
     "/css/lib/select2.css": "/css/lib/select2.css",
     "/js/lib/wow.js": "/js/lib/wow.js",
-    "/css/font/summernote.woff": "/css/font/summernote.woff",
-    "/css/font/summernote.woff2": "/css/font/summernote.woff2",
-    "/css/font/summernote.ttf": "/css/font/summernote.ttf",
     "/css/img/footer_bg.jpg": "/css/img/footer_bg.jpg",
-    "/css/bootstrap-datepicker.css": "/css/bootstrap-datepicker.css",
-    "/css/summernote-bs5.css": "/css/summernote-bs5.css"
+    "/css/bootstrap-datepicker.css": "/css/bootstrap-datepicker.css"
 }

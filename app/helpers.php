@@ -69,7 +69,7 @@ if (!function_exists('getTitle')) {
         $suffix = ucwords($suffix);
 
 
-        return option('site_name', config('app.name', 'Laravel')) . ' | ' . $suffix;
+        return option('site_name', config('app.name', 'Laravel')) . ' - ' . $suffix;
     }
 }
 

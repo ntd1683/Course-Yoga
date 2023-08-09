@@ -42,5 +42,6 @@ Route::group([
 });
 Route::get('/', [HomepageController::class, '__invoke'])->name('index');
 Route::get('/pricing', [PricingController::class, '__invoke'])->name('pricing');
-Route::get('/course', [CourseController::class, '__invoke'])->name('course');
+Route::get('/course', [CourseController::class, 'index'])->name('course');
+Route::get('/course/{course}', [CourseController::class, 'show'])->name('course.show');
 Route::get('/contact', [ContactController::class, '__invoke'])->name('contact');

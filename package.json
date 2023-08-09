@@ -28,7 +28,6 @@
         "magnific-popup": "^1.1.0",
         "owl.carousel": "^2.3.4",
         "select2": "^4.1.0-rc.0",
-        "summernote": "^0.8.20",
         "wowjs": "^1.1.3"
     }
 }
