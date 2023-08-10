@@ -5,7 +5,8 @@
             <div class="row align-items-center position-relative">
                 <div class="col-xl-3 col-lg-4">
                     <div class="movie-details-img">
-                        <img src="{{ Storage::url($course->image) }}" alt="{{ __('Image Course') }}">
+                        <img src="{{ Storage::url($course->image) }}" alt="{{ __('Image Course') }}"
+                             style="width: 18rem;height: auto;">
                         <a href="{{ $course->link_embedded }}" class="popup-video"><img
                                 src="{{ asset('images/images/play_icon.png') }}" alt=""></a>
                     </div>
@@ -32,7 +33,7 @@
                                 <li class="share"><a href="https://www.facebook.com/sharer/sharer.php?u={{ url()->full() }}"><i class="fas fa-share-alt"></i> Share</a></li>
                                 <li class="streaming text-center">
                                     <h6>{{ __('Price') }}</h6>
-                                    <span><i class="fas fa-money-bill-wave"></i> {{ $course->price }}</span>
+                                    <span><i class="fas fa-money-bill-wave"></i> {{ price_format($course->price) }} VNĐ</span>
                                 </li>
                                 <li class="watch"><a href="https://www.youtube.com/watch?v=R2gbPxeNk2E"
                                                      class="btn popup-video"><i class="fas fa-shopping-bag"></i> {{ __('BUY') }}</a>

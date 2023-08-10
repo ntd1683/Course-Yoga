@@ -991,7 +991,7 @@ label {
     margin-bottom: 10px;
 }
 .banner-content .title {
-    font-size: 60px;
+    font-size: 30px !important;
     line-height: 1.2;
     margin-bottom: 29px;
 }
@@ -1844,7 +1844,7 @@ label {
     color: #e4d804;
 }
 .movie-details-content h2 {
-    font-size: 60px;
+    font-size: 33px;
     margin-bottom: 20px;
 }
 .movie-details-content .banner-meta {

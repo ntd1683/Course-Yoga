@@ -111,4 +111,11 @@ if(!function_exists('number_shorten')){
         // Either way, use the last defined value for $divisor.
         return (int)number_format($number / $divisor, $precision) . $shorthand;
     }
+
+    if(!function_exists('price_format')){
+        function price_format($price): string
+        {
+            return number_format($price, 0, '.', ',');
+        }
+    }
 }
