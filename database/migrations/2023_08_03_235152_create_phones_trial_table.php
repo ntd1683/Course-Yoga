@@ -11,10 +11,10 @@ return new class extends Migration
      */
     public function up(): void
     {
-        Schema::create('emails_trial', function (Blueprint $table) {
+        Schema::create('phones_trial', function (Blueprint $table) {
             $table->id();
-            $table->string('email')->unique();
-            $table->boolean('type')->default(false);
+            $table->string('phone');
+            $table->boolean('type')->default(0);
             $table->timestamps();
         });
     }

@@ -29,7 +29,7 @@
                 </div>
                 <p class="w-100 text-center text-white">&mdash; {{ __('Or Sign In With') }} &mdash;</p>
                 <div class="social d-flex text-center font-weight-bold">
-                    <a class="btn px-2 py-2 mr-md-1 rounded"><i class="fab fa-google mr-2"></i>Google
+                    <a class="btn px-2 py-2 mr-md-1 rounded" href="{{ route('login.social.redirect', 'google') }}"><i class="fab fa-google mr-2"></i>Google
                     </a>
                 </div>
             </div>
