@@ -9,17 +9,17 @@
                         <input type="text" class="form-control" placeholder="Username" required name="email">
                     </div>
                     <div class="form-group">
-                        <input id="password-field" type="password" class="form-control" placeholder="Password"
+                        <input id="password-field" type="password" class="form-control" placeholder="{{ __('Password') }}"
                                required name="password">
                         <span toggle="#password-field" class="fa fa-fw fa-eye field-icon toggle-password"></span>
                     </div>
                     <div class="form-group">
-                        <button type="submit" class="btn submit px-3">Sign In</button>
+                        <button type="submit" class="btn submit px-3">{{ __('Sign In') }}</button>
                     </div>
                     <div class="form-group d-md-flex">
                         <div class="custom-control custom-checkbox">
-                            <input type="checkbox" class="custom-control-input" id="customCheck1" checked>
-                            <label class="custom-control-label font-weight-bold" for="customCheck1">Remember me
+                            <input type="checkbox" class="custom-control-input" id="customCheck1" checked name="remember">
+                            <label class="custom-control-label font-weight-bold" for="customCheck1">{{ __('Remember me') }}
                             </label>
                         </div>
                         <div class="w-50 text-md-right">

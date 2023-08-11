@@ -36,6 +36,7 @@ class StoreLessonRequest extends FormRequest
             ],
             'publish' => ['nullable'],
             'accept' => ['nullable'],
+            'view' => ['nullable', 'integer'],
         ];
     }
 }

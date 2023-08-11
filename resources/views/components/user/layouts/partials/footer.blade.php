@@ -3,34 +3,6 @@
 <footer>
     <div class="footer-top-wrap">
         <div class="container">
-            <div class="footer-menu-wrap">
-                <div class="row align-items-center">
-                    <div class="col-lg-3">
-                        <div class="footer-logo">
-                            <a href="{{ route('index') }}"><img src="{{ Storage::url(option('site_logo')) }}" alt="Logo" width="250" height="auto"></a>
-                        </div>
-                    </div>
-                    <div class="col-lg-9">
-                        <div class="footer-menu">
-                            <nav>
-                                <ul class="navigation">
-                                    <li><a href="{{ route('index') }}">{{ __('Home') }}</a></li>
-                                    <li><a href="{{ route('course') }}">{{ __('course') }}</a></li>
-                                    <li><a href="{{ __('pricing') }}">{{ __('pricing') }}</a></li>
-                                    <li><a href="{{ __('blog') }}">{{ __('blog') }}</a></li>
-                                    <li><a href="{{ __('contact') }}">{{ __('contact') }}</a></li>
-                                </ul>
-                                <div class="footer-search">
-                                    <form action="#">
-                                        <input type="text" placeholder="Find Favorite Movie">
-                                        <button><i class="fas fa-search"></i></button>
-                                    </form>
-                                </div>
-                            </nav>
-                        </div>
-                    </div>
-                </div>
-            </div>
             <div class="footer-quick-link-wrap">
                 <div class="row align-items-center">
                     <div class="col-md-7">

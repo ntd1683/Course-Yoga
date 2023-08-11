@@ -50,7 +50,6 @@ class AuthController extends Controller
                 ->firstOrFail();
             Auth::login($user, $remember);
 
-
             if($this->route == 'admin') {
                 return redirect()
                     ->route('admin.index')

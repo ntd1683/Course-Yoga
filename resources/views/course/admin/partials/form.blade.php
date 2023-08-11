@@ -15,7 +15,7 @@
                 </div>
                 <div class="form-group">
                     <label for="link_embedded">{{ __('Link Embedded') }}</label>
-                    <input type="text" class="form-control" placeholder="{{ __('Link Embedded') }}"
+                    <input type="text" class="form-control" placeholder="{{ __('https://www.youtube.com/watch?v=xxxxxx') }}"
                            id="link_embedded" name="link_embedded" value="{{ old('link_embedded') ?: $course->link_embedded }}">
                 </div>
                 <div class="form-group">
@@ -41,7 +41,13 @@
                     </select>
                 </div>
                 <div class="form-group">
-                    <label>{{ __('Image') }}</label>
+                    <label for="view">{{ __('View') }}</label>
+                    <input type="number" class="form-control"
+                           id="view" name="view" value="{{ old('view') ?: $course->view }}">
+                </div>
+                <div class="form-group">
+                    <label>{{ __('Image') }} </label>
+                    <h3>{{ __('Image Size : 4x5') }}</h3>
                     <x-admin.forms.inputs.image name="image" value="{{ $course->image == null ? null : Storage::url( old('image') ?: $course->image ) }}" class="text-center" style="width:fit-content;"/>
                 </div>
                 @if($course->id != null)

@@ -16,10 +16,14 @@ return new class extends Migration
             $table->bigInteger('user_id');
             $table->bigInteger('course_id');
             $table->integer('status')->default(0);
-            $table->integer('type');
+            $table->integer('type')->nullable();
             $table->bigInteger('discount_id')->nullable();
             $table->bigInteger('total');
             $table->string('referral_code')->nullable();
+            $table->string('code');
+            $table->string('name');
+            $table->string('phone');
+            $table->string('email');
             $table->timestamps();
         });
     }

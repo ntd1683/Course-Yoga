@@ -23,20 +23,20 @@
                                 </li>
                                 <li class="release-time">
                                     <span><i class="far fa-calendar-alt"></i> {{ $course->created_at->format('d-m-Y') }}</span>
-                                    <span><i class="fas fa-eye"></i> {{ $course->view }}</span>
+                                    <span><i class="fas fa-eye"></i> {{ price_format($course->view) }}</span>
                                 </li>
                             </ul>
                         </div>
                         <p>{{ \Illuminate\Support\Str::limit($course->description, 50) }}...</p>
                         <div class="movie-details-prime">
                             <ul>
-                                <li class="share"><a href="https://www.facebook.com/sharer/sharer.php?u={{ url()->full() }}"><i class="fas fa-share-alt"></i> Share</a></li>
+                                <li class="share"><a href="https://www.facebook.com/sharer/sharer.php?u={{ url()->full() }}"><i class="fas fa-share-alt"></i> {{ __('Share') }}</a></li>
                                 <li class="streaming text-center">
                                     <h6>{{ __('Price') }}</h6>
                                     <span><i class="fas fa-money-bill-wave"></i> {{ price_format($course->price) }} VNĐ</span>
                                 </li>
-                                <li class="watch"><a href="https://www.youtube.com/watch?v=R2gbPxeNk2E"
-                                                     class="btn popup-video"><i class="fas fa-shopping-bag"></i> {{ __('BUY') }}</a>
+                                <li class="watch"><a href="{{ route('order', $course->id) }}"
+                                                     class="btn"><i class="fas fa-shopping-bag"></i> {{ __('BUY') }}</a>
                                 </li>
                             </ul>
                         </div>

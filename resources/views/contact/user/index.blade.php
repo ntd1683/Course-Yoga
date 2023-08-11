@@ -1,5 +1,4 @@
 <x-user.layouts.app>
-    <main>
         {{ Breadcrumbs::render('contact') }}
         <!-- contact-area -->
         <section class="contact-area contact-bg" data-background="{{ asset('images/bg/contact_bg.jpg') }}">
@@ -62,5 +61,4 @@
         </div>
         <!-- map-end -->
         <x-user.layouts.partials.newsletter />
-    </main>
 </x-user.layouts.app>

@@ -35,6 +35,7 @@ class StoreCourseRequest extends FormRequest
                 'image',
                 File::types(['jpg', 'png', 'jpeg'])->max(1024 * 30),
             ],
+            'view' => ['nullable', 'integer'],
         ];
     }
 }

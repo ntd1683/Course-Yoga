@@ -29,6 +29,7 @@
 18. Contact
 19. Footer
 20. Preloader
+21. Custom
 
 */
 
@@ -2792,7 +2793,7 @@ label {
     background-image: url(../img/footer_bg.jpg);
     background-position: center;
     background-size: cover;
-    padding: 80px 0 55px;
+    padding: 20px 0 20px;
 }
 .footer-menu nav {
     display: flex;
@@ -2914,9 +2915,6 @@ label {
     font-size: 12px;
     color: #bcbcbc;
 }
-.footer-quick-link-wrap {
-    padding-top: 40px;
-}
 .copyright-wrap {
     background: #171b22;
     padding: 25px 0;
@@ -2955,4 +2953,38 @@ label {
     transform: translate(-50%, -50%);
 }
 
+/*21. Custom*/
 
+.btn-modal {
+    padding: 10px 12px !important;
+    font-weight: 500 !important;
+}
+
+.form-control.order:focus {
+    border-color: #e4d804 !important;
+    background: #1f1e24 !important;
+}
+
+.btn.order {
+    padding: 0.375rem 0.75rem !important;
+}
+
+.payment {
+    opacity: 70% !important;
+}
+.payment:hover {
+    opacity: 100% !important;
+}
+
+.opacity-70 {
+    opacity: 70% !important;
+}
+
+.opacity-100 {
+    opacity: 100% !important;
+}
+
+.payment.selected {
+    border-color: #0089f5 !important;
+    opacity: 100% !important;
+}

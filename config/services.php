@@ -37,4 +37,16 @@ return [
         'redirect' => env('GOOGLE_APP_CALLBACK_URL'),
     ],
 
+    'vnpay' => [
+        'vnp_TmnCode' => env('VNP_TMPCODE'),
+        'vnp_HashSecret' => env('VNP_HASHSECRET'),
+        'vnp_Url' => env('VNP_URL'),
+    ],
+
+    'momo' => [
+        'partnerCode' => env('MOMO_PARTNERCODE'),
+        'accessKey' => env('MOMO_ACCESSKEY'),
+        'secretKey' => env('MOMO_SECRETKEY'),
+    ],
+
 ];

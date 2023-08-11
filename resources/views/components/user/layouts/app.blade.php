@@ -14,6 +14,7 @@
     <link rel="stylesheet" href="{{ asset('css/user/app.css') }}">
     <link rel="stylesheet" href="{{ asset('css/lib/toasting.css') }}">
     <script src="{{ asset('js/lib/toasting.js') }}"></script>
+    @stack('css')
 </head>
 <body>
 
@@ -27,11 +28,29 @@
 
 <x-user.layouts.partials.footer />
 
+<button id="open_modal_auth" data-toggle="modal" data-target="#modal_auth" class="d-none"></button>
+<x-user.modal id="modal_auth">
+    <x-slot:heading>
+        {{ __('Notify') }}
+    </x-slot:heading>
+
+    {{ __('Please login to receive member offers') }}
+
+    <x-slot:footer>
+        <button type="button" class="btn btn-modal btn-secondary" data-dismiss="modal" id="close_modal_auth">{{ __('Turn OFF 24h') }}</button>
+        <a href="{{ route('login') }}" class="btn btn-modal btn-primary">{{ __('Login') }}</a>
+    </x-slot:footer>
+</x-user.modal>
+
 <!-- JS here -->
 <script src="{{ asset('js/user/app.js') }}"></script>
 <script src="{{ asset('js/magnific-popup.js') }}"></script>
 <script src="{{ asset('js/lib/wow.js') }}"></script>
 <script>
+    $('#close_modal_auth').on('click', () => {
+        setCookie('modal_auth', '1', 1);
+    })
+
     /*=============================================
         =    		Magnific Popup		      =
     =============================================*/
@@ -49,6 +68,11 @@
     });
 
     $(window).on('load', function () {
+        @if(auth()->guest())
+            if (getCookie('modal_auth') != 1) {
+                $('#open_modal_auth').click();
+            }
+        @endif
         function wowAnimation() {
             var wow = new WOW({
                 boxClass: 'wow',
@@ -93,5 +117,7 @@
         @endif
     });
 </script>
+
+@stack('js')
 </body>
 </html>

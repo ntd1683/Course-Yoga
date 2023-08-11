@@ -31,6 +31,7 @@ class User extends Authenticatable
         'phone',
         'address',
         'avatar',
+        'email_verified',
     ];
 
     public $timestamps = true;

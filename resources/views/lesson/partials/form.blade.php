@@ -20,9 +20,14 @@
                 </div>
                 <div class="form-group">
                     <label for="link_embedded">{{ __('Link Embedded') }}</label>
-                    <input type="text" class="form-control" placeholder="{{ __('Link Embedded') }}"
+                    <input type="text" class="form-control" placeholder="{{ __('https://www.youtube.com/watch?v=xxxxxxx') }}"
                            id="link_embedded" name="link_embedded"
                            value="{{ old('link_embedded') ?: $lesson->link_embedded }}">
+                </div>
+                <div class="form-group">
+                    <label for="view">{{ __('View') }}</label>
+                    <input type="number" class="form-control"
+                           id="view" name="view" value="{{ old('view') ?: $course->view }}">
                 </div>
                 <div class="form-group">
                     <label>{{ __('Image') }}</label>
