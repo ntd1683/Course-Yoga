@@ -10,17 +10,19 @@
                                 <h5 class="title">{{ __('Contact Form') }}</h5>
                             </div>
                             <div class="contact-form">
-                                <form action="#">
+                                <form action="{{ route('contact.send') }}" method="post">
+                                    @csrf
+                                    <input type="text" placeholder="{{ __('Your Name') }}" name="name" value="{{ old('name') }}">
                                     <div class="row">
                                         <div class="col-md-6">
-                                            <input type="text" placeholder="You Name *">
+                                            <input type="text" placeholder="{{ __('Your Phone') }}" name="phone" value="{{ old('phone') }}">
                                         </div>
                                         <div class="col-md-6">
-                                            <input type="email" placeholder="You  Email *">
+                                            <input type="email" placeholder="{{ __('Your Email') }}" name="email" value="{{ old('email') }}">
                                         </div>
                                     </div>
-                                    <input type="text" placeholder="Subject *">
-                                    <textarea name="message" placeholder="Type Your Message..."></textarea>
+                                    <input type="text" placeholder="{{ __('Type Your Title') }}" name="title" value="{{ old('title') }}">
+                                    <textarea name="message" placeholder="{{ __('Type Your Message') }}..." name="message">{{ old('message') }}</textarea>
                                     <button class="btn">{{ __('Send Message') }}</button>
                                 </form>
                             </div>
@@ -31,20 +33,20 @@
                             <h5 class="title">{{ __('Information') }}</h5>
                         </div>
                         <div class="contact-info-wrap">
-                            <p><span>{{ __('Find solutions') }} :</span> {{ __('to common problems, or get help from a support agent industry\'s standard .') }}</p>
+                            <p><span>{{ __('Find solutions') }} :</span> {{ __('If you need support, please contact us for the best support') }}</p>
                             <div class="contact-info-list">
                                 <ul>
                                     <li>
                                         <div class="icon"><i class="fas fa-map-marker-alt"></i></div>
-                                        <p><span>{{ __('Address') }} :</span> {{ __('W38 Park Road New York') }}</p>
+                                        <p><span>{{ __('Address') }} :</span> {{ option('site_address') }}</p>
                                     </li>
                                     <li>
                                         <div class="icon"><i class="fas fa-phone-alt"></i></div>
-                                        <p><span>{{ __('Phone') }} :</span> {{ __('(09) 123 854 365') }}</p>
+                                        <p><span>{{ __('Phone') }} :</span> {{ option('site_phone') ?: config('app.phone') }}</p>
                                     </li>
                                     <li>
                                         <div class="icon"><i class="fas fa-envelope"></i></div>
-                                        <p><span>{{ __('Email') }} :</span> <a href="https://themebeyond.com/cdn-cgi/l/email-protection" class="__cf_email__" data-cfemail="98ebede8e8f7eaecd8f5f7eefef4e0b6fbf7f5">[email&#160;protected]</a></p>
+                                        <p><span>{{ __('Email') }} :</span> <a href="mailto:{{ option('site_email') ?: config('app.email') }}" class="__cf_email__" data-cfemail="98ebede8e8f7eaecd8f5f7eefef4e0b6fbf7f5">{{ option('site_email') ?: config('app.email') }}</a></p>
                                     </li>
                                 </ul>
                             </div>
@@ -57,7 +59,7 @@
 
         <!-- map -->
         <div>
-            <iframe src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d1416.036673762947!2d108.08377647425696!3d12.769746244187857!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x3171f99804cce467%3A0x2d49fee91bcdc72d!2zRMWpbmcgUGjDoXQ!5e0!3m2!1svi!2s!4v1691157196170!5m2!1svi!2s" width="600" height="450" style="border:0;width:100%;" allowfullscreen="" loading="lazy" referrerpolicy="no-referrer-when-downgrade"></iframe>
+            <iframe src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d244.90210892689026!2d106.65563992794577!3d10.854577483384345!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x317529aa999ac679%3A0x581f2a72e66c2c0!2zUmFqYSBZb2dhIEfDsiBW4bqlcA!5e0!3m2!1svi!2s!4v1691830225881!5m2!1svi!2s" width="600" height="450" style="border:0;width:100%;" allowfullscreen="" loading="lazy" referrerpolicy="no-referrer-when-downgrade"></iframe>
         </div>
         <!-- map-end -->
         <x-user.layouts.partials.newsletter />

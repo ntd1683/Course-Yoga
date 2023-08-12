@@ -2,10 +2,10 @@
 
 use App\Http\Controllers\Ajax\AjaxProfileController;
 use App\Http\Controllers\AuthController;
-use App\Http\Controllers\ContactController;
 use App\Http\Controllers\PricingController;
 use App\Http\Controllers\TestController;
 use App\Http\Controllers\User\CheckoutController;
+use App\Http\Controllers\User\ContactController;
 use App\Http\Controllers\User\CourseController;
 use App\Http\Controllers\User\HomepageController;
 use App\Http\Controllers\User\OrderController;
@@ -62,6 +62,9 @@ Route::get('/', [HomepageController::class, '__invoke'])->name('index');
 Route::get('/pricing', [PricingController::class, '__invoke'])->name('pricing');
 Route::get('/course', [CourseController::class, 'index'])->name('course');
 Route::get('/course/{course}', [CourseController::class, 'show'])->name('course.show');
-Route::get('/contact', [ContactController::class, '__invoke'])->name('contact');
+
+//Contact
+Route::get('/contact', [ContactController::class, 'index'])->name('contact');
+Route::post('/contact', [ContactController::class, 'send'])->name('contact.send');
 
 Route::get('/test', [TestController::class, 'test'])->name('test');
