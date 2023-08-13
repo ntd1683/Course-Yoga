@@ -9,6 +9,7 @@ use App\Http\Controllers\User\ContactController;
 use App\Http\Controllers\User\CourseController;
 use App\Http\Controllers\User\HomepageController;
 use App\Http\Controllers\User\OrderController;
+use App\Http\Controllers\User\ProfileController;
 use App\Http\Controllers\User\SocialAuthController;
 use App\Http\Middleware\CheckLoginMiddleware;
 use App\Http\Middleware\CheckLogoutMiddleware;
@@ -41,6 +42,8 @@ Route::group([
     'middleware' => CheckLoginMiddleware::class,
 ], function () {
     Route::get('/logout', [AuthController::class, 'logout'])->name('logout');
+    Route::get('/profile', [ProfileController::class, 'profile'])->name('profile');
+    Route::post('/profile', [ProfileController::class, 'update'])->name('profile.update');
 
     Route::get('/verifyEmail', [AuthController::class, 'verifyEmail'])->name('verifyEmail');
 

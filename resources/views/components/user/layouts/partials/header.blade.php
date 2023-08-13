@@ -1,4 +1,3 @@
-
 <!-- header-area -->
 <header>
     <div id="sticky-header" class="menu-area transparent-header">
@@ -10,7 +9,8 @@
                         <nav class="menu-nav show">
                             <div class="logo">
                                 <a href="{{ route('index') }}">
-                                    <img src="{{ Storage::url(option('site_logo')) }}" alt="Logo" width="135" height="auto">
+                                    <img src="{{ Storage::url(option('site_logo')) }}" alt="Logo" width="135"
+                                         height="auto">
                                 </a>
                             </div>
                             <div class="navbar-wrap main-menu d-none d-lg-flex">
@@ -39,7 +39,9 @@
                             </div>
                             <div class="header-action d-none d-md-block">
                                 <ul>
-                                    <li class="header-search"><a href="#" data-toggle="modal" data-target="#search-modal"><i class="fas fa-search"></i></a></li>
+                                    <li class="header-search"><a href="#" data-toggle="modal"
+                                                                 data-target="#search-modal"><i
+                                                class="fas fa-search"></i></a></li>
                                     <li class="header-lang">
                                         <form action="#">
                                             <div class="icon"><i class="flaticon-globe"></i></div>
@@ -49,13 +51,20 @@
                                             </select>
                                         </form>
                                     </li>
-                                    <li class="header-btn">
-                                        @if(! auth()->check())
-                                        <a href="{{ route('login') }}" class="btn">{{ __('Sign In') }}</a>
-                                        @else
-                                            <a href="{{ route('logout') }}">{{ __('Account') }}</a>
-                                        @endif
-                                    </li>
+                                    @if(! auth()->check())
+                                        <li class="header-btn">
+                                            <a href="{{ route('login') }}" class="btn">{{ __('Sign In') }}</a>
+                                        </li>
+                                    @else
+                                        <li class="menu-children">
+                                            <div class="icon"><i class="fas fa-users"></i> {{ auth()->user()->name }}
+                                            </div>
+                                            <ul class="submenu">
+                                                <li><a href="{{ route('profile') }}">{{ __('Account') }}</a></li>
+                                                <li><a href="{{ route('logout') }}">{{ __('Logout') }}</a></li>
+                                            </ul>
+                                        </li>
+                                    @endif
                                 </ul>
                             </div>
                         </nav>
@@ -66,7 +75,8 @@
                         <div class="close-btn"><i class="fas fa-times"></i></div>
 
                         <nav class="menu-box">
-                            <div class="nav-logo"><a href="{{ route('index') }}"><img src="{{ Storage::url(option('site_logo')) }}" alt="" title=""></a>
+                            <div class="nav-logo"><a href="{{ route('index') }}"><img
+                                        src="{{ Storage::url(option('site_logo')) }}" alt="" title=""></a>
                             </div>
                             <div class="menu-outer">
                                 <!--Here Menu Will Come Automatically Via Javascript / Same Menu as in Header-->

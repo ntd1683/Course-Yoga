@@ -24,3 +24,9 @@ Breadcrumbs::for('contact', function ($trail) {
     $trail->parent('home');
     $trail->push(trans('Contact'), route('contact'));
 });
+
+// Profile
+Breadcrumbs::for('profile', function ($trail) {
+    $trail->parent('home');
+    $trail->push(trans('Profile'), route('profile'));
+});

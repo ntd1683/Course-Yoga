@@ -12,7 +12,7 @@
             <div class="row">
                 <div class="card">
                     <div class="card-body p-0">
-                        <form action="{{ route('admin.settings.store')}}" method="post">
+                        <form action="{{ route('admin.profile.store')}}" method="post">
                             @csrf
                             <div class="tab-content pt-0">
                                 <div id="general" class="tab-pane active">
@@ -71,8 +71,11 @@
                                                        value="{{ old('address') !== null ? old('address') : auth()->user()->address }}" >
                                             </div>
                                             <div class="form-group">
-                                                <label for="address">{{ __('Password') }}</label>
+                                                <label for="password">{{ __('Password') }}</label>
                                                 <x-admin.forms.inputs.password name="password"/>
+                                            </div>
+                                            <div class="form-group">
+                                                <label for="password_confirmation">{{ __('Confirm Password') }}</label>
                                                 <x-admin.forms.inputs.password name="password_confirmation"/>
                                             </div>
                                         </div>
@@ -131,7 +134,6 @@
                     });
                 })
                 $(".toggle-password").click(function() {
-                    console.log($(this))
                     $(this).toggleClass("fa-eye fa-eye-slash");
                     var input = $($(this).attr("toggle"));
                     if (input.attr("type") == "password") {

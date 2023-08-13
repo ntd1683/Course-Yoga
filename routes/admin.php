@@ -3,11 +3,11 @@
 use App\Http\Controllers\Admin\CourseController;
 use App\Http\Controllers\Admin\HomepageController;
 use App\Http\Controllers\Admin\LessonController;
+use App\Http\Controllers\Admin\SettingController;
 use App\Http\Controllers\Ajax\AjaxCourseController;
 use App\Http\Controllers\Ajax\AjaxLessonController;
 use App\Http\Controllers\Ajax\AjaxUserController;
 use App\Http\Controllers\AuthController;
-use App\Http\Controllers\SettingController;
 use App\Http\Middleware\CheckAdminMiddleware;
 use App\Http\Middleware\CheckLecturerMiddleware;
 use App\Http\Middleware\CheckLoginMiddleware;
@@ -34,7 +34,7 @@ Route::group([
 ], function () {
     Route::get('/', [HomepageController::class, '__invoke'])->name('index');
     Route::get('/profile', [SettingController::class, 'profile'])->name('profile');
-    Route::post('/profile', [SettingController::class, 'storeProfile'])->name('profile.store');
+    Route::post('/profile', [SettingController::class, 'updateProfile'])->name('profile.store');
 
     Route::resource('course', CourseController::class);
     Route::resource('lesson', LessonController::class);

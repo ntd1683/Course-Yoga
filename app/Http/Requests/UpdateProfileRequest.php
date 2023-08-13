@@ -14,7 +14,7 @@ class UpdateProfileRequest extends FormRequest
      */
     public function authorize(): bool
     {
-        return false;
+        return auth()->check();
     }
 
     /**
@@ -24,13 +24,14 @@ class UpdateProfileRequest extends FormRequest
      */
     public function rules(): array
     {
+        $user = auth()->user();
         return [
             'name' => ['required', 'string', 'max:255'],
-            'email' => ['required', 'string', 'email', 'max:255', Rule::unique(User::class, 'email')->ignore($this->user->id)],
-            'password' => ['nullable', Password::defaults()],
+            'email' => ['required', 'string', 'email', 'max:255', Rule::unique(User::class, 'email')->ignore($user->id)],
+            'password' => ['nullable', Password::defaults(), 'confirmed'],
             'phone' => ['nullable', 'string'],
             'address' => ['nullable', 'string'],
-            'birthdate' => ['nullable', 'date'],
+            'birthdate' => ['nullable', 'date_format:d/m/Y'],
             'gender' => ['required', Rule::in([1,2,0])],
         ];
     }

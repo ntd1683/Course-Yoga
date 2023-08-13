@@ -2988,3 +2988,81 @@ label {
     border-color: #0089f5 !important;
     opacity: 100% !important;
 }
+
+.menu-children {
+    display: block !important;
+    position: relative !important;
+    color: white;
+}
+
+.menu-children .submenu {
+    position: absolute !important;
+    z-index: 9;
+    border-radius: 0;
+    border: none;
+    -webkit-box-shadow: 0px 13px 25px -12px rgb(0 0 0 / 25%);
+    -moz-box-shadow: 0px 13px 25px -12px rgba(0,0,0,0.25);
+    box-shadow: 0px 13px 25px -12px rgb(0 0 0 / 25%);
+    display: block;
+    opacity: 0;
+    padding: 18px 0;
+    right: 0;
+    top: 100%;
+    visibility: hidden;
+    min-width: 230px;
+    border: 1px solid #283846;
+    background: #1b252e;
+    box-shadow: 0px 30px 70px 0px rgb(26 36 45 / 59%);
+    margin: 0;
+    margin-top: 10px;
+    transform: scale(1 , 0);
+    transform-origin: 0 0;
+    -webkit-transition: all 0.3s ease-in-out;
+    -moz-transition: all 0.3s ease-in-out;
+    -ms-transition: all 0.3s ease-in-out;
+    -o-transition: all 0.3s ease-in-out;
+    transition: all 0.3s ease-in-out;
+}
+.menu-children .submenu li {
+    margin-left: 0;
+    text-align: left;
+    display: block;
+}
+.menu-children .submenu li a {
+    padding: 10px 20px 10px 25px;
+    display: block;
+    font-weight: 500;
+    color: #f0f0f0;
+    text-transform: capitalize;
+    position: relative;
+    -webkit-transition: all 0.3s ease-in-out;
+    -moz-transition: all 0.3s ease-in-out;
+    -ms-transition: all 0.3s ease-in-out;
+    -o-transition: all 0.3s ease-in-out;
+    transition: all 0.3s ease-in-out;
+}
+.menu-children .submenu li a::before {
+    content: "";
+    position: absolute;
+    left: 20px;
+    width: 0;
+    height: 2px;
+    top: 20px;
+    background: #e4d804;
+    -webkit-transition: all 0.3s ease-in-out;
+    -moz-transition: all 0.3s ease-in-out;
+    -ms-transition: all 0.3s ease-in-out;
+    -o-transition: all 0.3s ease-in-out;
+    transition: all 0.3s ease-in-out;
+}
+.menu-children .submenu li:hover > a {
+    padding-left: 45px;
+}
+.menu-children .submenu li:hover > a::before {
+    width: 15px;
+}
+.menu-children:hover > .submenu {
+    opacity: 1;
+    visibility: visible;
+    transform: scale(1);
+}

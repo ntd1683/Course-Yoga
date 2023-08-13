@@ -22,7 +22,7 @@
                                         </div>
                                     </div>
                                     <input type="text" placeholder="{{ __('Type Your Title') }}" name="title" value="{{ old('title') }}">
-                                    <textarea name="message" placeholder="{{ __('Type Your Message') }}..." name="message">{{ old('message') }}</textarea>
+                                    <textarea name="message" placeholder="{{ __('Type Your Message') }}...">{{ old('message') }}</textarea>
                                     <button class="btn">{{ __('Send Message') }}</button>
                                 </form>
                             </div>
