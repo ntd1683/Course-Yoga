@@ -1,9 +1,11 @@
 <?php
 
+use App\Http\Controllers\Admin\ContactController;
 use App\Http\Controllers\Admin\CourseController;
 use App\Http\Controllers\Admin\HomepageController;
 use App\Http\Controllers\Admin\LessonController;
 use App\Http\Controllers\Admin\SettingController;
+use App\Http\Controllers\Ajax\AjaxContactController;
 use App\Http\Controllers\Ajax\AjaxCourseController;
 use App\Http\Controllers\Ajax\AjaxLessonController;
 use App\Http\Controllers\Ajax\AjaxUserController;
@@ -38,6 +40,19 @@ Route::group([
 
     Route::resource('course', CourseController::class);
     Route::resource('lesson', LessonController::class);
+    Route::resource('contact', ContactController::class);
+
+    Route::prefix('ajax')->name('ajax.')->group(function () {
+        Route::get('course', [AjaxCourseController::class, 'index'])->name('course');
+        Route::get('course/title', [AjaxCourseController::class, 'title'])->name('course.search.title');
+
+        Route::get('lesson', [AjaxLessonController::class, 'index'])->name('lesson');
+        Route::get('lesson/title', [AjaxLessonController::class, 'title'])->name('lesson.search.title');
+
+        Route::get('contact', [AjaxContactController::class, 'index'])->name('contact');
+        Route::get('contact/title', [AjaxContactController::class, 'title'])->name('contact.search.title');
+        Route::get('contact/name', [AjaxContactController::class, 'name'])->name('contact.search.name');
+    });
 });
 
 Route::group([
@@ -49,12 +64,10 @@ Route::group([
         Route::get('user/get-lecturers', [AjaxUserController::class, 'lecturers'])->name('user.search.lecturers');
 
         Route::delete('course/destroy/{course}', [AjaxCourseController::class, 'destroy'])->name('course.destroy');
-        Route::get('course', [AjaxCourseController::class, 'index'])->name('course');
-        Route::get('course/title', [AjaxCourseController::class, 'title'])->name('course.search.title');
 
-        Route::get('lesson', [AjaxLessonController::class, 'index'])->name('lesson');
-        Route::get('lesson/title', [AjaxLessonController::class, 'title'])->name('lesson.search.title');
         Route::delete('lesson/destroy/{lesson}', [AjaxLessonController::class, 'destroy'])->name('lesson.destroy');
+
+        Route::delete('contact/destroy/{contact}', [AjaxContactController::class, 'destroy'])->name('contact.destroy');
     });
 });
 

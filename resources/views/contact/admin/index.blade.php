@@ -8,14 +8,11 @@
             <div class="page-header">
                 <div class="row">
                     <div class="col">
-                        <h3 class="page-title">{{ __('Courses') }}</h3>
+                        <h3 class="page-title">{{ __('Contact') }}</h3>
                     </div>
                     <div class="col-auto text-right">
                         <a class="btn btn-white filter-btn" href="javascript:void(0);" id="filter_search">
                             <i class="fas fa-filter"></i>
-                        </a>
-                        <a href="{{ route('admin.lesson.create') }}" class="btn btn-primary add-button ml-3">
-                            <i class="fas fa-plus"></i>
                         </a>
                     </div>
                 </div>
@@ -25,7 +22,15 @@
                 <div class="card-body pb-0">
                     <form action="#" method="post">
                         <div class="row filter-row">
-                            <div class="col-sm-6 col-md-5">
+                            <div class="col-sm-6 col-md-3">
+                                <div class="form-group">
+                                    <label for="select_name">{{ __('Name') }}</label>
+                                    <select class="form-control select" name="name" id="select_name"
+                                            style="text-align: center">
+                                    </select>
+                                </div>
+                            </div>
+                            <div class="col-sm-6 col-md-4">
                                 <div class="form-group">
                                     <label for="select_title">{{ __('Title') }}</label>
                                     <select class="form-control select" name="title" id="select_title"
@@ -33,12 +38,13 @@
                                     </select>
                                 </div>
                             </div>
-                            <div class="col-sm-6 col-md-5">
+                            <div class="col-sm-6 col-md-3">
                                 <div class="form-group">
-                                    <label for="select_user">{{ __('Author') }}</label>
-                                    <select class="form-control select" id="select_user" style="text-align: center">
-                                        <option value="0">{{ __('All Users') }}</option>
-                                        <option value="{{ auth()->user()->name }}">{{ __('Me') }}</option>
+                                    <label for="select_type">{{ __('Type') }}</label>
+                                    <select class="form-control select" id="select_type" style="text-align: center">
+                                        <option value="-1" selected>{{ __('Select All') }}</option>
+                                        <option value="0">{{ __('Disapprove') }}</option>
+                                        <option value="1">{{ __('Approve') }}</option>
                                     </select>
                                 </div>
                             </div>
@@ -61,11 +67,11 @@
                                     <thead>
                                     <tr>
                                         <th>#</th>
+                                        <th>{{ __('Name') }}</th>
+                                        <th>{{ __('Phone') }}</th>
+                                        <th>{{ __('Email') }}</th>
                                         <th>{{ __('Title') }}</th>
-                                        <th>{{ __('View') }}</th>
-                                        <th>{{ __('Author') }}</th>
-                                        <th>{{ __('Publish') }}</th>
-                                        <th>{{ __('Accept') }}</th>
+                                        <th>{{ __('Type') }}</th>
                                         <th class="text-end">{{ __('Edit') }}</th>
                                         <th class="text-end">{{ __('Delete') }}</th>
                                     </tr>
@@ -90,34 +96,25 @@
                     select: true,
                     processing: true,
                     serverSide: true,
-                    ajax: '{!! route('admin.ajax.lesson') !!}',
+                    ajax: '{!! route('admin.ajax.contact') !!}',
                     columns: [
                         { data: 'id', name: 'id' },
+                        { data: 'name', name: 'name' },
+                        { data: 'phone', name: 'phone' },
+                        { data: 'email', name: 'email' },
                         {
                             data: 'title',
                             render: function (data, type, row, meta) {
                                 return `<p title="${data.title}">${data.value}</p>`;
                             }
                         },
-                        { data: 'view', name: 'view' },
-                        { data: 'author', name: 'author' },
                         {
-                            data: 'published',
+                            data: 'type',
                             render: function (data, type, row, meta) {
                                 if(data === 1) {
-                                    return `<i class="fas fa-check"></i>`;
+                                    return `<div class="text-success"><i class="fas fa-check"></i>Approve</div>`;
                                 } else {
-                                    return `<i class="fas fa-times"></i>`;
-                                }
-                            }
-                        },
-                        {
-                            data: 'accepted',
-                            render: function (data, type, row, meta) {
-                                if(data === 1) {
-                                    return `<i class="fas fa-check"></i>`;
-                                } else {
-                                    return `<i class="fas fa-times"></i>`;
+                                    return `<div class="text-danger"><i class="fas fa-times"></i></i>Disapprove</div>`;
                                 }
                             }
                         },
@@ -148,7 +145,7 @@
 
                 selectTitle.select2({
                     ajax: {
-                        url: "{{route('admin.ajax.lesson.search.title')}}",
+                        url: "{{ route('admin.ajax.contact.search.title') }}",
                         dataType: 'json',
                         delay: 250,
                         data: function (params) {
@@ -174,10 +171,48 @@
                 });
 
                 selectTitle.change(function () {
+                    table.columns(4).search(this.value).draw();
+                });
+
+                const selectName = $('#select_name');
+
+                selectName.select2({
+                    ajax: {
+                        url: "{{ route('admin.ajax.contact.search.name') }}",
+                        dataType: 'json',
+                        delay: 250,
+                        data: function (params) {
+                            return {
+                                q: params.term, // search term
+                            };
+                        },
+                        processResults: function (data, params) {
+                            params.page = params.page || 1;
+
+                            return {
+                                results: $.map(data, function (item) {
+                                    return {
+                                        text: item.name,
+                                        id: item.name,
+                                    }
+                                })
+                            };
+                        }
+                    },
+                    placeholder: '{{ __('Enter Name') }}',
+                    allowClear:true,
+                });
+
+                selectName.change(function () {
                     table.columns(1).search(this.value).draw();
                 });
-                $('#select_user').change(function () {
-                    table.columns(5).search(this.value).draw();
+
+                $('#select_type').change(function () {
+                    if(this.value != -1) {
+                        table.columns(5).search(this.value).draw();
+                    } else {
+                        table.columns(5).search('').draw();
+                    }
                 });
 
                 $(document).on('click','.btn-delete',function(e){
@@ -192,7 +227,7 @@
                             success: function (response) {
                                 toasting.create({
                                     "title": "Success",
-                                    "text": "{{ __('Delete Lesson Successfully') }}",
+                                    "text": "{{ __('Delete Contact Successfully') }}",
                                     "type": "success",
                                     "progressBarType": "rainbow"
                                 });

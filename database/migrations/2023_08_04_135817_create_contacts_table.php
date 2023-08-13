@@ -18,6 +18,7 @@ return new class extends Migration
             $table->string('email');
             $table->string('title');
             $table->string('message');
+            $table->boolean('type')->default(false);
         });
     }
 
