@@ -46,7 +46,7 @@ class AjaxContactController extends Controller
     public function destroy(Contact $contact): JsonResponse
     {
         if (auth()->user()->level !== 3) {
-            return $this->errorResponse(trans('You do not have permission to delete this course !'));
+            return $this->errorResponse(trans('You do not have permission to delete this contact !'));
         }
 
         $contact->delete();

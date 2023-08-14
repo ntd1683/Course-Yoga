@@ -4,12 +4,7 @@ namespace App\Http\Controllers\Admin;
 
 use App\Http\Controllers\Controller;
 use App\Http\Requests\admin\UpdateContactRequest;
-use App\Http\Requests\StoreCourseRequest;
 use App\Models\Contact;
-use App\Models\Course;
-use App\Models\ManageCourse;
-use Illuminate\Support\Facades\Storage;
-use Illuminate\Support\Str;
 
 class ContactController extends Controller
 {

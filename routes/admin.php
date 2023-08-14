@@ -5,9 +5,11 @@ use App\Http\Controllers\Admin\CourseController;
 use App\Http\Controllers\Admin\HomepageController;
 use App\Http\Controllers\Admin\LessonController;
 use App\Http\Controllers\Admin\SettingController;
+use App\Http\Controllers\Admin\TrialController;
 use App\Http\Controllers\Ajax\AjaxContactController;
 use App\Http\Controllers\Ajax\AjaxCourseController;
 use App\Http\Controllers\Ajax\AjaxLessonController;
+use App\Http\Controllers\Ajax\AjaxTrialController;
 use App\Http\Controllers\Ajax\AjaxUserController;
 use App\Http\Controllers\AuthController;
 use App\Http\Middleware\CheckAdminMiddleware;
@@ -41,6 +43,7 @@ Route::group([
     Route::resource('course', CourseController::class);
     Route::resource('lesson', LessonController::class);
     Route::resource('contact', ContactController::class);
+    Route::resource('trial', TrialController::class);
 
     Route::prefix('ajax')->name('ajax.')->group(function () {
         Route::get('course', [AjaxCourseController::class, 'index'])->name('course');
@@ -48,6 +51,9 @@ Route::group([
 
         Route::get('lesson', [AjaxLessonController::class, 'index'])->name('lesson');
         Route::get('lesson/title', [AjaxLessonController::class, 'title'])->name('lesson.search.title');
+
+        Route::get('trial', [AjaxTrialController::class, 'index'])->name('trial');
+        Route::get('trial/phone', [AjaxTrialController::class, 'phone'])->name('trial.search.phone');
 
         Route::get('contact', [AjaxContactController::class, 'index'])->name('contact');
         Route::get('contact/title', [AjaxContactController::class, 'title'])->name('contact.search.title');
@@ -68,6 +74,8 @@ Route::group([
         Route::delete('lesson/destroy/{lesson}', [AjaxLessonController::class, 'destroy'])->name('lesson.destroy');
 
         Route::delete('contact/destroy/{contact}', [AjaxContactController::class, 'destroy'])->name('contact.destroy');
+
+        Route::delete('trial/destroy/{trial}', [AjaxTrialController::class, 'destroy'])->name('trial.destroy');
     });
 });
 

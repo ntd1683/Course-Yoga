@@ -20,6 +20,9 @@
                 <li @class(["active" => getNameRouteMain() === "contact"]) >
                     <a href="{{ route('admin.contact.index') }}"><i class="fas fa-question-circle"></i> <span>{{ __('Contact') }}</span></a>
                 </li>
+                <li @class(["active" => getNameRouteMain() === "trial"]) >
+                    <a href="{{ route('admin.trial.index') }}"><i class="fas fa-phone-alt"></i> <span>{{ __('Trial') }}</span></a>
+                </li>
             </ul>
         </div>
     </div>

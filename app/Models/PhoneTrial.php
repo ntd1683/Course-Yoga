@@ -5,7 +5,14 @@ namespace App\Models;
 use Illuminate\Database\Eloquent\Factories\HasFactory;
 use Illuminate\Database\Eloquent\Model;
 
-class Trial extends Model
+class PhoneTrial extends Model
 {
     use HasFactory;
+
+    protected $table = "phones_trial";
+
+    protected $fillable = [
+        'phone',
+        'type',
+    ];
 }

@@ -1,6 +1,7 @@
 <?php
 
 use App\Http\Controllers\Ajax\AjaxProfileController;
+use App\Http\Controllers\Ajax\AjaxTrialController;
 use App\Http\Controllers\AuthController;
 use App\Http\Controllers\PricingController;
 use App\Http\Controllers\TestController;
@@ -59,6 +60,7 @@ Route::group([
 
     Route::prefix('ajax')->name('ajax.')->group(function () {
         Route::post('/verifyEmail', [AjaxProfileController::class, 'verifyEmail'])->name('verifyEmail');
+        Route::post('/trial', [AjaxTrialController::class, 'subscribe'])->name('trial.subscribe');
     });
 });
 Route::get('/', [HomepageController::class, '__invoke'])->name('index');
