@@ -30,6 +30,12 @@ class Course extends Model
             ->where('users.level', 2);
     }
 
+    public function manageSubscriber(): BelongsToMany
+    {
+        return $this
+            ->belongsToMany(User::class, 'subcription_courses');
+    }
+
     public function lessons(): HasMany
     {
         return $this->hasMany(Lesson::class);

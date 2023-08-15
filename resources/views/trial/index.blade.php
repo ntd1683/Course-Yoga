@@ -95,9 +95,9 @@
                             data: 'type',
                             render: function (data, type, row, meta) {
                                 if(data === 1) {
-                                    return `<div class="text-success"><i class="fas fa-check"></i>Approve</div>`;
+                                    return `<div class="text-success"><i class="fas fa-check"></i>{{ __('Approve') }}</div>`;
                                 } else {
-                                    return `<div class="text-danger"><i class="fas fa-times"></i></i>Disapprove</div>`;
+                                    return `<div class="text-danger"><i class="fas fa-times"></i></i>{{ __('Disapprove') }}</div>`;
                                 }
                             }
                         },

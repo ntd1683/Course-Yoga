@@ -15,6 +15,7 @@
     },
     "dependencies": {
         "@popperjs/core": "^2.11.8",
+        "@yaireo/tagify": "^4.17.8",
         "aos": "^2.3.4",
         "bootstrap": "^4.6.0",
         "bootstrap-datepicker": "^1.10.0",

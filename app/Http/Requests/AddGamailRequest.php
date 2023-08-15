@@ -1,11 +1,13 @@
 <?php
 
-namespace App\Http\Requests\admin;
+namespace App\Http\Requests;
 
+use App\Models\SubcriptionCourse;
+use App\Models\User;
 use Illuminate\Foundation\Http\FormRequest;
 use Illuminate\Validation\Rule;
 
-class UpdateContactRequest extends FormRequest
+class AddGamailRequest extends FormRequest
 {
     /**
      * Determine if the user is authorized to make this request.
@@ -23,7 +25,9 @@ class UpdateContactRequest extends FormRequest
     public function rules(): array
     {
         return [
-            'type' => ['required', Rule::in([1,0])]
+            "title" => ["required", Rule::exists(SubcriptionCourse::class, "course_id")],
+            "emails" => ["required", "string"],
+            "status" => ["required", Rule::in([1])],
         ];
     }
 }

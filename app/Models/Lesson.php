@@ -3,10 +3,12 @@
 namespace App\Models;
 
 use Illuminate\Contracts\Database\Query\Builder;
+use Illuminate\Database\Eloquent\Casts\Attribute;
 use Illuminate\Database\Eloquent\Factories\HasFactory;
 use Illuminate\Database\Eloquent\Model;
 use Illuminate\Database\Eloquent\Relations\BelongsTo;
 use Illuminate\Support\Carbon;
+use Illuminate\Support\Facades\Storage;
 
 class Lesson extends Model
 {
@@ -67,6 +69,13 @@ class Lesson extends Model
 
     public function author(): BelongsTo
     {
-        return $this->belongsTo(User::class);
+        return $this->belongsTo(User::class, 'user_id', 'id');
+    }
+
+    protected function idVideo(): Attribute
+    {
+        return Attribute::get(function () {
+             return explode('?v=', $this->link_embedded)[1];
+        })->shouldCache();
     }
 }

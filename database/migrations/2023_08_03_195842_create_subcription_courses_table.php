@@ -15,6 +15,7 @@ return new class extends Migration
             $table->id();
             $table->bigInteger('course_id');
             $table->bigInteger('user_id');
+            $table->boolean('status')->default(0);
             $table->timestamps();
         });
     }

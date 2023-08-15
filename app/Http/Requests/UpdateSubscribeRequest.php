@@ -1,11 +1,11 @@
 <?php
 
-namespace App\Http\Requests\admin;
+namespace App\Http\Requests;
 
 use Illuminate\Foundation\Http\FormRequest;
 use Illuminate\Validation\Rule;
 
-class UpdateContactRequest extends FormRequest
+class UpdateSubscribeRequest extends FormRequest
 {
     /**
      * Determine if the user is authorized to make this request.
@@ -23,7 +23,7 @@ class UpdateContactRequest extends FormRequest
     public function rules(): array
     {
         return [
-            'type' => ['required', Rule::in([1,0])]
+            'status' => ['required', Rule::in([1,0])],
         ];
     }
 }

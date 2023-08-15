@@ -8,11 +8,14 @@
             <div class="page-header">
                 <div class="row">
                     <div class="col">
-                        <h3 class="page-title">{{ __('Contact') }}</h3>
+                        <h3 class="page-title">{{ __('Users Subscribed') }}</h3>
                     </div>
                     <div class="col-auto text-right">
                         <a class="btn btn-white filter-btn" href="javascript:void(0);" id="filter_search">
                             <i class="fas fa-filter"></i>
+                        </a>
+                            <a href="{{ route('admin.subscribe.create') }}" class="btn btn-primary add-button ml-3">
+                            <i class="fas fa-user-plus"></i>
                         </a>
                     </div>
                 </div>
@@ -30,9 +33,17 @@
                                     </select>
                                 </div>
                             </div>
+                            <div class="col-sm-6 col-md-3">
+                                <div class="form-group">
+                                    <label for="select_email">{{ __('Email') }}</label>
+                                    <select class="form-control select" name="email" id="select_email"
+                                            style="text-align: center">
+                                    </select>
+                                </div>
+                            </div>
                             <div class="col-sm-6 col-md-4">
                                 <div class="form-group">
-                                    <label for="select_title">{{ __('Title') }}</label>
+                                    <label for="select_title">{{ __('Course') }}</label>
                                     <select class="form-control select" name="title" id="select_title"
                                             style="text-align: center">
                                     </select>
@@ -43,8 +54,8 @@
                                     <label for="select_type">{{ __('Type') }}</label>
                                     <select class="form-control select" id="select_type" style="text-align: center">
                                         <option value="-1" selected>{{ __('Select All') }}</option>
-                                        <option value="0">{{ __('Disapprove') }}</option>
-                                        <option value="1">{{ __('Approve') }}</option>
+                                        <option value="0">{{ __('Not Added') }}</option>
+                                        <option value="1">{{ __('Added') }}</option>
                                     </select>
                                 </div>
                             </div>
@@ -68,10 +79,9 @@
                                     <tr>
                                         <th>#</th>
                                         <th>{{ __('Name') }}</th>
-                                        <th>{{ __('Phone') }}</th>
                                         <th>{{ __('Email') }}</th>
-                                        <th>{{ __('Title') }}</th>
-                                        <th>{{ __('Type') }}</th>
+                                        <th>{{ __('Course') }}</th>
+                                        <th>{{ __('Status') }}</th>
                                         <th class="text-end">{{ __('Edit') }}</th>
                                         <th class="text-end">{{ __('Delete') }}</th>
                                     </tr>
@@ -96,25 +106,24 @@
                     select: true,
                     processing: true,
                     serverSide: true,
-                    ajax: '{!! route('admin.ajax.contact') !!}',
+                    ajax: '{!! route('admin.ajax.subscribe') !!}',
                     columns: [
                         { data: 'id', name: 'id' },
-                        { data: 'name', name: 'name' },
-                        { data: 'phone', name: 'phone' },
-                        { data: 'email', name: 'email' },
+                        { data: 'users.name', name: 'users.name'},
+                        { data: 'users.email', name: 'users.email' },
                         {
-                            data: 'title',
+                            data: 'courses.title',
                             render: function (data, type, row, meta) {
                                 return `<p title="${data.title}">${data.value}</p>`;
                             }
                         },
                         {
-                            data: 'type',
+                            data: 'status',
                             render: function (data, type, row, meta) {
                                 if(data === 1) {
-                                    return `<div class="text-success"><i class="fas fa-check"></i>{{ __('Approve') }}</div>`;
+                                    return `<div class="text-success"><i class="fas fa-check"></i>{{ __('Added') }}</div>`;
                                 } else {
-                                    return `<div class="text-danger"><i class="fas fa-times"></i></i>{{ __('Disapprove') }}</div>`;
+                                    return `<div class="text-danger"><i class="fas fa-times"></i></i>{{ __('Not added') }}</div>`;
                                 }
                             }
                         },
@@ -141,44 +150,11 @@
                     ],
                 });
 
-                const selectTitle = $('#select_title');
-
-                selectTitle.select2({
-                    ajax: {
-                        url: "{{ route('admin.ajax.contact.search.title') }}",
-                        dataType: 'json',
-                        delay: 250,
-                        data: function (params) {
-                            return {
-                                q: params.term, // search term
-                            };
-                        },
-                        processResults: function (data, params) {
-                            params.page = params.page || 1;
-
-                            return {
-                                results: $.map(data, function (item) {
-                                    return {
-                                        text: item.title,
-                                        id: item.title,
-                                    }
-                                })
-                            };
-                        }
-                    },
-                    placeholder: '{{ __('Enter Title') }}',
-                    allowClear:true,
-                });
-
-                selectTitle.change(function () {
-                    table.columns(4).search(this.value).draw();
-                });
-
                 const selectName = $('#select_name');
 
                 selectName.select2({
                     ajax: {
-                        url: "{{ route('admin.ajax.contact.search.name') }}",
+                        url: "{{route('admin.ajax.subscribe.search.name')}}",
                         dataType: 'json',
                         delay: 250,
                         data: function (params) {
@@ -192,8 +168,8 @@
                             return {
                                 results: $.map(data, function (item) {
                                     return {
-                                        text: item.name,
-                                        id: item.name,
+                                        text: item.user.name,
+                                        id: item.user.name,
                                     }
                                 })
                             };
@@ -207,11 +183,77 @@
                     table.columns(1).search(this.value).draw();
                 });
 
+                const selectEmail = $('#select_email');
+
+                selectEmail.select2({
+                    ajax: {
+                        url: "{{route('admin.ajax.subscribe.search.email')}}",
+                        dataType: 'json',
+                        delay: 250,
+                        data: function (params) {
+                            return {
+                                q: params.term, // search term
+                            };
+                        },
+                        processResults: function (data, params) {
+                            params.page = params.page || 1;
+
+                            return {
+                                results: $.map(data, function (item) {
+                                    return {
+                                        text: item.user.email,
+                                        id: item.user.email,
+                                    }
+                                })
+                            };
+                        }
+                    },
+                    placeholder: '{{ __('Enter Email') }}',
+                    allowClear:true,
+                });
+
+                selectEmail.change(function () {
+                    table.columns(2).search(this.value).draw();
+                });
+
+                const selectTitle = $('#select_title');
+
+                selectTitle.select2({
+                    ajax: {
+                        url: "{{route('admin.ajax.subscribe.search.course')}}",
+                        dataType: 'json',
+                        delay: 250,
+                        data: function (params) {
+                            return {
+                                q: params.term, // search term
+                            };
+                        },
+                        processResults: function (data, params) {
+                            params.page = params.page || 1;
+
+                            return {
+                                results: $.map(data, function (item) {
+                                    return {
+                                        text: item.course.title,
+                                        id: item.course.title,
+                                    }
+                                })
+                            };
+                        }
+                    },
+                    placeholder: '{{ __('Enter Title') }}',
+                    allowClear:true,
+                });
+
+                selectTitle.change(function () {
+                    table.columns(3).search(this.value).draw();
+                });
+
                 $('#select_type').change(function () {
                     if(this.value != -1) {
-                        table.columns(5).search(this.value).draw();
+                        table.columns(4).search(this.value).draw();
                     } else {
-                        table.columns(5).search('').draw();
+                        table.columns(4).search('').draw();
                     }
                 });
 
@@ -227,7 +269,7 @@
                             success: function (response) {
                                 toasting.create({
                                     "title": "Success",
-                                    "text": "{{ __('Delete Contact Successfully') }}",
+                                    "text": response.message,
                                     "type": "success",
                                     "progressBarType": "rainbow"
                                 });

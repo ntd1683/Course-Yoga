@@ -36,6 +36,8 @@ mix
         'public/css/lib/select2.css')
     .scripts(['node_modules/wowjs/dist/wow.js'],
         'public/js/lib/wow.js')
+    .postCss('resources/css/admin/tag.css', 'public/css/admin')
+    .js('resources/js/admin/tag.js', 'public/js/admin')
     .styles(['node_modules/select2/dist/css/select2.css'],
         'public/css/lib/select2.css')
     .copy('resources/css/img/footer_bg.jpg', 'public/css/img')

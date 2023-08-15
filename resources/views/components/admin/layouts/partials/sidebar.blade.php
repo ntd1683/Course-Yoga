@@ -23,6 +23,9 @@
                 <li @class(["active" => getNameRouteMain() === "trial"]) >
                     <a href="{{ route('admin.trial.index') }}"><i class="fas fa-phone-alt"></i> <span>{{ __('Trial') }}</span></a>
                 </li>
+                <li @class(["active" => getNameRouteMain() === "subscribe"]) >
+                    <a href="{{ route('admin.subscribe.index') }}"><i class="fas fa-user-check"></i> <span>{{ __('Subscribe') }}</span></a>
+                </li>
             </ul>
         </div>
     </div>

@@ -5,10 +5,12 @@ use App\Http\Controllers\Admin\CourseController;
 use App\Http\Controllers\Admin\HomepageController;
 use App\Http\Controllers\Admin\LessonController;
 use App\Http\Controllers\Admin\SettingController;
+use App\Http\Controllers\Admin\SubscriptionController;
 use App\Http\Controllers\Admin\TrialController;
 use App\Http\Controllers\Ajax\AjaxContactController;
 use App\Http\Controllers\Ajax\AjaxCourseController;
 use App\Http\Controllers\Ajax\AjaxLessonController;
+use App\Http\Controllers\Ajax\AjaxSubscriptionController;
 use App\Http\Controllers\Ajax\AjaxTrialController;
 use App\Http\Controllers\Ajax\AjaxUserController;
 use App\Http\Controllers\AuthController;
@@ -44,10 +46,15 @@ Route::group([
     Route::resource('lesson', LessonController::class);
     Route::resource('contact', ContactController::class);
     Route::resource('trial', TrialController::class);
+    Route::resource('subscribe', SubscriptionController::class)->parameters([
+        'subscribe' => 'subscription'
+    ]);
 
     Route::prefix('ajax')->name('ajax.')->group(function () {
         Route::get('course', [AjaxCourseController::class, 'index'])->name('course');
         Route::get('course/title', [AjaxCourseController::class, 'title'])->name('course.search.title');
+        Route::get('course/lessons', [AjaxCourseController::class, 'lessons'])->name('course.search.lessons');
+        Route::get('course/users', [AjaxCourseController::class, 'users'])->name('course.search.users');
 
         Route::get('lesson', [AjaxLessonController::class, 'index'])->name('lesson');
         Route::get('lesson/title', [AjaxLessonController::class, 'title'])->name('lesson.search.title');
@@ -58,6 +65,11 @@ Route::group([
         Route::get('contact', [AjaxContactController::class, 'index'])->name('contact');
         Route::get('contact/title', [AjaxContactController::class, 'title'])->name('contact.search.title');
         Route::get('contact/name', [AjaxContactController::class, 'name'])->name('contact.search.name');
+
+        Route::get('subscription', [AjaxSubscriptionController::class, 'index'])->name('subscribe');
+        Route::get('subscription/course', [AjaxSubscriptionController::class, 'course'])->name('subscribe.search.course');
+        Route::get('subscription/name', [AjaxSubscriptionController::class, 'name'])->name('subscribe.search.name');
+        Route::get('subscription/email', [AjaxSubscriptionController::class, 'email'])->name('subscribe.search.email');
     });
 });
 
@@ -76,6 +88,8 @@ Route::group([
         Route::delete('contact/destroy/{contact}', [AjaxContactController::class, 'destroy'])->name('contact.destroy');
 
         Route::delete('trial/destroy/{trial}', [AjaxTrialController::class, 'destroy'])->name('trial.destroy');
+
+        Route::delete('subscription/destroy/{subscription}', [AjaxSubscriptionController::class, 'destroy'])->name('subscribe.destroy');
     });
 });
 
