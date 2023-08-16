@@ -84,7 +84,7 @@
     <br>
     <br>
     <br>
-    <p>{{ __('Cheers,') }}</p>
+    <p>{{ __('Cheers') }},</p>
     <p>{{ config('app.name') }}</p>
 </div>
 </body>

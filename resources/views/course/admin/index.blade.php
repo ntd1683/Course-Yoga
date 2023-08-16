@@ -8,7 +8,7 @@
             <div class="page-header">
                 <div class="row">
                     <div class="col">
-                        <h3 class="page-title">{{ __('Courses') }}</h3>
+                        <h3 class="page-title">{{ __('Course') }}</h3>
                     </div>
                     <div class="col-auto text-right">
                         <a class="btn btn-white filter-btn" href="javascript:void(0);" id="filter_search">

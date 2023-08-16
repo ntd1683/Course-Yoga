@@ -2,7 +2,7 @@
     <div class="row justify-content-center">
         <div class="col-md-6 col-lg-4">
             <div class="login-wrap p-0">
-                <h2 class="mb-4 text-center">{{ __('Have an account?') }}</h2>
+                <h2 class="mb-4 text-center">{{ __('Have an account') }}?</h2>
                 <form action="{{ route('processLogin') }}" class="signin-form" method="post">
                     @csrf
                     <div class="form-group">
