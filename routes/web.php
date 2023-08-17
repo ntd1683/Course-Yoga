@@ -80,7 +80,7 @@ Route::post('/contact', [ContactController::class, 'send'])->name('contact.send'
 
 //Language
 Route::group(['middleware' => 'locale'], function() {
-    Route::get('change-language/{language}', [ChangeLanguageController::class, '__invoke'])->name('change-language');
+    Route::get('change-language', [ChangeLanguageController::class, '__invoke'])->name('change-language');
 });
 
 Route::get('/test', [TestController::class, 'test'])->name('test');

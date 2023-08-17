@@ -5,7 +5,7 @@
             <div class="row">
                 <div class="col-12">
                     <div class="breadcrumb-content">
-                        <h2 class="title">Our Plan</h2>
+                        <h2 class="title">{{ $breadcrumbs[$breadcrumbs->count()-1]->title }}</h2>
                         <nav aria-label="breadcrumb">
                             <ol class="breadcrumb">
                                 @foreach ($breadcrumbs as $breadcrumb)

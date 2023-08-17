@@ -32,7 +32,7 @@
                     <div class="col-lg-12 d-flex justify-content-center justify-content-lg-end mt-3">
                         <div class="col-8 col-lg-6 position-relative">
                             <div class="input-group">
-                                <input type="text" name="title" class="form-input" placeholder="Search here..." id="search_query">
+                                <input type="text" name="title" class="form-input" placeholder="Search title here..." id="search_query">
                                 <i class="fas fa-search position-absolute"
                                    style="right: 3%;font-size: medium;top: 18%; opacity: 30%;"></i>
                             </div>
