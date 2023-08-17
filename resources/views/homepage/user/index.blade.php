@@ -96,7 +96,7 @@
                                 <p>{{ __('Student') }}</p>
                             </div>
                         </div>
-                        <a href="https://www.youtube.com/watch?v=biRwEVrcPzg" class="btn popup-video"><i class="fas fa-play"></i> Watch Now</a>
+                        <a href="https://www.youtube.com/watch?v=biRwEVrcPzg" class="btn popup-video"><i class="fas fa-play"></i> {{ __('Watch Now') }}</a>
                     </div>
                 </div>
                 <div class="col-xl-7 col-lg-6">

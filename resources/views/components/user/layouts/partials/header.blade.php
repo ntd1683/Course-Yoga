@@ -43,12 +43,22 @@
                                                                  data-target="#search-modal"><i
                                                 class="fas fa-search"></i></a></li>
                                     <li class="header-lang">
-                                        <form action="#">
+                                        <form action="{{ route('change-language') }}" method="get" id="form_change_language">
                                             <div class="icon"><i class="flaticon-globe"></i></div>
-                                            <select id="lang-dropdown">
-                                                <option value="">{{ __('En') }}</option>
-                                                <option value="">{{ __('VN') }}</option>
+                                            <select id="lang-dropdown" name="language">
+                                                <option value="en" onclick="changeLanguage()" @if(session()->get('lang') === 'en') selected @endif>{{ __('English') }}</option>
+                                                <option value="vi" onclick="changeLanguage()" @if(session()->get('lang') === 'vi') selected @endif>{{ __('Vietnamese') }}</option>
                                             </select>
+                                            @push('js')
+                                                <script>
+                                                    function changeLanguage() {
+                                                        $('#form_change_language').submit();
+                                                    }
+                                                    $('#lang-dropdown').change(() => {
+                                                        changeLanguage();
+                                                    })
+                                                </script>
+                                            @endpush
                                         </form>
                                     </li>
                                     @if(! auth()->check())
@@ -100,7 +110,7 @@
                         <div class="modal-dialog" role="document">
                             <div class="modal-content">
                                 <form>
-                                    <input type="text" placeholder="Search here...">
+                                    <input type="text" placeholder="{{ __('Search title here...') }}">
                                     <button><i class="fas fa-search"></i></button>
                                 </form>
                             </div>
