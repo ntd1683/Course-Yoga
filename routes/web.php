@@ -1,5 +1,6 @@
 <?php
 
+use App\Http\Controllers\Ajax\AjaxCourseController;
 use App\Http\Controllers\Ajax\AjaxProfileController;
 use App\Http\Controllers\Ajax\AjaxTrialController;
 use App\Http\Controllers\AuthController;
@@ -62,6 +63,10 @@ Route::group([
     Route::prefix('ajax')->name('ajax.')->group(function () {
         Route::post('/verifyEmail', [AjaxProfileController::class, 'verifyEmail'])->name('verifyEmail');
         Route::post('/trial', [AjaxTrialController::class, 'subscribe'])->name('trial.subscribe');
+
+        Route::get('/courses', [AjaxCourseController::class, 'getCourses'])->name('course.getCourses');
+        Route::get('/courses/get-new', [AjaxCourseController::class, 'getNewCourses'])->name('course.getNew');
+        Route::get('/courses/get-top-relate', [AjaxCourseController::class, 'getTopRelate'])->name('course.getTopRelate');
     });
 });
 Route::get('/', [HomepageController::class, '__invoke'])->name('index');

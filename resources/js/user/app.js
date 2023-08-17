@@ -170,41 +170,63 @@ window.getCookie = getCookie;
     /*=============================================
         =         Up Coming Movie Active        =
     =============================================*/
-    $('.ucm-active').owlCarousel({
-        loop: true,
-        margin: 30,
-        items: 4,
-        autoplay: false,
-        autoplayTimeout: 5000,
-        autoplaySpeed: 1000,
-        navText: ['<i class="fas fa-angle-left"></i>', '<i class="fas fa-angle-right"></i>'],
-        nav: true,
-        dots: false,
-        responsive: {
-            0: {
-                items: 1,
-                nav: false,
-            },
-            575: {
-                items: 2,
-                nav: false,
-            },
-            768: {
-                items: 2,
-                nav: false,
-            },
-            992: {
-                items: 3,
-            },
-            1200: {
-                items: 4
-            },
+        function initOwlCarousel() {
+            $('.ucm-active').owlCarousel({
+                loop: true,
+                margin: 30,
+                items: 4,
+                autoplay: false,
+                autoplayTimeout: 5000,
+                autoplaySpeed: 1000,
+                navText: ['<i class="fas fa-angle-left"></i>', '<i class="fas fa-angle-right"></i>'],
+                nav: true,
+                dots: false,
+                responsive: {
+                    0: {
+                        items: 1,
+                        nav: false,
+                    },
+                    575: {
+                        items: 2,
+                        nav: false,
+                    },
+                    768: {
+                        items: 2,
+                        nav: false,
+                    },
+                    992: {
+                        items: 3,
+                    },
+                    1200: {
+                        items: 4
+                    },
+                }
+            });
         }
-    });
-    $('a[data-toggle="tab"]').on('shown.bs.tab', function (e) {
-        $(".ucm-active").trigger('refresh.owl.carousel');
-    });
+        let url_owl = $('#ajaxGetCourseNew').data('ajax');
 
+        $.ajax({
+            type: "GET",
+            url: url_owl,
+            data: { type:0 },
+            dataType: "json"
+        }).done(function (response) {
+            $('#owl_free').html(response.data);
+        });
+
+        $.ajax({
+            type: "GET",
+            url: url_owl,
+            data: {type : 1},
+            dataType: "json"
+        }).done(function (response) {
+            $('#owl_premium').html(response.data);
+            initOwlCarousel();
+        });
+
+        $('a[data-toggle="tab"]').on('shown.bs.tab', function (e) {
+            initOwlCarousel();
+        });
 
     /*=============================================
         =         Up Coming Movie Active        =
@@ -383,29 +405,45 @@ window.getCookie = getCookie;
 
 jQueryBridget( 'imagesLoaded', imagesLoaded, $ );
 jQueryBridget( 'isotope', isotope, $ );
-    $('.tr-movie-active').imagesLoaded(function () {
-        // init Isotope
-        var $grid = $('.tr-movie-active').isotope({
-            itemSelector: '.grid-item',
-            percentPosition: true,
-            masonry: {
-                columnWidth: '.grid-sizer',
-            }
-        });
-        // filter items on button click
-        $('.tr-movie-menu-active').on('click', 'button', function () {
-            var filterValue = $(this).attr('data-filter');
-            $grid.isotope({ filter: filterValue });
-        });
 
-    });
-//for menu active class
-    $('.tr-movie-menu-active button').on('click', function (event) {
-        $(this).siblings('.active').removeClass('active');
-        $(this).addClass('active');
-        event.preventDefault();
+    $.ajax({
+        type: "GET",
+        url: $('#courses_top_related').data('ajax'),
+        dataType: "json",
+    }).done(function (response) {
+        $('#courses_top_related').html(response.data);
+        initImagesLoaded();
     });
 
+    if(window.location.pathname.slice(1) === "course") {
+        initImagesLoaded();
+    }
+
+    function initImagesLoaded() {
+        // init
+        $('.tr-movie-active').imagesLoaded(function () {
+                    // init Isotope
+                    var $grid = $('.tr-movie-active').isotope({
+                        itemSelector: '.grid-item',
+                        percentPosition: true,
+                        masonry: {
+                            columnWidth: '.grid-sizer',
+                        }
+                    });
+                    // filter items on button click
+                    $('.tr-movie-menu-active').on('click', 'button', function () {
+                        var filterValue = $(this).attr('data-filter');
+                        $grid.isotope({ filter: filterValue });
+                    });
+
+                });
+        //for menu active class
+        $('.tr-movie-menu-active button').on('click', function (event) {
+                    $(this).siblings('.active').removeClass('active');
+                    $(this).addClass('active');
+                    event.preventDefault();
+                });
+    }
 
     /*=============================================
         =    		 Aos Active  	         =

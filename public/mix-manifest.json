@@ -7,6 +7,7 @@
     "/css/user/app.css": "/css/user/app.css",
     "/css/admin/app.css": "/css/admin/app.css",
     "/css/user/auth.css": "/css/user/auth.css",
+    "/css/admin/tag.css": "/css/admin/tag.css",
     "/css/lib/toasting.css": "/css/lib/toasting.css",
     "/css/admin/style.css": "/css/admin/style.css",
     "/js/magnific-popup.js": "/js/magnific-popup.js",
@@ -18,6 +19,6 @@
     "/css/lib/select2.css": "/css/lib/select2.css",
     "/js/lib/wow.js": "/js/lib/wow.js",
     "/css/img/footer_bg.jpg": "/css/img/footer_bg.jpg",
-    "/css/bootstrap-datepicker.css": "/css/bootstrap-datepicker.css",
-    "/css/admin/tag.css": "/css/admin/tag.css"
+    "/css/img/nw_selarw.png": "/css/img/nw_selarw.png",
+    "/css/bootstrap-datepicker.css": "/css/bootstrap-datepicker.css"
 }

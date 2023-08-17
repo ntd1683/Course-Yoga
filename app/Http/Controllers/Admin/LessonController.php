@@ -34,18 +34,24 @@ class LessonController extends Controller
      */
     public function store(StoreLessonRequest $request)
     {
-        if(! $request->hasFile('image')) {
-            return redirect()->back()->withErrors(trans('Image Required'));
-        }
         try {
-            $file = $request->file('image');
-            $nameFile = 'lesson_' . Str::random(5) . '.' . $file->extension();
-            $filePath = $file->storeAs('images/lesson', $nameFile, 'public');
+            $linkEmbedded = $request->get('link_embedded');
+            if(! str_contains($linkEmbedded, "watch")) {
+                $linkEmbedded = explode("/", $linkEmbedded)[3];
+                $linkEmbedded = "https://www.youtube.com/watch?v=" . $linkEmbedded;
+            }
+            $filePath = null ;
+            if($request->hasFile('image')) {
+                $file = $request->file('image');
+                $nameFile = 'lesson_' . Str::random(5) . '.' . $file->extension();
+                $filePath = $file->storeAs('images/lesson', $nameFile, 'public');
+            }
 
             $lesson = Lesson::create([
                 ...$request->validated(),
                 'image' => $filePath,
                 'user_id' => auth()->user()->id,
+                'link_embedded' => $linkEmbedded,
             ]);
 
             if ($request->get('published')) {
@@ -55,7 +61,7 @@ class LessonController extends Controller
                 $lesson->save();
             }
 
-            if ($request->get('accepted') && auth()->user()->level === 3) {
+            if ($request->get('accepted') && auth()->user()->level === 2) {
                 $lesson->accept();
             }
 
@@ -95,6 +101,13 @@ class LessonController extends Controller
         try {
             $data = $request->validated();
 
+            $linkEmbedded = $request->get('link_embedded');
+            if(! str_contains($linkEmbedded, "watch")) {
+                $linkEmbedded = explode("/", $linkEmbedded)[3];
+                $linkEmbedded = "https://www.youtube.com/watch?v=" . $linkEmbedded;
+                $data['link_embedded'] = $linkEmbedded;
+            }
+
             $image = $lesson->image;
             if ($request->hasFile('image')) {
                 Storage::disk('public')->delete($image);
@@ -107,9 +120,20 @@ class LessonController extends Controller
 
             $lesson->update($data);
 
-            return redirect()->route('admin.course.index')->with('success', trans('Add Course Successfully'));
+            if ($request->get('published')) {
+                $lesson->publish();
+            } else {
+                $lesson->published = 0;
+                $lesson->save();
+            }
+
+            if ($request->get('accepted') && auth()->user()->level === 2) {
+                $lesson->accept();
+            }
+
+            return redirect()->route('admin.lesson.index')->with('success', trans('Add Course Successfully'));
         } catch (\Exception $e) {
-            return redirect()->route('admin.course.index')->withErrors(trans('Add Course Failure'));
+            return redirect()->route('admin.lesson.index')->withErrors(trans('Add Course Failure'));
         }
     }
 

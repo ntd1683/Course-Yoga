@@ -27,7 +27,7 @@
                 <div class="form-group">
                     <label for="view">{{ __('View') }}</label>
                     <input type="number" class="form-control"
-                           id="view" name="view" value="{{ old('view') ?: $course->view }}">
+                           id="view" name="view" value="{{ old('view') ?: $lesson->view }}">
                 </div>
                 <div class="form-group">
                     <label>{{ __('Image') }}</label>

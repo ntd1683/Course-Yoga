@@ -15,7 +15,7 @@
                 </div>
                 <div class="form-group">
                     <label for="link_embedded">{{ __('Link Embedded') }}</label>
-                    <input type="text" class="form-control" placeholder="{{ __('https://www.youtube.com/watch?v=xxxxxx') }}"
+                    <input type="text" class="form-control" placeholder="{{ __('https://www.youtube.com/playlist?list=xxxxxxxx') }}"
                            id="link_embedded" name="link_embedded" value="{{ old('link_embedded') ?: $course->link_embedded }}">
                 </div>
                 <div class="form-group">
@@ -36,7 +36,7 @@
                     <label for="type">{{ __('Type') }}</label>
                     <select class="form-control" id="type" name="type">
                         @foreach(\App\Enums\CourseTypeEnum::getArrayView() as $key => $value)
-                            <option value="{{ $value }}" @selected($value == option('type') || $course->type )>{{ $key }}</option>
+                            <option value="{{ $value }}" @selected($value == old('type') || $course->type )>{{ $key }}</option>
                         @endforeach
                     </select>
                 </div>
