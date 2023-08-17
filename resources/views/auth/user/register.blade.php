@@ -9,12 +9,12 @@
                         <input type="email" class="form-control" placeholder="Email" required name="email">
                     </div>
                     <div class="form-group">
-                        <input id="password-field" type="password" class="form-control" placeholder="Password"
+                        <input id="password-field" type="password" class="form-control" placeholder="{{ __('Password') }}"
                                required name="password">
                         <span toggle="#password-field" class="fa fa-fw fa-eye field-icon toggle-password"></span>
                     </div>
                     <div class="form-group">
-                        <input id="confirm-password-field" type="password" class="form-control" placeholder="Confirm Password"
+                        <input id="confirm-password-field" type="password" class="form-control" placeholder="{{ __('Confirm Password') }}"
                                required name="password_confirmation">
                         <span toggle="#confirm-password-field" class="fa fa-fw fa-eye field-icon toggle-password"></span>
                     </div>

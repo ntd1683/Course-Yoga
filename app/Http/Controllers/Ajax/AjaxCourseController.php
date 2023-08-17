@@ -4,10 +4,13 @@ namespace App\Http\Controllers\Ajax;
 
 use App\Enums\CourseTypeEnum;
 use App\Http\Controllers\Controller;
+use App\Http\Queries\CourseFilterQuery;
+use App\Http\Requests\CourseFilterRequest;
 use App\Http\Trait\ResponseTrait;
 use App\Models\Course;
 use App\Models\ManageCourse;
 use App\Models\User;
+use App\Services\CourseService;
 use Illuminate\Http\JsonResponse;
 use Illuminate\Http\Request;
 use Illuminate\Support\Str;
@@ -17,6 +20,10 @@ use Yajra\DataTables\DataTables;
 class AjaxCourseController extends Controller
 {
     use ResponseTrait;
+
+    public function __construct(protected CourseService $courseService){
+
+    }
 
     public function index()
     {
@@ -85,6 +92,36 @@ class AjaxCourseController extends Controller
         }
 
         return $this->errorResponse(trans("Missing Param ID Course"));
+    }
+
+    public function getCourses(CourseFilterRequest $request, CourseFilterQuery $courseFilterQuery) {
+        $perPage = $request->get('per_page') ?: 8;
+        $courses = $courseFilterQuery->apply(Course::query())->paginate($perPage);
+        $courses = $this->courseService->getClass($courses);
+        return view('course.user.partials.list', compact('courses'));
+    }
+
+    public function getNewCourses(Request $request): JsonResponse
+    {
+        $type = $request->get('type') ?: 0;
+        $courses = Course::query()->where('type', $type)->orderByDesc('created_at')->get();
+
+        $result = view('course.user.partials.list-new-course', compact('courses'))->render();
+        return $this->successResponse($result, trans("Get new courses"));
+    }
+
+    public function getTopRelate(): JsonResponse
+    {
+        $courses = Course::all();
+
+        $courses = $courses->sortBy([
+            ['count', 'desc'],
+            ['view', 'desc'],
+        ]);
+
+        $courses = $this->courseService->getClass($courses)->take(8);
+        $result = view('course.user.partials.list-relate', compact('courses'))->render();
+        return $this->successResponse($result, trans("Get new courses"));
     }
 
     public function destroy(Course $course): JsonResponse

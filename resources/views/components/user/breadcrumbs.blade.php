@@ -1,6 +1,6 @@
 @unless ($breadcrumbs->isEmpty())
     <!-- breadcrumb-area -->
-    <section class="breadcrumb-area breadcrumb-bg" data-background="{{ asset('images/bg/breadcrumb_bg.jpg') }}">
+    <section class="breadcrumb-area breadcrumb-bg" data-background="{{ asset('images/bg/breadcumb.jpg') }}">
         <div class="container">
             <div class="row">
                 <div class="col-12">

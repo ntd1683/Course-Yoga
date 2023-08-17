@@ -76,10 +76,10 @@
                 $('#copy_email').click(() => {
                     navigator.clipboard.writeText(value).then(function () {
                         // Sao chép thành công
-                        alert('Đã sao chép vào clipboard');
+                        alert('{{ __('Copied to clipboard') }}');
                     }).catch(function (error) {
                         // Xảy ra lỗi
-                        alert('Lỗi khi sao chép:' + error);
+                        alert('{{ __('Error while copying') }}:' + error);
                     });
                 })
             });

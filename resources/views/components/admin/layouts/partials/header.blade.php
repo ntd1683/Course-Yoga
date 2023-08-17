@@ -23,23 +23,6 @@
                 </div>
                 <div class="noti-content">
                     <ul class="notification-list">
-                        <li class="notification-message">
-                            <a href="admin-notification.html">
-                                <div class="media">
-<span class="avatar avatar-sm">
-<img class="avatar-img rounded-circle" alt="" src="">
-</span>
-                                    <div class="media-body">
-                                        <p class="noti-details">
-                                            <span class="noti-title">Thomas Herzberg have been subscribed</span>
-                                        </p>
-                                        <p class="noti-time">
-                                            <span class="notification-time">15 Sep 2020 10:20 PM</span>
-                                        </p>
-                                    </div>
-                                </div>
-                            </a>
-                        </li>
                     </ul>
                 </div>
                 <div class="topnav-dropdown-footer">
@@ -51,7 +34,7 @@
         <li class="nav-item dropdown">
             <a href="javascript:void(0)" class="dropdown-toggle user-link  nav-link" data-bs-toggle="dropdown">
 <span class="user-img">
-<img class="rounded-circle" src="{{ auth()->user()->name }}" width="40" alt="Avatar">
+    <i class="fas fa-user-circle"></i>
 </span>
             </a>
             <div class="dropdown-menu dropdown-menu-right">

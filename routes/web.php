@@ -1,8 +1,10 @@
 <?php
 
+use App\Http\Controllers\Ajax\AjaxCourseController;
 use App\Http\Controllers\Ajax\AjaxProfileController;
 use App\Http\Controllers\Ajax\AjaxTrialController;
 use App\Http\Controllers\AuthController;
+use App\Http\Controllers\ChangeLanguageController;
 use App\Http\Controllers\PricingController;
 use App\Http\Controllers\TestController;
 use App\Http\Controllers\User\CheckoutController;
@@ -61,6 +63,10 @@ Route::group([
     Route::prefix('ajax')->name('ajax.')->group(function () {
         Route::post('/verifyEmail', [AjaxProfileController::class, 'verifyEmail'])->name('verifyEmail');
         Route::post('/trial', [AjaxTrialController::class, 'subscribe'])->name('trial.subscribe');
+
+        Route::get('/courses', [AjaxCourseController::class, 'getCourses'])->name('course.getCourses');
+        Route::get('/courses/get-new', [AjaxCourseController::class, 'getNewCourses'])->name('course.getNew');
+        Route::get('/courses/get-top-relate', [AjaxCourseController::class, 'getTopRelate'])->name('course.getTopRelate');
     });
 });
 Route::get('/', [HomepageController::class, '__invoke'])->name('index');
@@ -71,5 +77,10 @@ Route::get('/course/{course}', [CourseController::class, 'show'])->name('course.
 //Contact
 Route::get('/contact', [ContactController::class, 'index'])->name('contact');
 Route::post('/contact', [ContactController::class, 'send'])->name('contact.send');
+
+//Language
+Route::group(['middleware' => 'locale'], function() {
+    Route::get('change-language/{language}', [ChangeLanguageController::class, '__invoke'])->name('change-language');
+});
 
 Route::get('/test', [TestController::class, 'test'])->name('test');

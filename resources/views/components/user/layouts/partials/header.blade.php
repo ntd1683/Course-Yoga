@@ -25,8 +25,8 @@
                                     ><a href="{{ route('course') }}">{{ __('Course') }}</a></li>
                                     <li
                                         @class(["active" => getNameRouteMain() == "pricing"])
-                                    ><a href="{{ route('pricing') }}">{{ __('Pricing') }}</a></li>
-                                    <li class="menu-item-has-children"><a href="#">{{ __('blog') }}</a>
+                                    ><a href="{{ route('pricing') }}">{{ __('Workshop') }}</a></li>
+                                    <li class="menu-item-has-children"><a href="#">{{ __('Blog') }}</a>
                                         <ul class="submenu">
                                             <li><a href="blog.html">{{ __('Our Blog') }}</a></li>
                                             <li><a href="blog-details.html">{{ __('Blog Details') }}</a></li>
@@ -34,7 +34,7 @@
                                     </li>
                                     <li
                                         @class(["active" => getNameRouteMain() == "contact"])
-                                    ><a href="{{ route('contact') }}">{{ __('contacts') }}</a></li>
+                                    ><a href="{{ route('contact') }}">{{ __('Contact') }}</a></li>
                                 </ul>
                             </div>
                             <div class="header-action d-none d-md-block">

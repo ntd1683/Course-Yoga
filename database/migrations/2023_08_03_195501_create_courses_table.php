@@ -17,7 +17,7 @@ return new class extends Migration
             $table->string('link_embedded')->nullable();
             $table->longText('description')->nullable();
             $table->integer('type');
-            $table->bigInteger('price');
+            $table->bigInteger('price')->nullable();
             $table->bigInteger('view')->nullable();
             $table->string('image');
             $table->timestamps();

@@ -41,6 +41,7 @@ mix
     .styles(['node_modules/select2/dist/css/select2.css'],
         'public/css/lib/select2.css')
     .copy('resources/css/img/footer_bg.jpg', 'public/css/img')
+    .copy('resources/css/img/nw_selarw.png', 'public/css/img')
     .disableNotifications();
 
 mix.postCss('resources/css/admin/style.css', 'public/css/admin')

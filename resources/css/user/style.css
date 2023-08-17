@@ -1398,6 +1398,11 @@ label {
     padding: 43px 49px;
     border-radius: 6px;
 }
+
+.services-img-wrap .download-btn:hover {
+    background: #070707 !important;
+}
+
 .download-btn img {
     max-width: 24px;
     transform: rotate(-90deg);
@@ -1742,7 +1747,7 @@ label {
 }
 .pagination-wrap ul li.active a,
 .pagination-wrap ul li a:hover {
-    color: #171d22;
+    color: #171d22 !important;
     border-color: #e4d804;
     background: #e4d804;
 }
@@ -3065,4 +3070,17 @@ label {
     opacity: 1;
     visibility: visible;
     transform: scale(1);
+}
+
+.form-input {
+    width: 100%;
+    border: 1px solid #1f1e24;
+    background: #1f1e24;
+    border-radius: 4px;
+    color: #bcbcbc;
+    box-shadow: 0px 1px 7px 0px rgba(0, 0, 0, 0.46);
+    font-weight: 500;
+    padding: 14px 25px;
+    margin-bottom: 30px;
+    transition: .3s linear;
 }
