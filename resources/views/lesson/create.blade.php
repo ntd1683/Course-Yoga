@@ -4,7 +4,7 @@
             <div class="page-header">
                 <div class="row">
                     <div class="col-12">
-                        <h3 class="page-title">{{ __('Create Course') }}</h3>
+                        <h3 class="page-title">{{ __('Create Lesson') }}</h3>
                     </div>
                 </div>
             </div>

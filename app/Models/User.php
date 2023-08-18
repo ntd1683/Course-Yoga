@@ -6,6 +6,7 @@ namespace App\Models;
 use Illuminate\Database\Eloquent\Casts\Attribute;
 use Illuminate\Database\Eloquent\Factories\HasFactory;
 use Illuminate\Database\Eloquent\Relations\BelongsToMany;
+use Illuminate\Database\Eloquent\Relations\HasMany;
 use Illuminate\Database\Eloquent\SoftDeletes;
 use Illuminate\Foundation\Auth\User as Authenticatable;
 use Illuminate\Notifications\Notifiable;
@@ -71,5 +72,28 @@ class User extends Authenticatable
     public function manageLecturers(): BelongsToMany
     {
         return $this->belongsToMany(Course::class, 'manage_courses');
+    }
+
+    public function manageSubscribe(): BelongsToMany
+    {
+        return $this->belongsToMany(Course::class, 'subcription_courses');
+    }
+
+    protected function revenue(): Attribute
+    {
+        return Attribute::get(function () {
+            $total = 0;
+
+            foreach ($this->orders as $order) {
+                $total += $order->total;
+            }
+
+            return $total;
+        })->shouldCache();
+    }
+
+    protected function orders(): HasMany
+    {
+        return $this->hasMany(Order::class);
     }
 }

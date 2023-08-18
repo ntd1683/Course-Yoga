@@ -12,8 +12,8 @@ final class OrderStatusEnum extends Enum
     public static function getArrayView(): array
     {
         return [
-            'Waiting' => self::WAITING,
-            'Paid' => self::PAID,
+            trans('Waiting') => self::WAITING,
+            trans('Paid') => self::PAID,
         ];
     }
 

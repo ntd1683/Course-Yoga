@@ -8,13 +8,13 @@
             <div class="page-header">
                 <div class="row">
                     <div class="col">
-                        <h3 class="page-title">{{ __('Courses') }}</h3>
+                        <h3 class="page-title">{{ __('Users') }}</h3>
                     </div>
                     <div class="col-auto text-right">
                         <a class="btn btn-white filter-btn" href="javascript:void(0);" id="filter_search">
                             <i class="fas fa-filter"></i>
                         </a>
-                        <a href="{{ route('admin.lesson.create') }}" class="btn btn-primary add-button ml-3">
+                        <a href="{{ route('admin.user.create') }}" class="btn btn-primary add-button ml-3">
                             <i class="fas fa-plus"></i>
                         </a>
                     </div>
@@ -27,18 +27,20 @@
                         <div class="row filter-row">
                             <div class="col-sm-6 col-md-5">
                                 <div class="form-group">
-                                    <label for="select_title">{{ __('Title') }}</label>
-                                    <select class="form-control select" name="title" id="select_title"
+                                    <label for="select_name">{{ __('Name') }}</label>
+                                    <select class="form-control select" name="name" id="select_name"
                                             style="text-align: center">
                                     </select>
                                 </div>
                             </div>
                             <div class="col-sm-6 col-md-5">
                                 <div class="form-group">
-                                    <label for="select_user">{{ __('Author') }}</label>
-                                    <select class="form-control select" id="select_user" style="text-align: center">
-                                        <option value="0">{{ __('All Users') }}</option>
-                                        <option value="{{ auth()->user()->name }}">{{ __('Me') }}</option>
+                                    <label for="level">{{ __('Level') }}</label>
+                                    <select class="form-control select" id="select_level" style="text-align: center">
+                                        <option value="-1">{{ __('ALL') }}</option>
+                                        @foreach(\App\Enums\UserLevelEnum::getArrayView() as $key => $value)
+                                            <option value="{{ $value }}">{{ $key }}</option>
+                                        @endforeach
                                     </select>
                                 </div>
                             </div>
@@ -56,11 +58,11 @@
                                     <thead>
                                     <tr>
                                         <th>#</th>
-                                        <th>{{ __('Title') }}</th>
-                                        <th>{{ __('View') }}</th>
-                                        <th>{{ __('Author') }}</th>
-                                        <th>{{ __('Publish') }}</th>
-                                        <th>{{ __('Accept') }}</th>
+                                        <th>{{ __('Name') }}</th>
+                                        <th>{{ __('Gender') }}</th>
+                                        <th>{{ __('Birthdate') }}</th>
+                                        <th>{{ __('Level') }}</th>
+                                        <th>{{ __('Revenue') }}</th>
                                         <th class="text-end">{{ __('Edit') }}</th>
                                         <th class="text-end">{{ __('Delete') }}</th>
                                     </tr>
@@ -85,37 +87,23 @@
                     select: true,
                     processing: true,
                     serverSide: true,
-                    ajax: '{!! route('admin.ajax.lesson') !!}',
+                    ajax: '{!! route('admin.ajax.users') !!}',
                     columns: [
                         { data: 'id', name: 'id' },
+                        { data: 'name', name: 'name' },
                         {
-                            data: 'title',
-                            render: function (data, type, row, meta) {
-                                return `<p title="${data.title}">${data.value}</p>`;
-                            }
-                        },
-                        { data: 'view', name: 'view' },
-                        { data: 'author', name: 'author' },
-                        {
-                            data: 'published',
+                            data: 'gender',
                             render: function (data, type, row, meta) {
                                 if(data === 1) {
-                                    return `<i class="fas fa-check"></i>`;
+                                    return `<i class="fas fa-male"></i> {{ __('Male') }}`;
                                 } else {
-                                    return `<i class="fas fa-times"></i>`;
+                                    return `<i class="fas fa-female"></i> {{ __('Female') }}`;
                                 }
                             }
                         },
-                        {
-                            data: 'accepted',
-                            render: function (data, type, row, meta) {
-                                if(data === 1) {
-                                    return `<i class="fas fa-check"></i>`;
-                                } else {
-                                    return `<i class="fas fa-times"></i>`;
-                                }
-                            }
-                        },
+                        { data: 'birthdate', name: 'birthdate' },
+                        { data: 'level', name: 'level' },
+                        { data: 'revenue', name: 'revenue' },
                         {
                             data: 'edit',
                             orderable: false,
@@ -139,11 +127,11 @@
                     ],
                 });
 
-                const selectTitle = $('#select_title');
+                const selectName = $('#select_name');
 
-                selectTitle.select2({
+                selectName.select2({
                     ajax: {
-                        url: "{{route('admin.ajax.lesson.search.title')}}",
+                        url: "{{route('admin.ajax.users.search.name')}}",
                         dataType: 'json',
                         delay: 250,
                         data: function (params) {
@@ -157,22 +145,26 @@
                             return {
                                 results: $.map(data, function (item) {
                                     return {
-                                        text: item.title,
-                                        id: item.title,
+                                        text: item.name,
+                                        id: item.name,
                                     }
                                 })
                             };
                         }
                     },
-                    placeholder: '{{ __('Enter Title') }}',
+                    placeholder: '{{ __('Enter Name') }}',
                     allowClear:true,
                 });
 
-                selectTitle.change(function () {
+                selectName.change(function () {
                     table.columns(1).search(this.value).draw();
                 });
-                $('#select_user').change(function () {
-                    table.columns(5).search(this.value).draw();
+                $('#select_level').change(function () {
+                    if(this.value != -1) {
+                        table.columns(4).search(this.value).draw();
+                    } else {
+                        table.columns(4).search('').draw();
+                    }
                 });
 
                 $(document).on('click','.btn-delete',function(e){
@@ -187,12 +179,21 @@
                             success: function (response) {
                                 toasting.create({
                                     "title": "Success",
-                                    "text": "{{ __('Delete Lesson Successfully') }}",
+                                    "text": response.message,
                                     "type": "success",
                                     "progressBarType": "rainbow"
                                 });
                                 table.draw();
                             },
+                            error: function (response) {
+                                console.log(response);
+                                toasting.create({
+                                    "title": "Error",
+                                    "text": response.responseJSON.message,
+                                    "type": "error",
+                                    "progressBarType": "rainbow"
+                                });
+                            }
                         });
                     }
                 });

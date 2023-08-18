@@ -17,8 +17,8 @@ final class TypeUserManageCourse extends Enum
     public static function getArrayView(): array
     {
         return [
-            'Collaborator' => self::COLLABORATOR,
-            'Author' => self::AUTHOR,
+            trans('Collaborator') => self::COLLABORATOR,
+            trans('Author') => self::AUTHOR,
         ];
     }
 

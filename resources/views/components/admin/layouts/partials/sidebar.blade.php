@@ -11,6 +11,9 @@
                 <li @class(["active" => getNameRouteMain() === "index"]) >
                     <a href="{{ route('admin.index') }}"><i class="fas fa-columns"></i> <span>{{ __('Dashboard') }}</span></a>
                 </li>
+                <li @class(["active" => getNameRouteMain() === "user"]) >
+                    <a href="{{ route('admin.user.index') }}"><i class="fas fa-users"></i> <span>{{ __('User') }}</span></a>
+                </li>
                 <li @class(["active" => getNameRouteMain() === "course"]) >
                     <a href="{{ route('admin.course.index') }}"><i class="fas fa-swatchbook"></i> <span>{{ __('Course') }}</span></a>
                 </li>

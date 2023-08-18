@@ -21,9 +21,7 @@ class AjaxCourseController extends Controller
 {
     use ResponseTrait;
 
-    public function __construct(protected CourseService $courseService){
-
-    }
+    public function __construct(protected CourseService $courseService){}
 
     public function index()
     {

@@ -17,8 +17,8 @@ final class CourseTypeEnum extends Enum
     public static function getArrayView(): array
     {
         return [
-            'Free' => self::FREE,
-            'Premium' => self::PREMIUM,
+            trans('Free') => self::FREE,
+            trans('Premium') => self::PREMIUM,
         ];
     }
 

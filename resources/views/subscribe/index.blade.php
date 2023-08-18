@@ -59,11 +59,6 @@
                                     </select>
                                 </div>
                             </div>
-                            <div class="col-sm-6 col-md-2 text-center">
-                                <div class="form-group">
-                                    <button class="btn btn-primary btn-block" type="submit">{{ __('Filter') }}</button>
-                                </div>
-                            </div>
                         </div>
                     </form>
                 </div>

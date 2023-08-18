@@ -13,9 +13,9 @@ final class ObjectTypeEnum extends Enum
     public static function getArrayView(): array
     {
         return [
-            'Course' => self::COURSE,
-            'Lesson' => self::LESSON,
-            'Blog' => self::BLOG,
+            trans('Course') => self::COURSE,
+            trans('Lesson') => self::LESSON,
+            trans('Blog') => self::BLOG,
         ];
     }
 

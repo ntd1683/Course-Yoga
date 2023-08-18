@@ -14,10 +14,10 @@ final class UserLevelEnum extends Enum
     public static function getArrayView(): array
     {
         return [
-            'User' => self::USER,
-            'UserVip' => self::USERVIP,
-            'Lecturer' => self::LECTURER,
-            'Admin' => self::ADMIN,
+            trans('User') => self::USER,
+            trans('UserVip') => self::USERVIP,
+            trans('Lecturer') => self::LECTURER,
+            trans('Admin') => self::ADMIN,
         ];
     }
 

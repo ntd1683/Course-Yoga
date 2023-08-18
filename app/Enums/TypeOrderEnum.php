@@ -13,9 +13,9 @@ final class TypeOrderEnum extends Enum
     public static function getArrayView(): array
     {
         return [
-            'Other' => self::OTHER,
-            'Vnpay' => self::VNPAY,
-            'Momo' => self::MOMO,
+            trans('Other') => self::OTHER,
+            trans('Vnpay') => self::VNPAY,
+            trans('Momo') => self::MOMO,
         ];
     }
 
