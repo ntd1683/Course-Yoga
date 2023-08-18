@@ -20,6 +20,9 @@
                 <li @class(["active" => getNameRouteMain() === "lesson"]) >
                     <a href="{{ route('admin.lesson.index') }}"><i class="fab fa-youtube"></i> <span>{{ __('Lesson') }}</span></a>
                 </li>
+                <li @class(["active" => getNameRouteMain() === "order"]) >
+                    <a href="{{ route('admin.order.index') }}"><i class="fas fa-wallet"></i> <span>{{ __('Order') }}</span></a>
+                </li>
                 <li @class(["active" => getNameRouteMain() === "contact"]) >
                     <a href="{{ route('admin.contact.index') }}"><i class="fas fa-question-circle"></i> <span>{{ __('Contact') }}</span></a>
                 </li>

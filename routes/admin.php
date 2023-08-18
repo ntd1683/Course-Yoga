@@ -4,6 +4,7 @@ use App\Http\Controllers\Admin\ContactController;
 use App\Http\Controllers\Admin\CourseController;
 use App\Http\Controllers\Admin\HomepageController;
 use App\Http\Controllers\Admin\LessonController;
+use App\Http\Controllers\Admin\OrderController;
 use App\Http\Controllers\Admin\SettingController;
 use App\Http\Controllers\Admin\SubscriptionController;
 use App\Http\Controllers\Admin\TrialController;
@@ -11,6 +12,7 @@ use App\Http\Controllers\Admin\UserController;
 use App\Http\Controllers\Ajax\AjaxContactController;
 use App\Http\Controllers\Ajax\AjaxCourseController;
 use App\Http\Controllers\Ajax\AjaxLessonController;
+use App\Http\Controllers\Ajax\AjaxOrderController;
 use App\Http\Controllers\Ajax\AjaxSubscriptionController;
 use App\Http\Controllers\Ajax\AjaxTrialController;
 use App\Http\Controllers\Ajax\AjaxUserController;
@@ -50,6 +52,7 @@ Route::group([
     Route::resource('subscribe', SubscriptionController::class)->parameters([
         'subscribe' => 'subscription'
     ]);
+    Route::resource('order', OrderController::class);
 
     Route::prefix('ajax')->name('ajax.')->group(function () {
         Route::get('course', [AjaxCourseController::class, 'index'])->name('course');
@@ -59,6 +62,12 @@ Route::group([
 
         Route::get('lesson', [AjaxLessonController::class, 'index'])->name('lesson');
         Route::get('lesson/title', [AjaxLessonController::class, 'title'])->name('lesson.search.title');
+
+        Route::get('order', [AjaxOrderController::class, 'index'])->name('order');
+        Route::get('order/code', [AjaxOrderController::class, 'code'])->name('order.search.code');
+        Route::get('order/name', [AjaxOrderController::class, 'name'])->name('order.search.name');
+        Route::get('order/course', [AjaxOrderController::class, 'course'])->name('order.search.title');
+        Route::get('order/referral-code', [AjaxOrderController::class, 'referralCode'])->name('order.search.referral-code');
 
         Route::get('trial', [AjaxTrialController::class, 'index'])->name('trial');
         Route::get('trial/phone', [AjaxTrialController::class, 'phone'])->name('trial.search.phone');
@@ -89,6 +98,8 @@ Route::group([
         Route::delete('course/destroy/{course}', [AjaxCourseController::class, 'destroy'])->name('course.destroy');
 
         Route::delete('lesson/destroy/{lesson}', [AjaxLessonController::class, 'destroy'])->name('lesson.destroy');
+
+        Route::delete('order/destroy/{order}', [AjaxOrderController::class, 'destroy'])->name('order.destroy');
 
         Route::delete('contact/destroy/{contact}', [AjaxContactController::class, 'destroy'])->name('contact.destroy');
 
