@@ -20,11 +20,6 @@ class OrderController extends Controller
 
     public function order(OrderRequest $request, Course $course)
     {
-        $total = $course->price;
-        if($request->filled("discount")) {
-            $discount = Discount::query()->where("code", $request->get("discount"))->first()->percent;
-            $total -= $course->price*$discount/100;
-        }
         try {
             DB::beginTransaction();
             $data = $request->validated();
@@ -34,7 +29,7 @@ class OrderController extends Controller
                 'user_id' => auth()->user()->id,
                 'course_id' => $course->id,
                 'status' => 0,
-                'total' => $total,
+                'total' => $course->price,
                 'code' => 'BILL_'.Str::random(6),
             ]);
 
@@ -44,8 +39,8 @@ class OrderController extends Controller
             ]);
 
             if ($request->get('discount')) {
-                $discount = Discount::query()->where('code', $request->get('discount'))->first();
-                $total = $discount->percent + $course->price;
+                $discount = Discount::query()->where("code", $request->get("discount"))->first();
+                $total = $course->price - $course->price*$discount->percent/100;
 
                 $order->total = $total;
                 $order->discount_id = $discount->id;
@@ -53,6 +48,7 @@ class OrderController extends Controller
             }
 
             DB::commit();
+
 
             if($request->type == 2) {
                 return redirect()->route('checkout.momo', $order);

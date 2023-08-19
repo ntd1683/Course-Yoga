@@ -119,9 +119,9 @@
                             data: 'status',
                             render: function (data, type, row, meta) {
                                 if(data === 1) {
-                                    return `<i class="fas fa-check"></i>`;
+                                    return `<span><i class="fas fa-check"></i>{{ __('Paid') }}</span>`;
                                 } else {
-                                    return `<i class="fas fa-times"></i>`;
+                                    return `<span><i class="fas fa-times"></i>{{ __('Waiting') }}</span>`;
                                 }
                             }
                         },
