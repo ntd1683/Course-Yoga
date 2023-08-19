@@ -8,7 +8,11 @@
                     <div class="col-lg-4">
                         <div class="section-title text-center text-lg-left">
                             <span class="sub-title">{{ __('Course') }}</span>
-                            <h2 class="title">{{ __('ALL Course') }}</h2>
+                            @if(! request()->has('user')|| request()->has('user') == 0)
+                                <h2 class="title">{{ __('ALL Course') }}</h2>
+                            @else
+                                <h2 class="title">{{ __('My Course') }}</h2>
+                            @endif
                         </div>
                     </div>
                     <div class="col-lg-8">
@@ -52,10 +56,27 @@
     <!-- newsletter-area-end -->
     @push('js')
         <script>
+            var getUrlParameter = function getUrlParameter(sParam) {
+                var sPageURL = window.location.search.substring(1),
+                    sURLVariables = sPageURL.split('&'),
+                    sParameterName,
+                    i;
+
+                for (i = 0; i < sURLVariables.length; i++) {
+                    sParameterName = sURLVariables[i].split('=');
+
+                    if (sParameterName[0] === sParam) {
+                        return sParameterName[1] === undefined ? true : decodeURIComponent(sParameterName[1]);
+                    }
+                }
+                return 0;
+            };
+
             let query;
             let sort;
             let perPage;
-            function filter(query = null,sort = null,perPage = null) {
+            let user = getUrlParameter("user");
+            function filter(user = 0, query = null,sort = null,perPage = null) {
                 $.ajax({
                     method: 'GET',
                     url: $('#form_get_courses').attr('action'),
@@ -63,6 +84,7 @@
                         "q": query,
                         "filter": sort,
                         "per_page": perPage,
+                        "user": user,
                     },
                     success: function (data) {
                         $('#list_courses').html(data);
@@ -72,17 +94,17 @@
 
             $('#search_query').keyup(() => {
                 query = $('#search_query').val();
-                filter(query,sort);
+                filter(user,query,sort);
             })
 
             $('#search_query').change(() => {
                 query = $('#search_query').val();
-                filter(query,sort)
+                filter(user,query,sort)
             })
 
             $('#search_filter').change(() => {
                 sort = $('#search_filter').val();
-                filter(query,sort)
+                filter(user,query,sort)
             })
         </script>
     @endpush

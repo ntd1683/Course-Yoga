@@ -25,6 +25,15 @@ class CourseFilterQuery
             $query->orderByDesc('title');
         }
 
+        if($this->request->query('user') == 1) {
+            $arrCourseId = [];
+            $myCourse = auth()->user()->manageSubscribe;
+            foreach ($myCourse as $course) {
+                $arrCourseId[] = $course->id;
+            }
+            $query->whereIn('id', $arrCourseId);
+        }
+
         return $query;
     }
 }

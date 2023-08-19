@@ -21,8 +21,13 @@
                                         <a href="{{ route('index') }}">{{ __('Home') }}</a>
                                     </li>
                                     <li
-                                        @class(["active" => getNameRouteMain() == "course"])
-                                    ><a href="{{ route('course') }}">{{ __('Course') }}</a></li>
+                                        @class(["menu-item-has-children", "active" => getNameRouteMain() == "course"])
+                                        ><a href="{{ route('course') }}">{{ __('Course') }}</a>
+                                        <ul class="submenu">
+                                            <li><a href="{{ route('course') }}">{{ __('ALL Course') }}</a></li>
+                                            <li><a href="{{ route('course') }}?user=1">{{ __('My Course') }}</a></li>
+                                        </ul>
+                                    </li>
                                     <li
                                         @class(["active" => getNameRouteMain() == "pricing"])
                                     ><a href="{{ route('pricing') }}">{{ __('Workshop') }}</a></li>

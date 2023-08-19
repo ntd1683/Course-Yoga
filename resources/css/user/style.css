@@ -1113,7 +1113,7 @@ label {
     font-size: 12px;
     font-weight: 600;
     color: #e3dfdf;
-    border: 2px solid #2d303d;
+    border: 1px solid #2d303d;
     padding: 11px 27px;
     margin-bottom: 0;
     transition: none !important;
@@ -3084,3 +3084,23 @@ label {
     margin-bottom: 30px;
     transition: .3s linear;
 }
+
+.btn-course {
+    border-radius: 50px !important;
+    background: #20212b !important;
+    font-size: 12px !important;
+    font-weight: 600 !important;
+    color: #e3dfdf !important;
+    border: 1px solid #2d303d !important;
+    padding: 11px 27px !important;
+    transition: none !important;
+    box-shadow: none;
+    margin: 10px 5px 0;
+    text-transform: capitalize;
+    cursor: pointer;
+}
+
+.btn-course .active {
+    border-color: #e4d804 !important;
+}
+
