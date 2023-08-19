@@ -2,19 +2,17 @@
 
 namespace App\Http\Requests;
 
-use App\Models\Course;
-use App\Models\Discount;
 use Illuminate\Foundation\Http\FormRequest;
 use Illuminate\Validation\Rule;
 
-class OrderRequest extends FormRequest
+class StoreDiscountRequest extends FormRequest
 {
     /**
      * Determine if the user is authorized to make this request.
      */
     public function authorize(): bool
     {
-        return auth()->check();
+        return auth()->user()->level >= 2;
     }
 
     /**
@@ -25,15 +23,11 @@ class OrderRequest extends FormRequest
     public function rules(): array
     {
         return [
-            'name' => ['required', 'string'],
-            'phone' => ['required', 'string'],
-            'type' => ['required', 'integer'],
-            'email' => ['required', 'email'],
-            'referral_code' => ['nullable', 'string'],
-            'discount' => [
-                'nullable',
-                Rule::exists(Discount::class, 'code')
-            ],
+            "name" => ["required", "string"],
+            "code" => ["required", "string", "unique:discounts"],
+            "percent" => ["required", "string", "numeric", "min:0", "max:100"],
+            "active" => ["required", Rule::in([0,1])],
+            "expired_at" => ["required", "date"],
         ];
     }
 }

@@ -23,6 +23,9 @@
                 <li @class(["active" => getNameRouteMain() === "order"]) >
                     <a href="{{ route('admin.order.index') }}"><i class="fas fa-wallet"></i> <span>{{ __('Order') }}</span></a>
                 </li>
+                <li @class(["active" => getNameRouteMain() === "discount"]) >
+                    <a href="{{ route('admin.discount.index') }}"><i class="fas fa-percent"></i> <span>{{ __('Discount') }}</span></a>
+                </li>
                 <li @class(["active" => getNameRouteMain() === "contact"]) >
                     <a href="{{ route('admin.contact.index') }}"><i class="fas fa-question-circle"></i> <span>{{ __('Contact') }}</span></a>
                 </li>

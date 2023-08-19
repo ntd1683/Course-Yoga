@@ -3,8 +3,10 @@
 namespace App\Http\Controllers\Admin;
 
 use App\Http\Controllers\Controller;
+use App\Http\Requests\StoreDiscountRequest;
 use App\Http\Requests\StoreUserRequest;
 use App\Http\Requests\UpdateUserRequest;
+use App\Models\Discount;
 use App\Models\User;
 use Carbon\Carbon;
 
@@ -23,28 +25,25 @@ class DiscountController extends Controller
      */
     public function create()
     {
-        return view('users.create');
+        return view('discount.create');
     }
 
     /**
      * Store a newly created resource in storage.
      */
-    public function store(StoreUserRequest $request)
+    public function store(StoreDiscountRequest $request)
     {
-        $birthdate = Carbon::parse($request->birthdate)->format('Y-m-d');
-        $password = Hash::make('12345678');
-        $user = User::create([
+        $expired_at = Carbon::parse($request->get('expired_at'))->format('Y-m-d');
+        if( $expired_at < now()) {
+            return redirect()->route('admin.discount.index')->withErrors('The expiry date must be before the current time');
+        }
+
+        Discount::create([
             ...$request->validated(),
-            'password' => $password,
-            'birthdate' => $birthdate,
+            "user_id" => auth()->user()->id,
+            "expired_at" => $expired_at,
         ]);
-
-        Mail::send('email.create-user', compact('user'), function ($email) use ($user) {
-            $email->subject(option('site_name') . trans(' - invitation to join'));
-            $email->to($user->email, $user->name);
-        });
-
-        return redirect()->route('admin.user.index')->with('success', trans('Add User Successfully'));
+        return redirect()->route('admin.discount.index')->with('success', trans('Add Discount Successfully'));
     }
 
     /**
@@ -58,37 +57,32 @@ class DiscountController extends Controller
     /**
      * Show the form for editing the specified resource.
      */
-    public function edit(User $user)
+    public function edit(Discount $discount)
     {
-        $user->birthdate = Carbon::parse($user->birthdate)->format('Y-m-d');
-        return view('users.edit', compact('user'));
+        return view('discount.edit', compact('discount'));
     }
 
     /**
      * Update the specified resource in storage.
      */
-    public function update(UpdateUserRequest $request, User $user)
+    public function update(StoreDiscountRequest $request, Discount $discount)
     {
         $data = $request->validated();
 
-        $user->update($data);
+        $discount->update($data);
 
-        return redirect()->route('admin.user.index')->with('success', trans('Edit User Successfully'));
+        return redirect()->route('admin.discount.index')->with('success', trans('Edit Successfully'));
     }
 
     /**
      * Remove the specified resource from storage.
      */
-    public function destroy(User $user)
+    public function destroy(Discount $discount)
     {
-        if (auth()->user()->level !== 3 || auth()->user()->id === $user->id) {
-            return $this->errorResponse(trans('You do not have permission to delete this !'));
-        }
-
-        $user->delete();
+        $discount->delete();
 
         return redirect()
-            ->route('admin.user.index')
+            ->route('admin.discount.index')
             ->with('success', trans('Delete Successfully'));
     }
 }

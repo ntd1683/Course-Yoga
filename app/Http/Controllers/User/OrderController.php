@@ -20,7 +20,12 @@ class OrderController extends Controller
 
     public function order(OrderRequest $request, Course $course)
     {
-//        try {
+        $total = $course->price;
+        if($request->filled("discount")) {
+            $discount = Discount::query()->where("code", $request->get("discount"))->first()->percent;
+            $total -= $course->price*$discount/100;
+        }
+        try {
             DB::beginTransaction();
             $data = $request->validated();
 
@@ -29,7 +34,7 @@ class OrderController extends Controller
                 'user_id' => auth()->user()->id,
                 'course_id' => $course->id,
                 'status' => 0,
-                'total' => $course->price,
+                'total' => $total,
                 'code' => 'BILL_'.Str::random(6),
             ]);
 
@@ -54,9 +59,9 @@ class OrderController extends Controller
             } else {
                 return redirect()->route('checkout.vnpay', $order);
             }
-//        } catch (\Exception $e) {
-//            DB::rollBack();
-//            return redirect()->route('course.show', $course)->withErrors(trans('Error Unknown'));
-//        }
+        } catch (\Exception $e) {
+            DB::rollBack();
+            return redirect()->route('course.show', $course)->withErrors(trans('Error Unknown'));
+        }
     }
 }

@@ -40,8 +40,41 @@
                                            name="discount"
                                            value="{{ old('discount') }}" class="form-control order">
                                     <div class="input-group-append">
-                                        <button class="btn order" type="button">{{ __('Apply') }}</button>
+                                        <button class="btn order" type="button" onclick="checkDiscount()">{{ __('Apply') }}</button>
                                     </div>
+                                    @push('js')
+                                        <script>
+                                            function checkDiscount() {
+                                                let value = $('#discount').val();
+
+                                                $.ajax({
+                                                    method: 'GET',
+                                                    url: "{{ route('ajax.discount.getDiscount') }}",
+                                                    data: {
+                                                        "code": value,
+                                                    },
+                                                    success: function (data) {
+                                                        $('#discount').css('border-color', '#00ff5e');
+                                                        $('#discount').prop('readonly', true);
+                                                        let price = $('#price').html();
+                                                        let discount = (price*data.data)/100;
+                                                        $('#price_discount').html("- " + discount);
+                                                        let total = price - discount;
+                                                        $('#total').html(total);
+                                                        console.log(total,price,discount)
+                                                    },error: function (data) {
+                                                        $('#discount').css('border-color', 'red')
+                                                        toasting.create({
+                                                            "title": "Error",
+                                                            "text": data.responseJSON.message,
+                                                            "type": "error",
+                                                            "progressBarType": "rainbow"
+                                                        });
+                                                    }
+                                                });
+                                            }
+                                        </script>
+                                    @endpush
                                 </div>
                                 <hr style="margin-top: 0; opacity:25%;" class="mb-3">
                                 <h4 class="text-danger">{{ __('Payment Method') }}</h4>
@@ -86,7 +119,9 @@
                                 <hr style="margin-top: 0; opacity:25%;" class="mb-3">
                                 <div class="text-right">
                                     <h4 style="color:yellow;">{{ __('Total') }}</h4>
-                                    <h5>{{ $course->price }}</h5>
+                                    <h5 id="price">{{ $course->price }}</h5>
+                                    <h5 id="price_discount"></h5>
+                                    <h5 id="total"></h5>
                                     <button class="btn">{{ __('Buy') }}</button>
                                 </div>
                             </form>

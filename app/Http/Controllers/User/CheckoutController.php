@@ -171,51 +171,56 @@ class CheckoutController extends Controller
 
     public function momo(Order $order)
     {
-        $endpoint = "https://test-payment.momo.vn/v2/gateway/api/create";
+        try {
+            $endpoint = "https://test-payment.momo.vn/v2/gateway/api/create";
 
-        $partnerCode = config('services.momo.partnerCode');
-        $accessKey = config('services.momo.accessKey');
-        $secretKey = config('services.momo.secretKey');
+            $partnerCode = config('services.momo.partnerCode');
+            $accessKey = config('services.momo.accessKey');
+            $secretKey = config('services.momo.secretKey');
 
-        $orderInfo = "Course Payments - " . $order->course_id;
-        $amount = $order->total;
-        $orderId = $order->code;
-        $redirectUrl = route('return.momo');
-        $ipnUrl = route('return.momo');
-        $extraData = "";
+            $orderInfo = "Course Payments - " . $order->course_id;
+            $amount = $order->total;
+            $orderId = $order->code;
+            $redirectUrl = route('return.momo');
+            $ipnUrl = route('return.momo');
+            $extraData = "";
 
-        $requestId = time() . "";
-        $requestType = "captureWallet";
+            $requestId = time() . "";
+            $requestType = "captureWallet";
 
-        $rawHash = "accessKey=" . $accessKey . "&amount=" . $amount . "&extraData=" . $extraData . "&ipnUrl=" . $ipnUrl . "&orderId=" . $orderId . "&orderInfo=" . $orderInfo . "&partnerCode=" . $partnerCode . "&redirectUrl=" . $redirectUrl . "&requestId=" . $requestId . "&requestType=" . $requestType;
+            $rawHash = "accessKey=" . $accessKey . "&amount=" . $amount . "&extraData=" . $extraData . "&ipnUrl=" . $ipnUrl . "&orderId=" . $orderId . "&orderInfo=" . $orderInfo . "&partnerCode=" . $partnerCode . "&redirectUrl=" . $redirectUrl . "&requestId=" . $requestId . "&requestType=" . $requestType;
 
-        $signature = hash_hmac("sha256", $rawHash, $secretKey);
+            $signature = hash_hmac("sha256", $rawHash, $secretKey);
 
-        $data = array(
-            'partnerCode' => $partnerCode,
-            'partnerName' => option('site_name'),
-            "storeId" => trans('Course Payment'),
-            'requestId' => $requestId,
-            'amount' => $amount,
-            'orderId' => $orderId,
-            'orderInfo' => $orderInfo,
-            'redirectUrl' => $redirectUrl,
-            'ipnUrl' => $ipnUrl,
-            'lang' => 'vi',
-            'extraData' => $extraData,
-            'requestType' => $requestType,
-            'signature' => $signature
-        );
+            $data = array(
+                'partnerCode' => $partnerCode,
+                'partnerName' => option('site_name'),
+                "storeId" => trans('Course Payment'),
+                'requestId' => $requestId,
+                'amount' => $amount,
+                'orderId' => $orderId,
+                'orderInfo' => $orderInfo,
+                'redirectUrl' => $redirectUrl,
+                'ipnUrl' => $ipnUrl,
+                'lang' => 'vi',
+                'extraData' => $extraData,
+                'requestType' => $requestType,
+                'signature' => $signature
+            );
 
-        $result = $this->execPostRequest($endpoint, json_encode($data));
+            $result = $this->execPostRequest($endpoint, json_encode($data));
 
-        $jsonResult = json_decode($result, true);
+            $jsonResult = json_decode($result, true);
 
-        if($jsonResult['resultCode'] == '0'){
-            return redirect()->to($jsonResult['payUrl']);
+            if($jsonResult['resultCode'] == '0'){
+                return redirect()->to($jsonResult['payUrl']);
+            }
+
+            return redirect()->route('index')->withErrors($jsonResult['message']);
+        } catch (\Exception $e) {
+            return redirect()->route('index')->withErrors(trans("Error Unknown! Please try again later"));
         }
 
-        return redirect()->route('index')->withErrors($jsonResult['message']);
     }
 
     public function processMomo(Request $request)

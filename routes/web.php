@@ -1,6 +1,7 @@
 <?php
 
 use App\Http\Controllers\Ajax\AjaxCourseController;
+use App\Http\Controllers\Ajax\AjaxDiscountController;
 use App\Http\Controllers\Ajax\AjaxProfileController;
 use App\Http\Controllers\Ajax\AjaxTrialController;
 use App\Http\Controllers\AuthController;
@@ -67,6 +68,8 @@ Route::group([
         Route::get('/courses', [AjaxCourseController::class, 'getCourses'])->name('course.getCourses');
         Route::get('/courses/get-new', [AjaxCourseController::class, 'getNewCourses'])->name('course.getNew');
         Route::get('/courses/get-top-relate', [AjaxCourseController::class, 'getTopRelate'])->name('course.getTopRelate');
+
+        Route::get('/discount', [AjaxDiscountController::class, 'getDiscount'])->name('discount.getDiscount');
     });
 });
 Route::get('/', [HomepageController::class, '__invoke'])->name('index');

@@ -1,3 +1,6 @@
+@props([
+    'jsOption' => '',
+])
 @push('css')
     <link rel="stylesheet" href="{{ asset('css/bootstrap-datepicker.css') }}">
     <style>
@@ -19,6 +22,7 @@
     <script>
         $(function(){
             $('.datepicker').datepicker();
+            {!! $jsOption !!}
         });
     </script>
 @endpush
