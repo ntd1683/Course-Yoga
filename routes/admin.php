@@ -10,6 +10,7 @@ use App\Http\Controllers\Admin\SettingController;
 use App\Http\Controllers\Admin\SubscriptionController;
 use App\Http\Controllers\Admin\TrialController;
 use App\Http\Controllers\Admin\UserController;
+use App\Http\Controllers\Ajax\AjaxChartJs;
 use App\Http\Controllers\Ajax\AjaxContactController;
 use App\Http\Controllers\Ajax\AjaxCourseController;
 use App\Http\Controllers\Ajax\AjaxDiscountController;
@@ -98,6 +99,9 @@ Route::group([
     Route::get('/settings', [SettingController::class, 'index'])->name('settings');
     Route::post('/settings', [SettingController::class, 'store'])->name('settings.store');
     Route::prefix('ajax')->name('ajax.')->group(function () {
+//        Homepage
+        Route::get('chart-js/revenue', [AjaxChartJs::class, 'revenue'])->name('chart-js.revenue');
+
         Route::get('user', [AjaxUserController::class, 'index'])->name('users');
         Route::get('user/get-lecturers', [AjaxUserController::class, 'lecturers'])->name('user.search.lecturers');
         Route::get('user/get-name', [AjaxUserController::class, 'name'])->name('users.search.name');

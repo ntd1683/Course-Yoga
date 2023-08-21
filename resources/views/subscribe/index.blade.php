@@ -163,8 +163,8 @@
                             return {
                                 results: $.map(data, function (item) {
                                     return {
-                                        text: item.user.name,
-                                        id: item.user.name,
+                                        text: item.name,
+                                        id: item.name,
                                     }
                                 })
                             };
@@ -196,8 +196,8 @@
                             return {
                                 results: $.map(data, function (item) {
                                     return {
-                                        text: item.user.email,
-                                        id: item.user.email,
+                                        text: item.email,
+                                        id: item.email,
                                     }
                                 })
                             };
@@ -229,8 +229,8 @@
                             return {
                                 results: $.map(data, function (item) {
                                     return {
-                                        text: item.course.title,
-                                        id: item.course.title,
+                                        text: item.title,
+                                        id: item.title,
                                     }
                                 })
                             };
@@ -253,7 +253,7 @@
                 });
 
                 $(document).on('click','.btn-delete',function(e){
-                    let confirm_delete = confirm("Bạn có chắc muốn xoá không ?");
+                    let confirm_delete = confirm("Are you sure you want to delete it?");
                     if (confirm_delete === true) {
                         let form = $(this).parents('form');
                         $.ajax({

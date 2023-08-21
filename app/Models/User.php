@@ -79,20 +79,34 @@ class User extends Authenticatable
         return $this->belongsToMany(Course::class, 'subcription_courses');
     }
 
-    protected function revenue(): Attribute
+    protected function countCourses(): Attribute
     {
         return Attribute::get(function () {
             $total = 0;
 
-            foreach ($this->orders as $order) {
-                $total += $order->total;
+            foreach ($this->manageSubscribe as $course) {
+                $total += 1;
             }
 
             return $total;
         })->shouldCache();
     }
 
-    protected function orders(): HasMany
+    protected function revenue(): Attribute
+    {
+        return Attribute::get(function () {
+            $total = 0;
+
+            foreach ($this->orders as $order) {
+                if($order->status == 1) {
+                    $total += $order->total;
+                }
+            }
+            return $total;
+        })->shouldCache();
+    }
+
+    public function orders(): HasMany
     {
         return $this->hasMany(Order::class);
     }

@@ -7,6 +7,7 @@ use App\Http\Trait\ResponseTrait;
 use App\Models\Contact;
 use App\Models\Course;
 use App\Models\SubcriptionCourse;
+use App\Models\User;
 use Illuminate\Database\Eloquent\Builder;
 use Illuminate\Http\JsonResponse;
 use Illuminate\Http\Request;
@@ -46,29 +47,32 @@ class AjaxSubscriptionController extends Controller
 
     public function course(Request $request)
     {
-        $subscription = SubcriptionCourse::query()->with('course');
         $q = $request->get('q');
-        return $subscription->whereHas('course', function ($query) use ($q) {
-            $query->where('title', 'like', '%' . $q . '%');
-        })->get();
+        $arrId = SubcriptionCourse::query()->pluck('course_id');
+        return Course::query()
+            ->whereIn('id', $arrId)
+            ->where('title', 'like', '%' . $q . '%')
+            ->get();
     }
 
     public function name(Request $request)
     {
-        $subscription = SubcriptionCourse::query()->with('user');
         $q = $request->get('q');
-        return $subscription->whereHas('user', function ($query) use ($q) {
-                $query->where('name', 'like', '%' . $q . '%');
-            })->get();
+        $arrId = SubcriptionCourse::query()->pluck('user_id');
+        return User::query()
+            ->whereIn('id', $arrId)
+            ->where('name', 'like', '%' . $q . '%')
+            ->get();
     }
 
     public function email(Request $request)
     {
-        $subscription = SubcriptionCourse::query()->with('user');
         $q = $request->get('q');
-        return $subscription->whereHas('user', function ($query) use ($q) {
-                $query->where('email', 'like', '%' . $q . '%');
-            })->get();
+        $arrId = SubcriptionCourse::query()->pluck('user_id');
+        return User::query()
+            ->whereIn('id', $arrId)
+            ->where('email', 'like', '%' . $q . '%')
+            ->get();
     }
 
     public function destroy(SubcriptionCourse $subscription): JsonResponse

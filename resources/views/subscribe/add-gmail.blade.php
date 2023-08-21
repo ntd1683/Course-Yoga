@@ -65,11 +65,9 @@
                 $('#copy_email').click(() => {
                     let value = $('#email').val();
                     navigator.clipboard.writeText(value).then(function () {
-                        // Sao chép thành công
-                        alert('Đã sao chép vào clipboard');
+                        alert('Copied to clipboard');
                     }).catch(function (error) {
-                        // Xảy ra lỗi
-                        alert('Lỗi khi sao chép:' + error);
+                        alert('Error while copying:' + error);
                     });
                 })
 

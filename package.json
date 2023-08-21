@@ -19,6 +19,7 @@
         "aos": "^2.3.4",
         "bootstrap": "^4.6.0",
         "bootstrap-datepicker": "^1.10.0",
+        "chart.js": "^4.3.3",
         "datatables.net-bs5": "^1.13.6",
         "imagesloaded": "^5.0.0",
         "isotope-layout": "^3.0.6",

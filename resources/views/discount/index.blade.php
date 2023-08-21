@@ -252,7 +252,7 @@
                 });
 
                 $(document).on('click','.btn-delete',function(e){
-                    let confirm_delete = confirm("Bạn có chắc muốn xoá không ?");
+                    let confirm_delete = confirm("Are you sure you want to delete it?");
                     if (confirm_delete === true) {
                         let form = $(this).parents('form');
                         $.ajax({

@@ -42,6 +42,7 @@ mix
         'public/css/lib/select2.css')
     .copy('resources/css/img/footer_bg.jpg', 'public/css/img')
     .copy('resources/css/img/nw_selarw.png', 'public/css/img')
+    .js('resources/js/admin/chart.js', 'public/js/admin')
     .disableNotifications();
 
 mix.postCss('resources/css/admin/style.css', 'public/css/admin')

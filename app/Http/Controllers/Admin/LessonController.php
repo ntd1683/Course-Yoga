@@ -131,17 +131,21 @@ class LessonController extends Controller
                 $lesson->accept();
             }
 
-            return redirect()->route('admin.lesson.index')->with('success', trans('Add Course Successfully'));
+            return redirect()->route('admin.lesson.index')->with('success', trans('Update Lesson Successfully'));
         } catch (\Exception $e) {
-            return redirect()->route('admin.lesson.index')->withErrors(trans('Add Course Failure'));
+            return redirect()->route('admin.lesson.index')->withErrors(trans('Update Lesson Failure'));
         }
     }
 
     /**
      * Remove the specified resource from storage.
      */
-    public function destroy(string $id)
+    public function destroy(Lesson $lesson)
     {
-        //
+        $lesson->delete();
+
+        return redirect()
+            ->route('admin.lesson.index')
+            ->with('success', trans('Delete Lesson Successfully'));
     }
 }
