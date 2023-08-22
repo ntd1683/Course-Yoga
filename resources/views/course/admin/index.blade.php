@@ -14,8 +14,11 @@
                         <a class="btn btn-white filter-btn" href="javascript:void(0);" id="filter_search">
                             <i class="fas fa-filter"></i>
                         </a>
-                        <a href="{{ route('admin.course.create') }}" class="btn btn-primary add-button ml-3">
+                        <a href="{{ route('admin.course.create') }}" class="btn btn-primary add-button ml-3" title="{{ __('create') }}">
                             <i class="fas fa-plus"></i>
+                        </a>
+                        <a href="{{ route('admin.course.import') }}" class="btn btn-primary add-button ml-3" title="{{ __('import google sheet') }}">
+                            <i class="fas fa-file-import"></i>
                         </a>
                     </div>
                 </div>

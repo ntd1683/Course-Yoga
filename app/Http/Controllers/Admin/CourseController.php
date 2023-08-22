@@ -4,17 +4,16 @@ namespace App\Http\Controllers\Admin;
 
 use App\Http\Controllers\Controller;
 use App\Http\Requests\StoreCourseRequest;
+use App\Http\Trait\ResponseTrait;
 use App\Models\Course;
 use App\Models\ManageCourse;
-use App\Models\Media;
-use App\Services\ImageService;
-use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Storage;
 use Illuminate\Support\Str;
 use Illuminate\View\View;
 
 class CourseController extends Controller
 {
+    use ResponseTrait;
     /**
      * Display a listing of the resource.
      */
@@ -57,6 +56,11 @@ class CourseController extends Controller
         } catch (\Exception $e) {
             return redirect()->route('admin.course.index')->withErrors(trans('Add Course Failure'));
         }
+    }
+
+    public function import()
+    {
+        return view('course.admin.import');
     }
 
     /**

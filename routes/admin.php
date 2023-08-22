@@ -49,6 +49,8 @@ Route::group([
     Route::post('/profile', [SettingController::class, 'updateProfile'])->name('profile.store');
 
     Route::resource('course', CourseController::class);
+    Route::get('course/import/sheet', [CourseController::class, 'import'])->name('course.import');
+
     Route::resource('lesson', LessonController::class);
     Route::resource('contact', ContactController::class);
     Route::resource('trial', TrialController::class);
@@ -59,32 +61,41 @@ Route::group([
     Route::resource('discount', DiscountController::class);
 
     Route::prefix('ajax')->name('ajax.')->group(function () {
+//      Course
         Route::get('course', [AjaxCourseController::class, 'index'])->name('course');
         Route::get('course/title', [AjaxCourseController::class, 'title'])->name('course.search.title');
         Route::get('course/lessons', [AjaxCourseController::class, 'lessons'])->name('course.search.lessons');
         Route::get('course/users', [AjaxCourseController::class, 'users'])->name('course.search.users');
+//      Import
+        Route::post('course/import/sheet', [AjaxCourseController::class, 'importSheet'])->name('course.import.sheet');
 
+//      Lesson
         Route::get('lesson', [AjaxLessonController::class, 'index'])->name('lesson');
         Route::get('lesson/title', [AjaxLessonController::class, 'title'])->name('lesson.search.title');
 
+//      Order
         Route::get('order', [AjaxOrderController::class, 'index'])->name('order');
         Route::get('order/code', [AjaxOrderController::class, 'code'])->name('order.search.code');
         Route::get('order/name', [AjaxOrderController::class, 'name'])->name('order.search.name');
         Route::get('order/course', [AjaxOrderController::class, 'course'])->name('order.search.title');
         Route::get('order/referral-code', [AjaxOrderController::class, 'referralCode'])->name('order.search.referral-code');
 
+//      Discount
         Route::get('discount', [AjaxDiscountController::class, 'index'])->name('discount');
         Route::get('discount/code', [AjaxDiscountController::class, 'code'])->name('discount.search.code');
         Route::get('discount/name', [AjaxDiscountController::class, 'name'])->name('discount.search.name');
         Route::get('discount/user', [AjaxDiscountController::class, 'user'])->name('discount.search.user');
 
+//      Trial
         Route::get('trial', [AjaxTrialController::class, 'index'])->name('trial');
         Route::get('trial/phone', [AjaxTrialController::class, 'phone'])->name('trial.search.phone');
 
+//      Contact
         Route::get('contact', [AjaxContactController::class, 'index'])->name('contact');
         Route::get('contact/title', [AjaxContactController::class, 'title'])->name('contact.search.title');
         Route::get('contact/name', [AjaxContactController::class, 'name'])->name('contact.search.name');
 
+//      Subscription
         Route::get('subscription', [AjaxSubscriptionController::class, 'index'])->name('subscribe');
         Route::get('subscription/course', [AjaxSubscriptionController::class, 'course'])->name('subscribe.search.course');
         Route::get('subscription/name', [AjaxSubscriptionController::class, 'name'])->name('subscribe.search.name');

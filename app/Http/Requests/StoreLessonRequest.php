@@ -3,6 +3,7 @@
 namespace App\Http\Requests;
 
 use App\Enums\CourseTypeEnum;
+use App\Models\Lesson;
 use Illuminate\Foundation\Http\FormRequest;
 use Illuminate\Validation\Rule;
 use Illuminate\Validation\Rules\File;
@@ -25,7 +26,7 @@ class StoreLessonRequest extends FormRequest
     public function rules(): array
     {
         return [
-            'title' => ['required', 'string'],
+            'title' => ['required', 'string', Rule::unique(Lesson::class, 'title')],
             'course_id' => ['required', 'int'],
             'description' => ['required','string'],
             'link_embedded' => ['nullable', 'string'],
