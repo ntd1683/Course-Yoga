@@ -14,7 +14,6 @@ class HomepageController extends Controller
 {
     public function __invoke()
     {
-//        statistical
         $statistical = [];
         $statistical['count_users'] = User::query()
             ->whereBetween('created_at', [new \DateTime('first day of this month'), new \DateTime('last day of this month')])

@@ -18,18 +18,20 @@ class AjaxChartJs extends Controller
             ->when($filter == 0, function ($q) {
                 return $q
                     ->selectRaw("DATE_FORMAT(created_at,'%d-%m-%Y') as time")
-                    ->where('created_at', '>', now()->subDays(30)->endOfDay());
+                    ->where('created_at', '>', now()->subDays(30)->endOfDay())
+                    ->orderByRaw('STR_TO_DATE(time, "%d-%m-%Y") ASC');
             })
             ->when($filter == 1, function ($q) {
                 return $q
                     ->selectRaw("DATE_FORMAT(created_at,'%m-%Y') as time")
-                    ->where('created_at', '>', now()->subMonths(12)->endOfMonth());
+                    ->where('created_at', '>', now()->subMonths(12)->endOfMonth())
+                    ->orderByRaw('STR_TO_DATE(time, "%m-%Y") ASC');
             })
             ->when($filter == 2, function ($q) {
                 return $q
-                    ->selectRaw("DATE_FORMAT(created_at,'%Y') as time");
+                    ->selectRaw("DATE_FORMAT(created_at,'%Y') as time")
+                    ->orderByRaw('STR_TO_DATE(time, "%Y") ASC');
             })
-            ->orderByDesc('time')
             ->groupBy('time')
             ->where('status', 1)
             ->get();

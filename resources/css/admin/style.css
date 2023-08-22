@@ -34,60 +34,66 @@ Version      : 1.0
 24. Responsive
 
 ========================================*/
+/* #Font Face */
+@font-face {
+    font-family: 'Arima';
+    font-style: normal;
+    font-weight: 100;
+    font-display: swap;
+    src: url(../../fonts/poppins/Arima-Thin.ttf) format('ttf');
+}
 
+@font-face {
+    font-family: 'Arima';
+    font-style: normal;
+    font-weight: 200;
+    font-display: swap;
+    src: url(../../fonts/poppins/Arima-ExtraLight.ttf) format('ttf');
+}
 
+@font-face {
+    font-family: 'Arima';
+    font-style: normal;
+    font-weight: 300;
+    font-display: swap;
+    src: url(../../fonts/poppins/Arima-Light.ttf) format('ttf');
+}
+
+@font-face {
+    font-family: 'Arima';
+    font-style: normal;
+    font-weight: 400;
+    font-display: swap;
+    src: url(../../fonts/poppins/Arima-Regular.ttf) format('ttf');
+}
+
+@font-face {
+    font-family: 'Arima';
+    font-style: normal;
+    font-weight: 500;
+    font-display: swap;
+    src: url(../../fonts/poppins/Arima-Medium.ttf) format('ttf');
+}
+
+@font-face {
+    font-family: 'Arima';
+    font-style: normal;
+    font-weight: 600;
+    font-display: swap;
+    src: url(../../fonts/poppins/Arima-Semibold.ttf) format('ttf');
+}
+
+@font-face {
+    font-family: 'Arima';
+    font-style: normal;
+    font-weight: 600;
+    font-display: swap;
+    src: url(../../fonts/poppins/Arima-Bold.ttf) format('ttf');
+}
 /*-----------------
 	1. General
 -----------------------*/
 
-@font-face {
-    font-family: 'CircularStd';
-    font-style: normal;
-    font-weight: 400;
-    src: local('Circular Std Book'), url('../../fonts/CircularStd-Book.woff') format('woff');
-}
-@font-face {
-    font-family: 'CircularStd';
-    font-style: italic;
-    font-weight: 400;
-    src: local('Circular Std Book Italic'), url('../../fonts/CircularStd-BookItalic.woff') format('woff');
-}
-@font-face {
-    font-family: 'CircularStd';
-    font-style: normal;
-    font-weight: 500;
-    src: local('Circular Std Medium'), url('../../fonts/CircularStd-Medium.woff') format('woff');
-}
-@font-face {
-    font-family: 'CircularStd';
-    font-style: italic;
-    font-weight: 500;
-    src: local('Circular Std Medium Italic'), url('../../fonts/CircularStd-MediumItalic.woff') format('woff');
-}
-@font-face {
-    font-family: 'CircularStd';
-    font-style: normal;
-    font-weight: 600;
-    src: local('Circular Std Bold'), url('../../fonts/CircularStd-Bold.woff') format('woff');
-}
-@font-face {
-    font-family: 'CircularStd';
-    font-style: italic;
-    font-weight: 600;
-    src: local('Circular Std Bold Italic'), url('../../fonts/CircularStd-BoldItalic.woff') format('woff');
-}
-@font-face {
-    font-family: 'CircularStd';
-    font-style: normal;
-    font-weight: 800;
-    src: local('Circular Std Black'), url('../../fonts/CircularStd-Black.woff') format('woff');
-}
-@font-face {
-    font-family: 'CircularStd';
-    font-style: italic;
-    font-weight: 800;
-    src: local('Circular Std Black Italic'), url('../../fonts/CircularStd-BlackItalic.woff') format('woff');
-}
 @font-face {
     font-family: 'Material Icons';
     font-style: normal;
@@ -102,7 +108,7 @@ html {
 body {
     background-color: #f8f9fa;
     color: #333;
-    font-family: 'CircularStd', sans-serif;
+    font-family: 'Poppins', sans-serif;
     font-size: 1rem;
     height: 100%;
     line-height: 1.5;
@@ -114,7 +120,7 @@ h3,
 h4,
 h5,
 h6 {
-    font-family: 'CircularStd', sans-serif;
+    font-family: 'Poppins', sans-serif;
     margin-top: 0;
 }
 a:hover,
@@ -446,7 +452,7 @@ table.table td h2 a {
     color: #333;
 }
 table.table td h2 a:hover {
-    color: #ff0080;
+    color: #ffb025;
 }
 table.table td h2 span {
     color: #888;
@@ -551,13 +557,13 @@ table.table td h2 span {
 }
 .bg-primary,
 .badge-primary {
-    background-color: #ff0080 !important;
+    background-color: #ffb025 !important;
 }
 a.bg-primary:focus,
 a.bg-primary:hover,
 button.bg-primary:focus,
 button.bg-primary:hover {
-    background-color: #e60073 !important;
+    background-color: #d49422 !important;
 }
 .bg-success,
 .badge-success {
@@ -608,7 +614,7 @@ button.bg-danger:hover {
 }
 .text-primary,
 .dropdown-menu > li > a.text-primary {
-    color: #ff0080 !important;
+    color: #ffb025 !important;
 }
 .text-success,
 .dropdown-menu > li > a.text-success {
@@ -634,16 +640,16 @@ button.bg-danger:hover {
     color: #757575 !important;
 }
 .btn-primary {
-    background-color: #ff0080;
-    border: 1px solid #ff0080;
+    background-color: #ffb025;
+    border: 1px solid #ffb025;
 }
 .btn-primary:hover,
 .btn-primary:focus,
 .btn-primary.active,
 .btn-primary:active,
 .open > .dropdown-toggle.btn-primary {
-    background-color: #e60073;
-    border: 1px solid #e60073;
+    background-color: #d49422;
+    border: 1px solid #d49422;
 }
 .btn-primary.active.focus,
 .btn-primary.active:focus,
@@ -654,14 +660,14 @@ button.bg-danger:hover {
 .open > .dropdown-toggle.btn-primary.focus,
 .open > .dropdown-toggle.btn-primary:focus,
 .open > .dropdown-toggle.btn-primary:hover {
-    background-color: #e60073;
-    border: 1px solid #e60073;
+    background-color: #d49422;
+    border: 1px solid #d49422;
 }
 .btn-primary.active:not(:disabled):not(.disabled),
 .btn-primary:active:not(:disabled):not(.disabled),
 .show > .btn-primary.dropdown-toggle {
-    background-color: #e60073;
-    border-color: #e60073;
+    background-color: #d49422;
+    border-color: #d49422;
     color: #fff;
 }
 .btn-primary.active:focus:not(:disabled):not(.disabled),
@@ -671,8 +677,8 @@ button.bg-danger:hover {
 }
 .btn-primary.disabled,
 .btn-primary:disabled {
-    background-color: #ff0080;
-    border-color: #ff0080;
+    background-color: #ffb025;
+    border-color: #ffb025;
     color: #fff;
 }
 .btn-secondary.active:focus:not(:disabled):not(.disabled),
@@ -860,12 +866,12 @@ button.bg-danger:hover {
     box-shadow: unset;
 }
 .btn-outline-primary {
-    color: #ff0080;
-    border-color: #ff0080;
+    color: #ffb025;
+    border-color: #ffb025;
 }
 .btn-outline-primary:hover {
-    background-color: #ff0080;
-    border-color: #ff0080;
+    background-color: #ffb025;
+    border-color: #ffb025;
 }
 .btn-outline-primary:focus,
 .btn-outline-primary.focus {
@@ -873,14 +879,14 @@ button.bg-danger:hover {
 }
 .btn-outline-primary.disabled,
 .btn-outline-primary:disabled {
-    color: #ff0080;
+    color: #ffb025;
     background-color: transparent;
 }
 .btn-outline-primary:not(:disabled):not(.disabled):active,
 .btn-outline-primary:not(:disabled):not(.disabled).active,
 .show > .btn-outline-primary.dropdown-toggle {
-    background-color: #ff0080;
-    border-color: #ff0080;
+    background-color: #ffb025;
+    border-color: #ffb025;
 }
 .btn-outline-primary:not(:disabled):not(.disabled):active:focus,
 .btn-outline-primary:not(:disabled):not(.disabled).active:focus,
@@ -1017,22 +1023,22 @@ button.bg-danger:hover {
 .pagination > .active > span,
 .pagination > .active > span:focus,
 .pagination > .active > span:hover {
-    background-color: #ff0080;
-    border-color: #ff0080;
+    background-color: #ffb025;
+    border-color: #ffb025;
 }
 .pagination > li > a,
 .pagination > li > span {
-    color: #ff0080;
+    color: #ffb025;
 }
 .page-link:hover {
-    color: #ff0080;
+    color: #ffb025;
 }
 .page-link:focus {
     box-shadow: unset;
 }
 .page-item.active .page-link {
-    background-color: #ff0080;
-    border-color: #ff0080;
+    background-color: #ffb025;
+    border-color: #ffb025;
 }
 .dropdown-menu {
     border: 1px solid rgba(0, 0, 0, 0.1);
@@ -1043,7 +1049,7 @@ button.bg-danger:hover {
 }
 .dropdown-item.active,
 .dropdown-item:active {
-    background-color: #ff0080;
+    background-color: #ffb025;
 }
 .navbar-nav .open .dropdown-menu {
     border: 0;
@@ -1060,7 +1066,7 @@ button.bg-danger:hover {
 }
 .settings-tab .nav .nav-link.active,
 .settings-tab .nav .show > .nav-link {
-    background: #ff0080;
+    background: #ffb025;
     color: #fff;
 }
 .dropdown-menu {
@@ -1103,11 +1109,11 @@ button.bg-danger:hover {
 }
 .bootstrap-datetimepicker-widget table td.active,
 .bootstrap-datetimepicker-widget table td.active:hover {
-    background-color: #ff0080;
+    background-color: #ffb025;
     text-shadow: unset;
 }
 .bootstrap-datetimepicker-widget table td.today:before {
-    border-bottom-color: #ff0080;
+    border-bottom-color: #ffb025;
 }
 .bg-info-light {
     background-color: rgba(2, 182, 179, 0.12) !important;
@@ -1189,7 +1195,7 @@ button.bg-danger:hover {
     line-height: 38px;
 }
 .select2-container--default .select2-results__option--highlighted[aria-selected] {
-    background-color: #ff0080;
+    background-color: #ffb025;
 }
 .select2-container--default .select2-selection--multiple {
     border: 1px solid #ddd;
@@ -1222,8 +1228,8 @@ button.bg-danger:hover {
 .nav-tabs.nav-tabs-solid > .active > a,
 .nav-tabs.nav-tabs-solid > .active > a:hover,
 .nav-tabs.nav-tabs-solid > .active > a:focus {
-    background-color: #ff0080;
-    border-color: #ff0080;
+    background-color: #ffb025;
+    border-color: #ffb025;
     color: #fff;
 }
 .tab-content {
@@ -1255,8 +1261,8 @@ button.bg-danger:hover {
 .nav-tabs.nav-tabs-solid > li > a.active,
 .nav-tabs.nav-tabs-solid > li > a.active:hover,
 .nav-tabs.nav-tabs-solid > li > a.active:focus {
-    background-color: #ff0080;
-    border-color: #ff0080;
+    background-color: #ffb025;
+    border-color: #ffb025;
     color: #fff;
 }
 .nav-tabs.nav-tabs-solid.nav-tabs-rounded {
@@ -1308,7 +1314,7 @@ button.bg-danger:hover {
 .nav-tabs.nav-tabs-top > li > a.active,
 .nav-tabs.nav-tabs-top > li > a.active:hover,
 .nav-tabs.nav-tabs-top > li > a.active:focus {
-    border-top-color: #ff0080;
+    border-top-color: #ffb025;
 }
 .nav-tabs.nav-tabs-bottom > li {
     margin-bottom: -1px;
@@ -1318,7 +1324,7 @@ button.bg-danger:hover {
 .nav-tabs.nav-tabs-bottom > li > a.active:focus {
     border-bottom-width: 2px;
     border-color: transparent;
-    border-bottom-color: #ff0080;
+    border-bottom-color: #ffb025;
     background-color: transparent;
     transition: none 0s ease 0s;
     -moz-transition: none 0s ease 0s;
@@ -1398,7 +1404,7 @@ button.bg-danger:hover {
 .avatar-title {
     width: 100%;
     height: 100%;
-    background-color: #ff0080;
+    background-color: #ffb025;
     color: #fff;
     display: flex;
     align-items: center;
@@ -1591,11 +1597,11 @@ button.bg-danger:hover {
     padding: 10px 15px;
 }
 .user-menu .dropdown-menu .dropdown-item:hover {
-    color: #ff0080;
+    color: #ffb025;
 }
 .header .dropdown-menu > li > a:focus,
 .header .dropdown-menu > li > a:hover {
-    background-color: #ff0080;
+    background-color: #ffb025;
     color: #fff;
 }
 .header .dropdown-menu > li > a:focus i,
@@ -1606,13 +1612,13 @@ button.bg-danger:hover {
     padding: 10px 18px;
 }
 .header .dropdown-menu > li > a i {
-    color: #ff0080;
+    color: #ffb025;
     margin-right: 10px;
     text-align: center;
     width: 18px;
 }
 .header .user-menu .dropdown-menu > li > a i {
-    color: #ff0080;
+    color: #ffb025;
     font-size: 16px;
     margin-right: 10px;
     min-width: 18px;
@@ -1710,18 +1716,18 @@ html.menu-opened body {
     padding: 0 20px;
 }
 .sidebar-menu li a:hover {
-    color: #ff0080;
+    color: #ffb025;
 }
 .sidebar-menu > ul > li > a:hover {
     background-color: #e8e8e8;
     color: #000;
 }
 .sidebar-menu > ul > li.active > a:hover {
-    background-color: #e60073;
+    background-color: #d49422;
     color: #fff;
 }
 .sidebar-menu li.active a {
-    background-color: #ff0080;
+    background-color: #ffb025;
     color: #fff;
 }
 .menu-title {
@@ -1751,7 +1757,7 @@ html.menu-opened body {
     padding: 10px 15px;
 }
 .sidebar-menu ul ul a.active {
-    color: #ff0080;
+    color: #ffb025;
     text-decoration: underline;
 }
 .mobile_btn {
@@ -2243,7 +2249,7 @@ html.menu-opened body {
     justify-content: center;
     text-align: center;
     width: 80px;
-    background-color: #ff0080;
+    background-color: #ffb025;
 }
 .dash-count {
     font-size: 18px;
@@ -2320,7 +2326,7 @@ html.menu-opened body {
     transition: all 0.45s ease 0s;
     top: 0;
     left: 280px;
-    background-color: #ff0080;
+    background-color: #ffb025;
 }
 .sidebar-logo {
     display: flex;
@@ -2332,8 +2338,8 @@ html.menu-opened body {
     width: auto;
 }
 .pricing-box .pricing-selected .card {
-    background-color: #ff0080;
-    border-color: #ff0080;
+    background-color: #ffb025;
+    border-color: #ffb025;
     color: #fff;
 }
 .pricing-box .pricing-selected .pricing-header h2 {
@@ -2350,7 +2356,7 @@ html.menu-opened body {
 }
 .pricing-box .pricing-selected .btn {
     background-color: #fff;
-    color: #ff0080;
+    color: #ffb025;
 }
 .pricing-box .pricing-selected .pricing-options li {
     color: #fff;
@@ -2409,12 +2415,12 @@ html.menu-opened body {
     display: inline-flex;
     justify-content: center;
     align-items: center;
-    color: #ff0080;
+    color: #ffb025;
     border-radius: 10px;
 }
 .filter-btn:hover,
 .filter-btn:focus {
-    background-color: #ff0080;
+    background-color: #ffb025;
     color: #fff;
 }
 .filter-card .form-group {
@@ -2526,7 +2532,7 @@ small.help-block {
     position: relative;
 }
 .service-amount {
-    color: #ff0080;
+    color: #ffb025;
     font-size: 36px;
     font-weight: 700;
     line-height: 40px;
@@ -2616,7 +2622,7 @@ small.help-block {
     margin-bottom: 30px;
 }
 .nav-tabs.menu-tabs .nav-item.active .nav-link {
-    color: #ff0080;
+    color: #ffb025;
 }
 .nav-tabs.menu-tabs .nav-item {
     padding-right: 2.25rem;
@@ -2641,7 +2647,7 @@ small.help-block {
     right: 0;
     bottom: 0;
     height: 3px;
-    background: #ff0080;
+    background: #ffb025;
     opacity: 0;
 }
 .nav-tabs.menu-tabs .nav-item.active .nav-link::after {
@@ -2652,7 +2658,7 @@ small.help-block {
     background: transparent;
 }
 .nav-tabs.menu-tabs .nav-link:focus {
-    color: #ff0080;
+    color: #ffb025;
 }
 .nav-tabs.menu-tabs .nav-link .badge {
     margin-left: 0.25rem;
@@ -2693,7 +2699,7 @@ small.help-block {
     z-index: -1;
     pointer-events: none;
     height: 50vh;
-    background-color: #ff0080;
+    background-color: #ffb025;
     border-radius: 0 0 2.5rem 2.5rem;
     z-index: 0;
 }
@@ -2724,7 +2730,7 @@ small.help-block {
     text-transform: uppercase;
 }
 .login-header h3 span {
-    color: #ff0080;
+    color: #ffb025;
 }
 .login-body .form-control {
     height: 50px;
@@ -3319,8 +3325,8 @@ small.help-block {
     color: #9f9f9f;
 }
 .chat-window .chat-cont-right .chat-footer .input-group .input-group-append .btn.msg-send-btn {
-    background-color: #ff0080;
-    border-color: #ff0080;
+    background-color: #ffb025;
+    border-color: #ffb025;
     border-radius: 50%;
     color: #fff;
     margin-left: 10px;
@@ -4262,7 +4268,7 @@ table.table-inbox tbody tr.checked {
     color: #333;
 }
 .line {
-    background-color: #ff0080;
+    background-color: #ffb025;
     height: 2px;
     margin: 0;
     width: 60px;
@@ -4329,7 +4335,7 @@ table.table-inbox tbody tr.checked {
     width: 100%;
 }
 .error-box h1 {
-    color: #ff0080;
+    color: #ffb025;
     font-size: 10em;
     margin-bottom: 0;
 }
