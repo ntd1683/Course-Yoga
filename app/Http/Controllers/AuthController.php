@@ -86,7 +86,7 @@ class AuthController extends Controller
             ->with('success', 'Create new user successfully!');
     }
 
-    public function verifyEmail(VerifyEmailRequest $request)
+    public function verifyEmail(VerifyEmailRequest $request): RedirectResponse
     {
         User::where(['remember_token' => $request->get('token')])->update([
             'email_verified' => 1,

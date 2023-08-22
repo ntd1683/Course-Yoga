@@ -4,15 +4,15 @@ namespace App\Http\Controllers\Admin;
 
 use App\Http\Controllers\Controller;
 use App\Models\Course;
-use App\Models\ManageCourse;
 use App\Models\Order;
 use App\Models\SubcriptionCourse;
 use App\Models\User;
 use Illuminate\Support\Facades\DB;
+use Illuminate\View\View;
 
 class HomepageController extends Controller
 {
-    public function __invoke()
+    public function __invoke(): View
     {
         $statistical = [];
         $statistical['count_users'] = User::query()

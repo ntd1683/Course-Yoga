@@ -7,9 +7,9 @@ use App\Http\Controllers\Controller;
 use App\Http\Trait\ResponseTrait;
 use App\Models\User;
 use Carbon\Carbon;
+use Illuminate\Database\Eloquent\Collection;
 use Illuminate\Http\JsonResponse;
 use Illuminate\Http\Request;
-use Illuminate\Support\Str;
 use Yajra\DataTables\DataTables;
 
 class AjaxUserController extends Controller
@@ -36,13 +36,14 @@ class AjaxUserController extends Controller
             })
             ->make(true);
     }
-    public function lecturers() {
+    public function lecturers(): array|Collection
+    {
         return User::select('id', 'email')
             ->where('level', 2)
             ->get();
     }
 
-    public function name(Request $request)
+    public function name(Request $request): array|Collection
     {
         return User::query()->where('name', 'like', '%' . $request->get('q') . '%')->get();
     }

@@ -5,6 +5,7 @@ namespace App\Http\Controllers\Ajax;
 use App\Http\Controllers\Controller;
 use App\Http\Trait\ResponseTrait;
 use App\Models\Contact;
+use Illuminate\Database\Eloquent\Collection;
 use Illuminate\Http\JsonResponse;
 use Illuminate\Http\Request;
 use Illuminate\Support\Str;
@@ -33,12 +34,12 @@ class AjaxContactController extends Controller
             ->make(true);
     }
 
-    public function title(Request $request)
+    public function title(Request $request): array|Collection
     {
         return Contact::query()->where('title', 'like', '%' . $request->get('q') . '%')->get();
     }
 
-    public function name(Request $request)
+    public function name(Request $request): array|Collection
     {
         return Contact::query()->where('name', 'like', '%' . $request->get('q') . '%')->get();
     }

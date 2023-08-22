@@ -11,6 +11,8 @@ use App\Http\Trait\ResponseTrait;
 use App\Models\Course;
 use App\Models\ManageCourse;
 use App\Services\CourseService;
+use Illuminate\Contracts\View\View;
+use Illuminate\Database\Eloquent\Collection;
 use Illuminate\Http\JsonResponse;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Validator;
@@ -56,12 +58,12 @@ class AjaxCourseController extends Controller
         ->make(true);
     }
 
-    public function title(Request $request)
+    public function title(Request $request): array|Collection
     {
         return Course::query()->where('title', 'like', '%' . $request->get('q') . '%')->get();
     }
 
-    public function lessons(Request $request)
+    public function lessons(Request $request): JsonResponse
     {
         if($request->get('id')) {
             try {
@@ -78,7 +80,7 @@ class AjaxCourseController extends Controller
         return $this->errorResponse(trans("Missing Param ID Course"));
     }
 
-    public function users(Request $request)
+    public function users(Request $request): JsonResponse
     {
         if($request->get('course_id')) {
             try {
@@ -94,7 +96,8 @@ class AjaxCourseController extends Controller
         return $this->errorResponse(trans("Missing Param ID Course"));
     }
 
-    public function getCourses(CourseFilterRequest $request, CourseFilterQuery $courseFilterQuery) {
+    public function getCourses(CourseFilterRequest $request, CourseFilterQuery $courseFilterQuery): View
+    {
         $perPage = $request->get('per_page') ?: 8;
         $courses = $courseFilterQuery->apply(Course::query())->paginate($perPage);
         $courses = $this->courseService->getClass($courses);
@@ -137,7 +140,7 @@ class AjaxCourseController extends Controller
         return $this->successResponse('', trans('Delete Course Successfully'));
     }
 
-    public function importSheet(ImportSheetCoursesRequest $request)
+    public function importSheet(ImportSheetCoursesRequest $request): JsonResponse
     {
         try {
             $listError = [];

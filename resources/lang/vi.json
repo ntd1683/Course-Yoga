@@ -292,5 +292,12 @@
     "You do not have permission to access this site!!!": "Bạn không có quyền truy cập trang web này!!!",
     "You are not login !!!": "Bạn chưa đăng nhập!!!",
     "you are logged in !": "bạn đã đăng nhập !",
+    "Import Course": "Thêm Khóa Học",
+    "Link Sheet": "Link Google Sheet",
+    "Sheet Tab Name": "Tên Trang Tính",
+    "Example": "Ví Dụ",
+    "Column": "Cột",
+    "Google sheet link error is not in the correct format": "Lỗi liên kết Google sheet không đúng định dạng",
+    "Import data successfully": "Nhập dữ liệu thành công",
     "": ""
 }

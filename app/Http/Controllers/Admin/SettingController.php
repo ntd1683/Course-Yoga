@@ -7,8 +7,6 @@ use App\Http\Requests\StoreSettingRequest;
 use App\Http\Requests\UpdateProfileRequest;
 use App\Services\ProfileService;
 use Illuminate\Http\RedirectResponse;
-use Illuminate\Support\Arr;
-use Illuminate\Support\Facades\Hash;
 use Illuminate\Support\Facades\Storage;
 use Illuminate\Support\Str;
 use Illuminate\View\View;

@@ -5,12 +5,11 @@ namespace App\Http\Controllers\Ajax;
 use App\Http\Controllers\Controller;
 use App\Http\Requests\SubscribeTrialRequest;
 use App\Http\Trait\ResponseTrait;
-use App\Models\Contact;
 use App\Models\PhoneTrial;
 use Carbon\Carbon;
+use Illuminate\Database\Eloquent\Collection;
 use Illuminate\Http\JsonResponse;
 use Illuminate\Http\Request;
-use Illuminate\Support\Str;
 use Yajra\DataTables\DataTables;
 
 class AjaxTrialController extends Controller
@@ -46,7 +45,7 @@ class AjaxTrialController extends Controller
             ->make(true);
     }
 
-    public function phone(Request $request)
+    public function phone(Request $request): array|Collection
     {
         return PhoneTrial::query()->where('phone', 'like', '%' . $request->get('q') . '%')->get();
     }

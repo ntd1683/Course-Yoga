@@ -5,15 +5,17 @@ namespace App\Http\Controllers\Admin;
 use App\Http\Controllers\Controller;
 use App\Http\Requests\admin\UpdateContactRequest;
 use App\Models\Contact;
+use Illuminate\Http\RedirectResponse;
+use Illuminate\View\View;
 
 class ContactController extends Controller
 {
-    public function index()
+    public function index(): View
     {
         return view('contact.admin.index');
     }
 
-    public function edit(Contact $contact)
+    public function edit(Contact $contact): View
     {
         return view('contact.admin.edit', compact('contact'));
     }
@@ -21,7 +23,7 @@ class ContactController extends Controller
     /**
      * Update the specified resource in storage.
      */
-    public function update(UpdateContactRequest $request, Contact $contact)
+    public function update(UpdateContactRequest $request, Contact $contact): RedirectResponse
     {
         try {
             $contact->update($request->validated());
@@ -35,7 +37,7 @@ class ContactController extends Controller
     /**
      * Remove the specified resource from storage.
      */
-    public function destroy(Contact $contact)
+    public function destroy(Contact $contact): RedirectResponse
     {
         $contact->delete();
 

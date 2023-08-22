@@ -7,6 +7,7 @@ use App\Http\Requests\StoreCourseRequest;
 use App\Http\Trait\ResponseTrait;
 use App\Models\Course;
 use App\Models\ManageCourse;
+use Illuminate\Http\RedirectResponse;
 use Illuminate\Support\Facades\Storage;
 use Illuminate\Support\Str;
 use Illuminate\View\View;
@@ -30,7 +31,7 @@ class CourseController extends Controller
         return view('course.admin.create');
     }
 
-    public function store(StoreCourseRequest $request)
+    public function store(StoreCourseRequest $request): RedirectResponse
     {
         if(! $request->hasFile('image')) {
             return redirect()->back()->withErrors(trans('Image Required'));
@@ -58,7 +59,7 @@ class CourseController extends Controller
         }
     }
 
-    public function import()
+    public function import(): View
     {
         return view('course.admin.import');
     }
@@ -74,7 +75,7 @@ class CourseController extends Controller
     /**
      * Show the form for editing the specified resource.
      */
-    public function edit(Course $course)
+    public function edit(Course $course): View
     {
         $lecturers = $course
             ->manageLecturers()
@@ -88,7 +89,7 @@ class CourseController extends Controller
     /**
      * Update the specified resource in storage.
      */
-    public function update(StoreCourseRequest $request, Course $course)
+    public function update(StoreCourseRequest $request, Course $course): RedirectResponse
     {
         try {
             $data = $request->validated();
@@ -127,7 +128,7 @@ class CourseController extends Controller
     /**
      * Remove the specified resource from storage.
      */
-    public function destroy(Course $course)
+    public function destroy(Course $course): RedirectResponse
     {
         ManageCourse::query()->where('course_id', $course->id)->first()->delete;
 

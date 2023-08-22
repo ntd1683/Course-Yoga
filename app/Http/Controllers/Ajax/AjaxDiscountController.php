@@ -9,12 +9,15 @@ use App\Models\User;
 use Carbon\Carbon;
 use Illuminate\Http\JsonResponse;
 use Illuminate\Http\Request;
+use Illuminate\Database\Eloquent\Collection;
 use Yajra\DataTables\DataTables;
 
 class AjaxDiscountController extends Controller
 {
     use ResponseTrait;
-    public function index() {
+
+    public function index()
+    {
         $discounts = Discount::query();
         return DataTables::of($discounts)
             ->editColumn('user_id', function ($object) {
@@ -60,19 +63,19 @@ class AjaxDiscountController extends Controller
         }
     }
 
-    public function name(Request $request)
+    public function name(Request $request): array|Collection
     {
         $order = Discount::query();
         return $order->where('name', 'like', '%' . $request->get('q') . '%')->get();
     }
 
-    public function code(Request $request)
+    public function code(Request $request): array|Collection
     {
         $order = Discount::query();
         return $order->where('code', 'like', '%' . $request->get('q') . '%')->get();
     }
 
-    public function user(Request $request)
+    public function user(Request $request): array|Collection
     {
         $q = $request->get('q');
         $arrUserId = Discount::query()->pluck('user_id');

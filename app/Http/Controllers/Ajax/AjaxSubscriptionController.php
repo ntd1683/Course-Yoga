@@ -4,11 +4,10 @@ namespace App\Http\Controllers\Ajax;
 
 use App\Http\Controllers\Controller;
 use App\Http\Trait\ResponseTrait;
-use App\Models\Contact;
 use App\Models\Course;
 use App\Models\SubcriptionCourse;
 use App\Models\User;
-use Illuminate\Database\Eloquent\Builder;
+use Illuminate\Database\Eloquent\Collection;
 use Illuminate\Http\JsonResponse;
 use Illuminate\Http\Request;
 use Illuminate\Support\Str;
@@ -17,6 +16,7 @@ use Yajra\DataTables\DataTables;
 class AjaxSubscriptionController extends Controller
 {
     use ResponseTrait;
+
     public function index()
     {
         $subscription = SubcriptionCourse::query()
@@ -45,7 +45,7 @@ class AjaxSubscriptionController extends Controller
             ->make(true);
     }
 
-    public function course(Request $request)
+    public function course(Request $request): array|Collection
     {
         $q = $request->get('q');
         $arrId = SubcriptionCourse::query()->pluck('course_id');
@@ -55,7 +55,7 @@ class AjaxSubscriptionController extends Controller
             ->get();
     }
 
-    public function name(Request $request)
+    public function name(Request $request): array|Collection
     {
         $q = $request->get('q');
         $arrId = SubcriptionCourse::query()->pluck('user_id');
@@ -65,7 +65,7 @@ class AjaxSubscriptionController extends Controller
             ->get();
     }
 
-    public function email(Request $request)
+    public function email(Request $request): array|Collection
     {
         $q = $request->get('q');
         $arrId = SubcriptionCourse::query()->pluck('user_id');

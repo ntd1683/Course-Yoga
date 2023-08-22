@@ -4,19 +4,18 @@ namespace App\Http\Controllers\Admin;
 
 use App\Http\Controllers\Controller;
 use App\Http\Requests\StoreLessonRequest;
-use App\Models\Course;
 use App\Models\Lesson;
-use App\Models\ManageCourse;
-use Illuminate\Http\Request;
+use Illuminate\Http\RedirectResponse;
 use Illuminate\Support\Facades\Storage;
 use Illuminate\Support\Str;
+use Illuminate\View\View;
 
 class LessonController extends Controller
 {
     /**
      * Display a listing of the resource.
      */
-    public function index()
+    public function index(): View
     {
         return view('lesson.index');
     }
@@ -24,7 +23,7 @@ class LessonController extends Controller
     /**
      * Show the form for creating a new resource.
      */
-    public function create()
+    public function create(): View
     {
         return view('lesson.create');
     }
@@ -32,7 +31,7 @@ class LessonController extends Controller
     /**
      * Store a newly created resource in storage.
      */
-    public function store(StoreLessonRequest $request)
+    public function store(StoreLessonRequest $request): RedirectResponse
     {
         try {
             $linkEmbedded = $request->get('link_embedded');
@@ -82,7 +81,7 @@ class LessonController extends Controller
     /**
      * Show the form for editing the specified resource.
      */
-    public function edit(Lesson $lesson)
+    public function edit(Lesson $lesson): View
     {
         $course = $lesson
             ->course()
@@ -96,7 +95,7 @@ class LessonController extends Controller
     /**
      * Update the specified resource in storage.
      */
-    public function update(StoreLessonRequest $request, Lesson $lesson)
+    public function update(StoreLessonRequest $request, Lesson $lesson): RedirectResponse
     {
         try {
             $data = $request->validated();
@@ -140,7 +139,7 @@ class LessonController extends Controller
     /**
      * Remove the specified resource from storage.
      */
-    public function destroy(Lesson $lesson)
+    public function destroy(Lesson $lesson): RedirectResponse
     {
         $lesson->delete();
 

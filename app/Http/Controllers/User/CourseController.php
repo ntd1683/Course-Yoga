@@ -8,12 +8,13 @@ use App\Http\Requests\CourseFilterRequest;
 use App\Models\Course;
 use App\Models\Event;
 use App\Services\CourseService;
+use Illuminate\View\View;
 
 class CourseController extends Controller
 {
     public function __construct(protected CourseService $courseService){}
 
-    public function index(CourseFilterRequest $request, CourseFilterQuery $courseFilterQuery)
+    public function index(CourseFilterRequest $request, CourseFilterQuery $courseFilterQuery): View
     {
         $perPage = $request->get('per_page') ?: 8;
         $courses = $courseFilterQuery->apply(Course::query())->paginate($perPage);
@@ -21,7 +22,7 @@ class CourseController extends Controller
         return view('course.user.index', compact('courses'));
     }
 
-    public function show(Course $course)
+    public function show(Course $course): View
     {
         $view = $course->view + 1;
         $course->save();

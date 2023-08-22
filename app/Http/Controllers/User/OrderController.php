@@ -8,17 +8,19 @@ use App\Models\Course;
 use App\Models\Discount;
 use App\Models\Order;
 use App\Models\SubcriptionCourse;
+use Illuminate\Http\RedirectResponse;
 use Illuminate\Support\Facades\DB;
 use Illuminate\Support\Str;
+use Illuminate\View\View;
 
 class OrderController extends Controller
 {
-    public function index(Course $course)
+    public function index(Course $course): View
     {
         return view('order.user.index', compact('course'));
     }
 
-    public function order(OrderRequest $request, Course $course)
+    public function order(OrderRequest $request, Course $course): RedirectResponse
     {
         try {
             DB::beginTransaction();

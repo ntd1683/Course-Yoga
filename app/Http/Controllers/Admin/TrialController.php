@@ -4,17 +4,18 @@ namespace App\Http\Controllers\Admin;
 
 use App\Http\Controllers\Controller;
 use App\Http\Requests\admin\UpdateContactRequest;
-use App\Models\Contact;
 use App\Models\PhoneTrial;
+use Illuminate\Http\RedirectResponse;
+use Illuminate\View\View;
 
 class TrialController extends Controller
 {
-    public function index()
+    public function index(): View
     {
         return view('trial.index');
     }
 
-    public function edit(PhoneTrial $trial)
+    public function edit(PhoneTrial $trial): View
     {
         return view('trial.edit', compact('trial'));
     }
@@ -22,7 +23,7 @@ class TrialController extends Controller
     /**
      * Update the specified resource in storage.
      */
-    public function update(UpdateContactRequest $request, PhoneTrial $trial)
+    public function update(UpdateContactRequest $request, PhoneTrial $trial): RedirectResponse
     {
         try {
             $trial->update($request->validated());
@@ -36,7 +37,7 @@ class TrialController extends Controller
     /**
      * Remove the specified resource from storage.
      */
-    public function destroy(PhoneTrial $trial)
+    public function destroy(PhoneTrial $trial): RedirectResponse
     {
         $trial->delete();
 

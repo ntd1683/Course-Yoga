@@ -10,7 +10,8 @@ use Illuminate\Http\Request;
 class AjaxChartJs extends Controller
 {
     use ResponseTrait;
-    public function revenue(Request $request)
+
+    public function revenue(Request $request): array
     {
         $filter = $request->get('filter') ?: 0;
         $revenues = Order::query()

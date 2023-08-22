@@ -7,14 +7,15 @@ use App\Http\Requests\AddGamailRequest;
 use App\Http\Requests\UpdateSubscribeRequest;
 use App\Models\SubcriptionCourse;
 use App\Models\User;
-use Illuminate\Http\Request;
+use Illuminate\Http\RedirectResponse;
+use Illuminate\View\View;
 
 class SubscriptionController extends Controller
 {
     /**
      * Display a listing of the resource.
      */
-    public function index()
+    public function index(): View
     {
         return view('subscribe.index');
     }
@@ -22,7 +23,7 @@ class SubscriptionController extends Controller
     /**
      * Show the form for creating a new resource.
      */
-    public function create()
+    public function create(): View
     {
         return view('subscribe.add-gmail');
     }
@@ -30,7 +31,7 @@ class SubscriptionController extends Controller
     /**
      * Store a newly created resource in storage.
      */
-    public function store(AddGamailRequest $request)
+    public function store(AddGamailRequest $request): RedirectResponse
     {
         $course_id = $request->get('title');
         $emails = explode(",", $request->get('emails'));
@@ -59,7 +60,7 @@ class SubscriptionController extends Controller
     /**
      * Show the form for editing the specified resource.
      */
-    public function edit(SubcriptionCourse $subscription)
+    public function edit(SubcriptionCourse $subscription): View
     {
         $lessons = $subscription->course()->first()->lessons()->get();
         return view('subscribe.edit', compact('subscription', 'lessons'));
@@ -68,7 +69,7 @@ class SubscriptionController extends Controller
     /**
      * Update the specified resource in storage.
      */
-    public function update(UpdateSubscribeRequest $request, SubcriptionCourse $subscription)
+    public function update(UpdateSubscribeRequest $request, SubcriptionCourse $subscription): RedirectResponse
     {
         try {
             $subscription->update($request->validated());
@@ -82,7 +83,7 @@ class SubscriptionController extends Controller
     /**
      * Remove the specified resource from storage.
      */
-    public function destroy(SubcriptionCourse $subscription)
+    public function destroy(SubcriptionCourse $subscription): RedirectResponse
     {
         $subscription->delete();
 

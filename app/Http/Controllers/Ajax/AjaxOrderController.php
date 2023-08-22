@@ -2,14 +2,13 @@
 
 namespace App\Http\Controllers\Ajax;
 
-use App\Enums\CourseTypeEnum;
 use App\Http\Controllers\Controller;
 use App\Models\Course;
 use App\Models\Order;
 use App\Models\User;
 use Carbon\Carbon;
+use Illuminate\Database\Eloquent\Collection;
 use Illuminate\Http\Request;
-use Illuminate\Support\Str;
 use Yajra\DataTables\DataTables;
 
 class AjaxOrderController extends Controller
@@ -33,13 +32,13 @@ class AjaxOrderController extends Controller
             ->make(true);
     }
 
-    public function code(Request $request)
+    public function code(Request $request): array|Collection
     {
         $order = Order::query();
         return $order->where('code', 'like', '%' . $request->get('q') . '%')->get();
     }
 
-    public function course(Request $request)
+    public function course(Request $request): array|Collection
     {
         $q = $request->get('q');
         $arrOrderId = Order::query()->pluck('course_id');
@@ -50,7 +49,7 @@ class AjaxOrderController extends Controller
         return $order;
     }
 
-    public function name(Request $request)
+    public function name(Request $request): array|Collection
     {
         $q = $request->get('q');
         $arrUserId = Order::query()->pluck('user_id');
@@ -61,7 +60,7 @@ class AjaxOrderController extends Controller
         return $user;
     }
 
-    public function referralCode(Request $request)
+    public function referralCode(Request $request): array|Collection
     {
         $order = Order::query();
         return $order->where('referral_code', 'like', '%' . $request->get('q') . '%')->get();
