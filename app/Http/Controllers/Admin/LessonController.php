@@ -4,6 +4,7 @@ namespace App\Http\Controllers\Admin;
 
 use App\Http\Controllers\Controller;
 use App\Http\Requests\StoreLessonRequest;
+use App\Http\Requests\UpdateLessonRequest;
 use App\Models\Lesson;
 use Illuminate\Http\RedirectResponse;
 use Illuminate\Support\Facades\Storage;
@@ -95,7 +96,7 @@ class LessonController extends Controller
     /**
      * Update the specified resource in storage.
      */
-    public function update(StoreLessonRequest $request, Lesson $lesson): RedirectResponse
+    public function update(UpdateLessonRequest $request, Lesson $lesson): RedirectResponse
     {
         try {
             $data = $request->validated();

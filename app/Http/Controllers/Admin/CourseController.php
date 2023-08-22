@@ -4,6 +4,7 @@ namespace App\Http\Controllers\Admin;
 
 use App\Http\Controllers\Controller;
 use App\Http\Requests\StoreCourseRequest;
+use App\Http\Requests\UpdateCourseRequest;
 use App\Http\Trait\ResponseTrait;
 use App\Models\Course;
 use App\Models\ManageCourse;
@@ -89,7 +90,7 @@ class CourseController extends Controller
     /**
      * Update the specified resource in storage.
      */
-    public function update(StoreCourseRequest $request, Course $course): RedirectResponse
+    public function update(UpdateCourseRequest $request, Course $course): RedirectResponse
     {
         try {
             $data = $request->validated();

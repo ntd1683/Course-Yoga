@@ -39,7 +39,7 @@ class AjaxUserController extends Controller
     public function lecturers(): array|Collection
     {
         return User::select('id', 'email')
-            ->where('level', 2)
+            ->where('level', '>=',2)
             ->get();
     }
 
