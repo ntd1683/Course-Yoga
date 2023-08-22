@@ -1,11 +1,12 @@
 <x-user.layouts.app>
+    <?php $src = Str::contains($course->image, ["https:", "http:"]) ? $course->image : Storage::url($course->image) ?>
     <!-- movie-details-area -->
     <section class="movie-details-area" data-background="{{ asset('images/bg/image2.jpg') }}">
         <div class="container">
             <div class="row align-items-center position-relative">
                 <div class="col-xl-3 col-lg-4">
                     <div class="movie-details-img">
-                        <img src="{{ Storage::url($course->image) }}" alt="{{ __('Image Course') }}"
+                        <img src="{{ $src }}" alt="{{ __('Image Course') }}"
                              style="width: 18rem;height: auto;">
                         <a href="{{ $course->link_embedded }}" class="popup-video"><img
                                 src="{{ asset('images/images/play_icon.png') }}" alt=""></a>
@@ -93,7 +94,8 @@
                 </div>
                 <div class="col-lg-4">
                     <div class="episode-img">
-                        <img src="{{ Storage::url($course->image) }}" alt="">
+                        <?php $src = Str::contains($course->image, ["https:", "http:"]) ? $course->image : Storage::url($course->image) ?>
+                        <img src="{{ $src }}" alt="">
                     </div>
                 </div>
             </div>

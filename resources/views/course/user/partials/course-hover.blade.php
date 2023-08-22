@@ -1,8 +1,8 @@
-
+<?php $src = Str::contains($course->image, ["https:", "http:"]) ? $course->image : Storage::url($course->image) ?>
 <div class="col-xl-3 col-lg-4 col-sm-6 grid-item grid-sizer {{ $course->class }}">
     <div class="movie-item movie-item-three mb-50">
         <div class="movie-poster">
-            <img src="{{ Storage::url($course->image) }}" alt="{{ __('image') }}">
+            <img src="{{ $src }}" alt="{{ __('image') }}">
             <ul class="overlay-btn">
                 <li class="rating">
                     <i class="fas fa-star"></i>

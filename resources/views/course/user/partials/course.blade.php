@@ -1,6 +1,6 @@
-
+<?php $src = Str::contains($course->image, ["https:", "http:"]) ? $course->image : Storage::url($course->image) ?>
 <div class="movie-poster">
-    <a href="{{ route('course.show', $course) }}"><img src="{{ Storage::url($course->image) }}" alt=""></a>
+    <a href="{{ route('course.show', $course) }}"><img src="{{ $src }}" alt=""></a>
 </div>
 <div class="movie-content">
     <div class="top">
