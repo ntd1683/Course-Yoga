@@ -8,7 +8,7 @@
                     <div class="col-lg-4">
                         <div class="section-title text-center text-lg-left">
                             <span class="sub-title">{{ __('Course') }}</span>
-                            @if(! request()->has('user')|| request()->has('user') == 0)
+                            @if(! request()->has('user')|| request()->has('user') == 0 || auth()->guest())
                                 <h2 class="title">{{ __('ALL Course') }}</h2>
                             @else
                                 <h2 class="title">{{ __('My Course') }}</h2>

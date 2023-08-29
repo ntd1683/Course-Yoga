@@ -30,7 +30,7 @@
                                     </li>
                                     <li
                                         @class(["active" => getNameRouteMain() == "pricing"])
-                                    ><a href="{{ route('pricing') }}">{{ __('Workshop') }}</a></li>
+                                    ><a href="#">{{ __('Workshop') }}</a></li>
                                     <li class="menu-item-has-children"><a href="#">{{ __('Blog') }}</a>
                                         <ul class="submenu">
                                             <li><a href="blog.html">{{ __('Our Blog') }}</a></li>

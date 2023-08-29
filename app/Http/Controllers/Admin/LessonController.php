@@ -35,6 +35,7 @@ class LessonController extends Controller
     public function store(StoreLessonRequest $request): RedirectResponse
     {
         try {
+            $data = $request->validated();
             $linkEmbedded = $request->get('link_embedded');
             if(! str_contains($linkEmbedded, "watch")) {
                 $linkEmbedded = explode("/", $linkEmbedded)[3];
@@ -54,15 +55,18 @@ class LessonController extends Controller
                 'link_embedded' => $linkEmbedded,
             ]);
 
-            if ($request->get('published')) {
+            if ($request->get('publish')) {
                 $lesson->publish();
             } else {
                 $lesson->published = 0;
                 $lesson->save();
             }
 
-            if ($request->get('accepted') && auth()->user()->level === 2) {
+            if ($request->get('accept') && auth()->user()->level >= 2) {
                 $lesson->accept();
+            } else {
+                $lesson->accepted = 0;
+                $lesson->save();
             }
 
             return redirect()->route('admin.lesson.index')->with('success', trans('Add Lesson Successfully'));
@@ -120,15 +124,18 @@ class LessonController extends Controller
 
             $lesson->update($data);
 
-            if ($request->get('published')) {
+            if ($request->get('publish')) {
                 $lesson->publish();
             } else {
                 $lesson->published = 0;
                 $lesson->save();
             }
 
-            if ($request->get('accepted') && auth()->user()->level === 2) {
+            if ($request->get('accept') && auth()->user()->level >= 2) {
                 $lesson->accept();
+            } else {
+                $lesson->accepted = 0;
+                $lesson->save();
             }
 
             return redirect()->route('admin.lesson.index')->with('success', trans('Update Lesson Successfully'));

@@ -39,7 +39,7 @@
                     <div class="col-md-10">
                         <div class="checkbox">
                             <label>
-                                <input type="checkbox" name="published"
+                                <input type="checkbox" name="publish"
                                        @checked($lesson->published == 1) id="published">
                                 <span class="ms-2 h5">{{ __('Publish') }}</span>
                             </label>
@@ -51,7 +51,7 @@
                         <div class="col-md-10">
                             <div class="checkbox">
                                 <label>
-                                    <input type="checkbox" name="accepted" @checked($lesson->accepted == 1)>
+                                    <input type="checkbox" name="accept" @checked($lesson->accepted == 1)>
                                     <span class="ms-2 h5">{{ __('Accept') }}</span>
                                 </label>
                             </div>

@@ -25,7 +25,7 @@ class CourseFilterQuery
             $query->orderByDesc('title');
         }
 
-        if($this->request->query('user') == 1) {
+        if($this->request->query('user') == 1 && auth()->check()) {
             $arrCourseId = [];
             $myCourse = auth()->user()->manageSubscribe;
             foreach ($myCourse as $course) {

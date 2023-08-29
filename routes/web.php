@@ -64,18 +64,19 @@ Route::group([
     Route::prefix('ajax')->name('ajax.')->group(function () {
         Route::post('/verifyEmail', [AjaxProfileController::class, 'verifyEmail'])->name('verifyEmail');
         Route::post('/trial', [AjaxTrialController::class, 'subscribe'])->name('trial.subscribe');
-
-        Route::get('/courses', [AjaxCourseController::class, 'getCourses'])->name('course.getCourses');
-        Route::get('/courses/get-new', [AjaxCourseController::class, 'getNewCourses'])->name('course.getNew');
-        Route::get('/courses/get-top-relate', [AjaxCourseController::class, 'getTopRelate'])->name('course.getTopRelate');
-
         Route::get('/discount', [AjaxDiscountController::class, 'getDiscount'])->name('discount.getDiscount');
     });
 });
 Route::get('/', [HomepageController::class, '__invoke'])->name('index');
 Route::get('/pricing', [PricingController::class, '__invoke'])->name('pricing');
+
 Route::get('/course', [CourseController::class, 'index'])->name('course');
 Route::get('/course/{course}', [CourseController::class, 'show'])->name('course.show');
+Route::prefix('ajax')->name('ajax.')->group(function () {
+    Route::get('/courses', [AjaxCourseController::class, 'getCourses'])->name('course.getCourses');
+    Route::get('/courses/get-new', [AjaxCourseController::class, 'getNewCourses'])->name('course.getNew');
+    Route::get('/courses/get-top-relate', [AjaxCourseController::class, 'getTopRelate'])->name('course.getTopRelate');
+});
 
 //Contact
 Route::get('/contact', [ContactController::class, 'index'])->name('contact');
